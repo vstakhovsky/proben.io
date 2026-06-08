@@ -33,3 +33,21 @@ test-results/
 # Claude local/private settings
 .claude/settings.local.json
 .claude/local/
+
+# build / test artifacts
+.next/
+out/
+playwright-report/
+test-results/
+coverage/
+
+# dependencies
+node_modules/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store

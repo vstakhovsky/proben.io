@@ -170,7 +170,8 @@ export function calculateReadinessScore(responses: Response[]): number {
 ```
 /                           → Landing page
 /sample-report              → Sample readiness report
-/app/readiness-check        → Interactive demo
+/app/readiness-check        → Interactive demo (CANONICAL ROUTE)
+/readiness-check            → Compatibility route (also works)
 /portfolio/build-process    → Development documentation
 ```
 
@@ -326,7 +327,9 @@ src/
 │   ├── layout.tsx         # Root layout
 │   ├── page.tsx           # Landing page
 │   ├── sample-report/     # Sample report page
-│   ├── readiness-check/   # Readiness check demo (route: /app/readiness-check)
+│   ├── readiness-check/   # Readiness check demo (compatibility route: /readiness-check)
+│   ├── app/               # Product routes (canonical: /app/readiness-check)
+│   │   └── readiness-check/
 │   └── portfolio/         # Portfolio pages
 ├── components/            # React components
 ├── lib/                   # Utility functions

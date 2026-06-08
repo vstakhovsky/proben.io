@@ -62,8 +62,23 @@ NEXT_PUBLIC_ANALYTICS_ENABLED="false"
 - API keys
 - Authentication secrets
 - AI provider credentials
-ANTHROPIC_API_KEY="your-api-key"
 ```
+
+### Design References (Phase 1)
+
+**Available Design Assets:**
+- `/reference/design/` - PowerPoint files with design specifications
+- `/reference/screenshots/` - 27 screenshot images showing visual design
+- Design is comprehensive and ready for implementation
+
+**Design System Implementation:**
+- Light grid background: CSS pattern in `app/globals.css`
+- Serif headlines: Georgia font family configured
+- Green CTAs: Brand green (#10B981) in `tailwind.config.ts`
+- Readiness report cards: Styled in page components
+- Editorial tone: Professional, calm, serious content throughout
+
+**Status**: All design references are comprehensive. Design tokens properly configured.
 
 ### 3. Mock Data Setup (Phase 1)
 
@@ -148,9 +163,14 @@ pnpm test:e2e --debug
 Focus E2E testing on:
 - Landing page loads
 - Sample report displays correctly
-- Readiness check demo works
+- Readiness check demo works (canonical route: `/app/readiness-check`)
 - Navigation between pages
+- Route consistency (canonical vs compatibility routes)
 - Mobile responsiveness
+
+**Important Route Information:**
+- **Canonical route**: `/app/readiness-check` (use this in links, tests, and documentation)
+- **Compatibility route**: `/readiness-check` (for backward compatibility, redirects work but not canonical)
 
 ### Linting and Formatting
 

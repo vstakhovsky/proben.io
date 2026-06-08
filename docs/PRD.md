@@ -187,10 +187,11 @@ A **public demo** showcasing the Proben.io value proposition through:
    - Practice moment
    - Readiness delta
 
-3. **Readiness Check Demo** (`/app/readiness-check`)
+3. **Readiness Check Demo** (`/app/readiness-check`) - **Canonical route**
    - Assessment form
    - Results page
    - Navigation back to landing
+	   - Compatibility route: `/readiness-check` also works
 
 4. **Portfolio** (`/portfolio/build-process`)
    - Build process documentation
