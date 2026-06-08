@@ -1,0 +1,424 @@
+# Build Process - Proben.io (Phase 1 MVP)
+
+## Overview
+
+This document describes the build, test, and deployment process for Proben.io Phase 1 MVP. This is a **static public demo** with no database, authentication, or external AI services.
+
+## Phase 1 Scope
+
+**What IS included:**
+- Landing page with product overview
+- Sample readiness report (static/mock data)
+- Readiness check demo (deterministic algorithm)
+- Portfolio/build-process page
+- Basic tests
+- Vercel deployment
+
+**What is NOT included (Phase 2+):**
+- Database connectivity
+- User authentication
+- Real AI providers
+- Payment processing
+- Admin console
+- MCP automation
+
+## Prerequisites
+
+### Required Tools (Phase 1)
+- Node.js 20+ (LTS)
+- pnpm 9+ (package manager)
+- Git 2.40+
+
+### Optional Tools
+- Vercel CLI (for local deployment testing)
+
+## Environment Setup
+
+### 1. Clone and Install
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/proben.io.git
+cd proben.io
+
+# Install dependencies
+pnpm install
+```
+
+### 2. Environment Variables (Phase 1)
+
+For Phase 1 MVP, minimal environment configuration is needed:
+
+```bash
+# Optional: Site configuration
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+
+# Optional: Analytics wrapper (console-safe)
+NEXT_PUBLIC_ANALYTICS_ENABLED="false"
+```
+
+**Note**: Phase 1 does not require:
+- Database URLs
+- API keys
+- Authentication secrets
+- AI provider credentials
+ANTHROPIC_API_KEY="your-api-key"
+```
+
+### 3. Mock Data Setup (Phase 1)
+
+Phase 1 uses static/mock data stored in TypeScript files:
+
+```bash
+# Mock data is already included in src/data/
+# No database setup required
+```
+
+Mock data structure:
+- `src/data/mock-reports.ts` - Sample readiness reports
+- `src/data/mock-questions.ts` - Assessment questions
+- `src/data/mock-users.ts` - Sample user profiles (future use)
+
+## Development Workflow (Phase 1)
+
+### Local Development
+
+```bash
+# Start development server
+pnpm dev
+
+# Start with specific port
+pnpm dev -- -p 3000
+```
+
+The development server includes:
+- Hot module replacement
+- Fast refresh for React components
+- Source maps for debugging
+- Static routes for public demo pages
+- No API routes required in Phase 1
+
+### Type Checking
+
+```bash
+# Type check without building
+pnpm type-check
+
+# Type check with watch mode
+pnpm type-check --watch
+```
+
+### Testing (Phase 1)
+
+#### Unit Tests
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with coverage
+pnpm test:coverage
+```
+
+Focus testing on:
+- Readiness scoring algorithms (deterministic)
+- Component rendering
+- Mock data structures
+- User interactions
+
+#### E2E Tests
+
+```bash
+# Install Playwright browsers (first time only)
+pnpm exec playwright install
+
+# Run E2E tests
+pnpm test:e2e
+
+# Run E2E tests with UI
+pnpm test:e2e --ui
+
+# Run E2E tests in debug mode
+pnpm test:e2e --debug
+```
+
+Focus E2E testing on:
+- Landing page loads
+- Sample report displays correctly
+- Readiness check demo works
+- Navigation between pages
+- Mobile responsiveness
+
+### Linting and Formatting
+
+```bash
+# Run linter
+pnpm lint
+
+# Fix linting issues
+pnpm lint:fix
+
+# Format code
+pnpm format
+```
+
+## Build Process (Phase 1)
+
+### Production Build
+
+```bash
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+```
+
+The build process:
+1. Runs TypeScript compilation
+2. Executes production linter
+3. Builds Next.js application (static export)
+4. Generates static assets
+5. Optimizes images and bundles
+6. Creates production-ready static output
+
+### Build Output
+
+Build artifacts are placed in:
+- `.next/` - Next.js build output
+- `out/` - Static export output (for Phase 1)
+
+### Static Export Configuration
+
+Phase 1 uses Next.js static export for optimal performance:
+
+```javascript
+// next.config.js
+module.exports = {
+  output: 'export',
+  images: {
+    unoptimized: true
+  }
+};
+```
+
+## CI/CD Pipeline (Phase 1)
+
+### GitHub Actions
+
+The project uses GitHub Actions for CI/CD:
+
+#### Pull Request Checks
+
+Every PR triggers:
+- Type checking
+- Linting
+- Unit tests
+- E2E tests
+- Bundle size analysis
+- Security audit (dependency scanning)
+
+**Note**: Phase 1 skips:
+- Database migration checks
+- API integration tests
+- Authentication flow tests
+
+#### Deployment Pipeline
+
+On merge to `main`:
+1. Runs all PR checks
+2. Creates deployment artifact (static build)
+3. Deploys to Vercel (automatic)
+4. Runs smoke tests (critical paths)
+5. Notifies of deployment status
+
+### Local CI Simulation
+
+```bash
+# Run all CI checks locally
+pnpm ci:check
+
+# Run with verbose output
+pnpm ci:check --verbose
+```
+
+## Quality Gates (Phase 1)
+
+### Pre-commit
+Before committing, ensure:
+- [ ] Tests pass locally
+- [ ] No TypeScript errors
+- [ ] Linting passes
+- [ ] No new dependencies added without review
+- [ ] Static pages build correctly
+
+### Pre-merge
+Before merging, ensure:
+- [ ] All CI checks pass
+- [ ] Code review approved
+- [ ] E2E tests pass
+- [ ] Bundle size acceptable
+- [ ] No database/API calls in code
+
+### Pre-deployment
+Before deploying, ensure:
+- [ ] All merge checks pass
+- [ ] Smoke tests pass on preview deployment
+- [ ] All static pages are accessible
+- [ ] Mobile responsiveness verified
+- [ ] Performance targets met (Lighthouse)
+
+## Quality Gates
+
+### Pre-commit
+
+Before committing, ensure:
+- [ ] Tests pass locally
+- [ ] No TypeScript errors
+- [ ] Linting passes
+- [ ] No security vulnerabilities
+
+### Pre-merge
+
+Before merging, ensure:
+- [ ] All CI checks pass
+- [ ] Code review approved
+- [ ] Security review complete
+- [ ] E2E tests pass
+- [ ] Documentation updated
+
+### Pre-deployment
+
+Before deploying, ensure:
+- [ ] All merge checks pass
+- [ ] Smoke tests pass
+- [ ] Performance thresholds met
+- [ ] Security audit clean
+- [ ] Rollback plan documented
+
+## Performance Monitoring (Phase 1)
+
+### Build Performance
+
+```bash
+# Analyze build performance
+pnpm build --profile
+
+# Analyze bundle size
+pnpm analyze
+```
+
+### Runtime Performance (Static Site)
+
+Monitor:
+- First Contentful Paint (FCP) < 1.0s (static target)
+- Largest Contentful Paint (LCP) < 2.5s
+- Cumulative Layout Shift (CLS) < 0.1
+- First Input Delay (FID) < 100ms
+
+**Phase 1 advantages**:
+- No database latency
+- No API call overhead
+- Static file serving via CDN
+- Optimal performance out of the box
+
+## Troubleshooting
+
+### Common Issues
+
+**Build fails with TypeScript errors**
+```bash
+# Check TypeScript version
+pnpm tsc --version
+
+# Clear cache and rebuild
+rm -rf .next node_modules/.cache
+pnpm build
+```
+
+**Tests fail in CI but pass locally**
+```bash
+# Check Node version matches CI
+node --version
+
+# Run with CI environment variables
+CI=true pnpm test
+```
+
+**Static build issues**
+```bash
+# Phase 1: No database needed
+# Check static export configuration
+cat next.config.js | grep output
+
+# Rebuild static files
+rm -rf .next out
+pnpm build
+```
+
+### Getting Help
+
+- Check `docs/TROUBLESHOOTING.md`
+- Review GitHub Actions logs
+- Check Vercel deployment logs
+- Verify static site configuration
+
+## Security Considerations (Phase 1)
+
+### Build Security
+
+- Never commit `.env.local` or secrets
+- Use `pnpm audit` regularly
+- Keep dependencies updated
+- Review security advisories
+- Use `pnpm lock` for reproducible builds
+
+### Deployment Security (Static Site)
+
+- Enable security headers (CSP, HSTS, etc.)
+- Configure CORS properly (public demo)
+- Implement rate limiting (Vercel level)
+- Monitor for anomalies (Vercel Analytics)
+- No secrets to leak (Phase 1 advantage)
+
+See `docs/SECURITY.md` for Phase 1 security details.
+
+## Maintenance (Phase 1)
+
+### Dependency Updates
+
+```bash
+# Check for updates
+pnpm outdated
+
+# Update dependencies
+pnpm update
+
+# Major version updates
+pnpm upgrade-interactive
+```
+
+### Content Updates (Phase 1)
+
+Since Phase 1 is static:
+- Update mock data in `src/data/` files
+- Rebuild and redeploy for content changes
+- Version control for all content
+- No database migrations required
+
+### Future Phase Preparation
+
+When ready for Phase 2:
+- Review `docs/ROADMAP.md` for next steps
+- Plan database schema
+- Design authentication flow
+- Prepare AI provider integration
+
+---
+
+**Last Updated**: 2025-06-08
+**Current Phase**: 1 (Static MVP)
+**Related Docs**: `docs/DEPLOYMENT.md`, `docs/SECURITY.md`, `docs/ROADMAP.md`
