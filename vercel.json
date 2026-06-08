@@ -1,11 +1,5 @@
 {
-  "outputDirectory": "out"
-}
-EOF~
-npx vercel inspect dpl_Gft1M2MLeyiaWbcjMrY6qwNKW4S1 --log
-cd ~/Projects/proben.io
-
-cat > vercel.json <<'EOF'
-{
-  "outputDirectory": "out"
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install"
 }
