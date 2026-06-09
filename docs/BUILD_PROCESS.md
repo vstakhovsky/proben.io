@@ -291,6 +291,93 @@ Before deploying, ensure:
 - [ ] Mobile responsiveness verified
 - [ ] Performance targets met (Lighthouse)
 
+## Product Manager Quality Gate
+
+### Purpose
+
+The Product Manager evaluates every phase against product strategy, PRD, prototype, user value, and product eval metrics. This prevents the team from treating technical completion as product completion.
+
+### What the PM Gate Evaluates
+
+The PM gate evaluates:
+
+1. **Product Quality** — Did we build the right product?
+2. **Design Parity** — Does it match the target prototype?
+3. **Value Proposition** — Is the value clear and compelling?
+4. **User Experience** — Does the flow work smoothly?
+5. **Strategic Alignment** — Does this advance the product vision?
+
+### PM Eval Process
+
+**Before Phase:**
+* Define product goal
+* Document user problem
+* Specify acceptance criteria
+* Define eval rubric
+* List out-of-scope items
+
+**After Phase:**
+* Compare before vs after
+* Score against rubric
+* Assess requirement coverage
+* Check design alignment
+* Document gaps and regressions
+
+### PM Eval Rubric
+
+See `docs/evals/PRODUCT_EVALS.md` for the complete evaluation rubric.
+
+**Key Dimensions:**
+* Value Proposition Clarity (0-5)
+* Design Parity (0-5)
+* UX Flow Quality (0-5)
+* Requirements Compliance (0-5)
+* Evidence Quality (0-5)
+
+**Approval Thresholds:**
+* Average >= 4.2: Approve
+* Average 3.5-4.1: Approve with fixes
+* Average < 3.5: Block broad sharing
+
+**Critical Blockers:**
+Any dimension below 3 blocks the next phase.
+
+### PM Verdict Options
+
+After each phase, the PM provides one of:
+
+* **Approved** — Ready to share broadly
+* **Approved with fixes** — Minor improvements needed
+* **Blocked** — Rework needed before sharing
+* **Needs redesign** — Major product work required
+* **Needs rollback** — Phase made things worse
+
+### What the PM Gate Prevents
+
+The PM gate prevents:
+
+* **"Green checkmarks without evidence"** — Tests pass but product is weak
+* **"Technical completion ≠ Product completion"** — Code works but value unclear
+* **"Product-process inversion"** — Portfolio work stronger than product
+* **"Scope creep"** — Adding features without clear user value
+* **"Premature infrastructure"** — Adding backend before proving user value
+
+### When the PM Gate Runs
+
+The PM gate runs:
+
+* **After every phase** — Before starting next phase
+* **Before deployment** — Before public sharing
+* **When scope changes** — Re-evaluate if direction changes
+* **When risks identified** — Check if product quality at risk
+
+### Related Documentation
+
+* **Product Eval Rubric:** `docs/evals/PRODUCT_EVALS.md`
+* **Phase Template:** `docs/evals/PHASE_EVALUATION_TEMPLATE.md`
+* **PM Agent:** `.claude/agents/product-manager.md`
+* **Phase Gate Policy:** `docs/PHASE_GATE_POLICY.md`
+
 ## Quality Gates
 
 ### Pre-commit
