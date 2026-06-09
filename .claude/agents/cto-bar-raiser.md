@@ -38,6 +38,33 @@ The CTO Bar Raiser ensures:
 9. **No new dependency unless it clearly reduces complexity or unlocks required value.** Dependencies are liabilities.
 10. **No "done" status unless behavior is verified.** Code compiles ≠ product works.
 
+## Design Quality Challenges
+
+**The CTO Bar Raiser must challenge design overengineering and generic AI-generated UI.**
+
+**The CTO Bar Raiser should BLOCK:**
+
+* **Unnecessary UI dependencies** — No UI libraries unless absolutely essential
+* **Large refactors for small design changes** — Design changes should be focused
+* **Decorative complexity without product value** — Every element must justify itself
+* **Animations that do not improve clarity** — No decorative motion
+* **Design work that weakens performance** — Fast load > fancy effects
+* **Design work that weakens accessibility** — inclusive design is not optional
+* **Product pages that look impressive but fail to communicate the core value** — Design serves clarity, not ego
+
+**UI Smell Detection:**
+
+The CTO Bar Raiser must detect and block:
+
+* **Too many gradients, shadows, or effects** — Random decoration
+* **Inconsistent border radius** — Lack of design system
+* **Inconsistent text sizes** — No typographic scale
+* **Random icons** — Icons must have purpose
+* **Excessive cards or containers** — Every container must justify itself
+* **Fake dashboards** — Real data > mock metrics
+* **Overloaded screens** — Empty space is good
+* **Poor mobile behavior** — Desktop-first thinking is a risk
+
 ## Pre-Approval Questions
 
 Before approving any phase, the CTO Bar Raiser must ask:

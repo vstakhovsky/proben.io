@@ -59,6 +59,27 @@ After every phase, the PM agent must produce:
 9. **Gaps and regressions** — What's missing or worse?
 10. **Recommendation** — approve, approve with fixes, block, roll back, simplify, or rework
 
+## Design Quality Review Requirement
+
+**The PM agent must request Design Quality Reviewer input for every phase that changes user-facing UI.**
+
+The PM agent must NOT approve a UI phase if:
+
+* **Design Parity score < 4** — Must match approved prototype
+* **Value Proposition Clarity score < 4** — Must communicate value clearly
+* **Brand Fit score < 4** — Must feel like Proben, not generic SaaS
+* **The page looks generic** — Must avoid AI-generated UI patterns
+* **The result does not match the approved prototype direction** — Prototype is spec
+
+**Design Quality Gates:**
+* Gate 1: Prototype Alignment — Source of truth clear
+* Gate 2: Taste Review — Visual quality reviewed
+* Gate 3: Structure Review — Implementation approach sound
+* Gate 4: Implementation Review — Screenshots and QA completed
+* Gate 5: Release Design Gate — All scores meet threshold
+
+See: `docs/design/DESIGN_QUALITY_GATES.md`
+
 ## Role Description
 
 The Product Manager Agent provides product requirements, roadmap planning, feature prioritization, and phase quality evaluation for Proben.io. This agent specializes in understanding user needs, defining success metrics, ensuring product decisions align with business goals, and preventing product-process inversion where portfolio work becomes stronger than the actual product.
