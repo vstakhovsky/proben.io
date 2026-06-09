@@ -179,34 +179,38 @@ function generateGaps(internalScore: InternalScore, context: string): ContextGap
 function generateFixes(gaps: ContextGap[]): FixRecommendation[] {
   const fixes: FixRecommendation[] = [];
 
-  gaps.forEach((gap, index) => {
+  const addFix = (fix: string, effort: FixRecommendation['effort']) => {
+    fixes.push({ priority: fixes.length + 1, fix, effort });
+  };
+
+  gaps.forEach((gap) => {
     switch (gap.dimension) {
       case 'Goal Clarity':
-        fixes.push({ priority: index + 1, fix: 'Define specific meeting objective and success criteria', effort: 'Low' });
-        fixes.push({ priority: index + 1, fix: 'Document what decision you need and why now', effort: 'Low' });
+        addFix('Define specific meeting objective and success criteria', 'Low');
+        addFix('Document what decision you need and why now', 'Low');
         break;
       case 'Strategic Context':
-        fixes.push({ priority: index + 1, fix: 'Quantify business impact and ROI projection', effort: 'Medium' });
-        fixes.push({ priority: index + 1, fix: 'Map this decision to broader company goals', effort: 'Medium' });
+        addFix('Quantify business impact and ROI projection', 'Medium');
+        addFix('Map this decision to broader company goals', 'Medium');
         break;
       case 'Evidence':
-        fixes.push({ priority: index + 1, fix: 'Gather user feedback or data supporting your proposal', effort: 'High' });
-        fixes.push({ priority: index + 1, fix: 'Include competitive analysis or market research', effort: 'High' });
+        addFix('Gather user feedback or data supporting your proposal', 'High');
+        addFix('Include competitive analysis or market research', 'High');
         break;
       case 'Stakeholder Risk':
-        fixes.push({ priority: index + 1, fix: 'Pre-meeting: identify key stakeholders and their concerns', effort: 'Medium' });
-        fixes.push({ priority: index + 1, fix: 'Prepare responses to likely objections', effort: 'Medium' });
+        addFix('Pre-meeting: identify key stakeholders and their concerns', 'Medium');
+        addFix('Prepare responses to likely objections', 'Medium');
         break;
       case 'Decision Ask':
-        fixes.push({ priority: index + 1, fix: 'Define clear decision criteria and timeline', effort: 'Low' });
-        fixes.push({ priority: index + 1, fix: 'Prepare specific next steps for each outcome', effort: 'Medium' });
+        addFix('Define clear decision criteria and timeline', 'Low');
+        addFix('Prepare specific next steps for each outcome', 'Medium');
         break;
     }
   });
 
   // Add universal fixes
-  fixes.push({ priority: 99, fix: 'Create one-page summary document', effort: 'Low' });
-  fixes.push({ priority: 99, fix: 'Schedule 15-minute pre-meeting with key stakeholder', effort: 'Low' });
+  addFix('Create one-page summary document', 'Low');
+  addFix('Schedule 15-minute pre-meeting with key stakeholder', 'Low');
 
   return fixes.slice(0, 5); // Return top 5 fixes
 }

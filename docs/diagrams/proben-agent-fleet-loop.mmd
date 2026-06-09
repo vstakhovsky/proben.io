@@ -1,0 +1,35 @@
+flowchart TD
+    A[Human Product Owner] --> B[Orchestrator]
+
+    B --> C{Complex Task?}
+    C -->|No| D[Single-Agent Loop]
+    C -->|Yes| E[Assign Specialists]
+
+    E --> F[Research Analyst]
+    E --> G[Product Manager]
+    E --> H[Lead Architect]
+    E --> I[Frontend Engineer]
+    E --> J[QA Release Engineer]
+    E --> K[Security Reviewer]
+    E --> L[Documentation Engineer]
+
+    F --> M[Synthesis & Recommendations]
+    G --> M
+    H --> M
+    I --> M
+    J --> M
+    K --> M
+    L --> M
+
+    M --> N{Human Approve?}
+    N -->|Needs Revision| B
+    N -->|Approved| O[Implementation]
+
+    O --> P[Verification]
+    P --> Q{All Checks Pass?}
+    Q -->|No| N
+    Q -->|Yes| R[Complete]
+
+    style A fill:#e1f5ff
+    style N fill:#ffe6f0
+    style R fill:#f0fff4

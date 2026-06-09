@@ -1,0 +1,17 @@
+flowchart LR
+    A[Source Intake] --> B[Pattern Extraction]
+    B --> C[Visual Plan]
+    C --> D{Human Feedback}
+    D -->|Needs Revision| C
+    D -->|Approved| E[Agent Implementation]
+    E --> F[Verification]
+    F --> G{Decision Log}
+    G --> H[Portfolio Page]
+
+    style A fill:#e1f5ff
+    style B fill:#fff4e6
+    style C fill:#f0fff4
+    style E fill:#fff0f5
+    style F fill:#f5f0ff
+    style G fill:#fffff0
+    style H fill:#f0ffff

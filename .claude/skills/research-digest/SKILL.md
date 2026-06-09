@@ -1,75 +1,82 @@
 # Research Digest Skill
 
-## Description
+## Purpose
 
-Summarizes and synthesizes research findings for Proben.io, converting raw research into actionable insights and documentation.
+Analyze research sources about AI product development and create digestible insights with application recommendations for Proben.io.
 
-## Triggers
+## When to Use
 
-- Manual: `/research-digest`
-- Scheduled: Weekly research summaries
-- On-demand: When research is completed
+When you have:
+- A conference talk about AI agents/engineering
+- A technical blog post about AI workflows
+- Official documentation about AI tools/frameworks
+- A GitHub repository for AI tooling
+- Product releases relevant to AI development
 
-## Research Areas
+## Behavior
 
-### 1. Technology Research
-- New frameworks and libraries
-- Architecture patterns
-- Performance optimizations
-- Security best practices
+### Input Analysis
 
-### 2. User Research
-- User feedback analysis
-- Usability testing results
-- Feature requests analysis
-- Behavior patterns
+1. **Extract Metadata**
+   - URL, type (video, article, paper, repo, talk)
+   - Speaker/author, platform, date
+   - Topic tags: agents, context engineering, evals, guardrails, MCP, UX, observability, testing, security
+   - Confidence level (based on source quality and accessibility)
 
-### 3. Competitive Analysis
-- Feature comparisons
-- Market positioning
-- Technical approaches
-- User experience patterns
+2. **Summarize Core Insight**
+   - What is the main idea? (5-7 bullets)
+   - What is new or non-obvious?
+   - What problem does it solve?
+   - What are the risks or limitations?
+   - What assumptions are not proven?
 
-### 4. Internal Research
-- A/B test results
-- Performance metrics
-- Error analysis
-- Usage statistics
+3. **Assess Relevance**
+   - How does this apply to Proben.io development?
+   - Which areas does it affect?
+   - Is this actionable now or later?
 
-## Output Format
+4. **Propose Application**
+   - What changes would we make?
+   - Expected benefit?
+   - Effort level?
+   - Risks?
+   - Priority (P0/P1/P2)?
 
-```markdown
-# Research Digest: [Topic]
+5. **Recommend Decision**
+   - Adopt: Implement now, clear value, low risk
+   - Test: Try in limited context first
+   - Reject: Not applicable, low value, high risk
+   - Watch: Monitor but don't act yet
+   - Needs more evidence: Insufficient information
 
-## Executive Summary
-[2-3 sentence overview]
+### Output Creation
 
-## Key Findings
-[Bullet points of main discoveries]
+Create three documents:
+1. Source Card (docs/research/source-cards/[YYYY-MM-DD]-[slug].md)
+2. Research Digest Entry (update docs/research/RESEARCH_DIGEST.md)
+3. Decision Record (update docs/research/RESEARCH_DECISIONS.md)
 
-## Implications for Proben.io
-[How findings affect our decisions]
+## Quality Standards
 
-## Recommendations
-[Actionable next steps]
+- **Accuracy**: Don't invent quotes or claims
+- **Clarity**: Core insight in 5-7 bullets
+- **Actionability**: Clear application recommendations
+- **Traceability**: Link to sources
+- **Anti-Hype**: Practical over trendy
 
-## Related Research
-[Links to related studies/findings]
+## Inputs
 
-## Data Sources
-[Sources and methodology]
-```
+- Source URL or content
+- Source type (if not obvious)
 
-## Process
+## Outputs
 
-1. **Collect**: Gather research materials
-2. **Analyze**: Extract key insights
-3. **Synthesize**: Combine findings
-4. **Document**: Create digest
-5. **Distribute**: Share with team
+- Source card (markdown)
+- Updated research digest
+- Updated decisions
 
-## Configuration
+## Related
 
-- Update frequency: Weekly
-- Retention period: 6 months
-- Access level: Team-wide
+- **Research Analyst Agent**: Uses this skill
+- **Context Pack Builder**: Applies insights
+- **Source-to-Product Application**: Converts to implementation

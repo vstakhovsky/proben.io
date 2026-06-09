@@ -1,0 +1,32 @@
+flowchart TB
+    subgraph Human
+        A[Define Goal & Spec]
+        B[Review & Validate Plan]
+        C[Verify Results]
+        D[Approve Deployment]
+    end
+
+    subgraph Agent
+        E[Create Visual Plan]
+        F[Document Approach]
+        G[Implement Code]
+        H[Run Verification]
+    end
+
+    A --> E
+    E --> F
+    F --> B
+    B -->|Approved| G
+    B -->|Needs Revision| E
+    G --> H
+    H --> C
+    C -->|Results OK| D
+
+    style A fill:#e1f5ff
+    style B fill:#e1f5ff
+    style C fill:#e1f5ff
+    style D fill:#e1f5ff
+    style E fill:#f0fff4
+    style F fill:#f0fff4
+    style G fill:#f0fff4
+    style H fill:#f0fff4

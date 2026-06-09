@@ -1,0 +1,26 @@
+flowchart LR
+    A[Market Source] --> B[Pattern Extraction]
+    B --> C{Relevance Score}
+
+    C -->|Low| D[Document and Watch]
+    C -->|Medium| E[Monitor for Later]
+    C -->|High| F[Application Hypothesis]
+
+    F --> G{Priority}
+    G -->|P2| H[Queue for Future]
+    G -->|P1| I[Plan for Next Cycle]
+    G -->|P0| J[Design Experiment]
+
+    J --> K[Run Experiment]
+    K --> L[Eval Results]
+    L --> M{Decision}
+
+    M -->|Adopt| N[Implement & Document]
+    M -->|Test| O[Run Larger Test]
+    M -->|Reject| P[Document Learning]
+
+    style A fill:#e1f5ff
+    style F fill:#fff4e6
+    style J fill:#f0fff4
+    style N fill:#f0fff4
+    style P fill:#fff0f5

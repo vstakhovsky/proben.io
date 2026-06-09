@@ -1,0 +1,28 @@
+flowchart LR
+    A[Code Change] --> B[Typecheck]
+    B -->|Fails| B
+    B -->|Passes| C[Unit Tests]
+
+    C -->|Fails| C
+    C -->|Passes| D[Build]
+
+    D -->|Fails| D
+    D -->|Passes| E[E2E Tests]
+
+    E -->|Fails| E
+    E -->|Passes| F[Browser QA]
+
+    F -->|Issues| F
+    F -->|Passes| G[Vercel Preview]
+
+    G -->|Issues| G
+    G -->|Passes| H[Production]
+
+    style A fill:#e1f5ff
+    style H fill:#f0fff4
+    style B fill:#ffe6f0
+    style C fill:#ffe6f0
+    style D fill:#ffe6f0
+    style E fill:#ffe6f0
+    style F fill:#ffe6f0
+    style G fill:#ffe6f0

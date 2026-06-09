@@ -1,0 +1,19 @@
+flowchart LR
+    A[Raw Idea] --> B[Markdown Brief]
+    B --> C[Visual Plan]
+    C --> D{Inline Feedback}
+
+    D -->|Revision| C
+    D -->|Approved| E[Implementation Ticket]
+
+    E --> F[Agent Execution]
+    F --> G[QA Report]
+    G --> H{Pass?}
+
+    H -->|No| F
+    H -->|Yes| I[Portfolio Artifact]
+
+    style A fill:#e1f5ff
+    style C fill:#f0fff4
+    style I fill:#fff0f5
+    style G fill:#ffe6f0

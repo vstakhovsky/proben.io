@@ -122,6 +122,19 @@ describe('Scoring Algorithm', () => {
       expect(result.fixes[0]).toHaveProperty('effort');
     });
 
+    it('should assign unique sequential priorities to fixes', () => {
+      const input = {
+        context: 'Unclear meeting with vague objectives and no evidence or stakeholder preparation',
+        meetingType: 'Strategy review',
+      };
+
+      const result = assessReadiness(input);
+      const priorities = result.fixes.map((fix) => fix.priority);
+
+      expect(priorities).toEqual([...new Set(priorities)]);
+      expect(priorities).toEqual(priorities.map((_, index) => index + 1));
+    });
+
     it('should generate likely questions', () => {
       const input = {
         context: 'Strategy review meeting with leadership team',
