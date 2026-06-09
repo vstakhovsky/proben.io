@@ -6,28 +6,28 @@ test.describe('Core User Flow', () => {
 
     // Check title and heading
     await expect(page).toHaveTitle(/Proben.io/);
-    await expect(page.locator('h1')).toContainText('important meetings unprepared');
+    await expect(page.locator('h1')).toContainText('Know what to fix');
 
     // Check CTA buttons using stable test IDs
     await expect(page.getByTestId('hero-run-readiness-check')).toBeVisible();
-    await expect(page.getByTestId('sample-report-link')).toBeVisible();
+    await expect(page.getByTestId('hero-sample-report')).toBeVisible();
   });
 
   test('navigation works between pages', async ({ page }) => {
     await page.goto('/');
 
     // Navigate to readiness check using nav link
-    await page.click('nav a:has-text("Readiness Check")');
+    await page.click('nav a:has-text("Run readiness check")');
     await expect(page).toHaveURL(/\/app\/readiness-check/);
 
     // Navigate to sample report
     await page.goto('/');
-    await page.click('nav a:has-text("Sample Report")');
+    await page.click('nav a:has-text("Sample report")');
     await expect(page).toHaveURL(/\/sample-report/);
     await expect(page.locator('h1')).toContainText('Sample Readiness Report');
 
-    // Navigate back to home
-    await page.click('nav a:has-text("Home")');
+    // Navigate back to home via logo
+    await page.click('nav a:has-text("Proben")');
     await expect(page).toHaveURL('/');
   });
 
