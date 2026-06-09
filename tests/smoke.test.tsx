@@ -12,9 +12,9 @@ describe('Smoke Tests', () => {
       const { container } = render(<HomePage />);
 
       // Check for key elements
-      expect(container.textContent).toContain('Don\'t walk into important meetings unprepared');
+      expect(container.textContent).toContain('Know what to fix before the meeting starts');
       expect(container.textContent).toContain('Run readiness check');
-      expect(container.textContent).toContain('View sample report');
+      expect(container.textContent).toContain('See sample report');
     });
 
     it('should have navigation link to readiness check', () => {
