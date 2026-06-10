@@ -144,6 +144,98 @@ proben.io/
 - Never implement features without clear requirements
 - **For Phase 1**: Implement deterministic algorithms, not AI calls
 
+## Evidence-Based Completion Rule (CRITICAL FOR UI WORK)
+
+**Agents must never mark UI work as complete based only on build, tests, or route availability.**
+
+**For all UI/UX tasks, the following evidence MUST be produced before claiming "done":**
+
+1. **Reference Evidence**
+   - Reference prototype path (e.g., `reference/screenshots/proben-mvp-6/hero-target-light-1.png`)
+   - Source screenshot identified
+
+2. **Current Evidence**
+   - Current implementation screenshot captured
+   - Route tested in browser
+   - Responsive behavior verified
+
+3. **Comparison Evidence**
+   - Side-by-side comparison with prototype
+   - Visual parity score (1-5 scale, >= 4.5/5 required for approval)
+   - Dimension scores: header, hero, typography, spacing, colors, CTAs, responsiveness, brand fit
+
+4. **Verdict Evidence**
+   - Explicit ACCEPTED or REJECTED status
+   - List of what matches
+   - List of what doesn't match
+   - Required fixes (if rejected)
+
+**Acceptance Threshold:** Visual parity score >= 4.5/5
+
+**Below Threshold:** Automatic REJECTION with specific blockers
+
+**Related Documentation:**
+- `docs/reviews/phase-2-1-failure-analysis.md` — Analysis of why agents accepted visually incorrect result
+- `docs/PROCESS_LEARNINGS.md` — Process governance learnings
+- `docs/design/DESIGN_QUALITY_GATES.md` — Design quality gate specifications
+- `docs/agentic-delivery/VISUAL_AGENTIC_DELIVERY_SYSTEM.md` — Visual agentic delivery system
+
+## Visual Agentic Delivery System
+
+For UI/UX work, Proben.io uses the Visual Agentic Delivery System to ensure quality through visual planning, isolated work, fresh review, and risk-scored gates.
+
+**Core Process:**
+1. Visual Plan — Create detailed visual plan before implementation
+2. Human Feedback — Get approval on plan before coding
+3. Isolated Build — Implement in worktree, only from approved plan
+4. Fresh Review — Independent agent reviews (builder ≠ reviewer)
+5. Risk Score — Assess risk across multiple dimensions
+6. Gate Decision — PM, Design QA, CTO evaluate
+7. Release or Rework — Human makes final decision
+
+**Key Principles:**
+- Plan before code — Visual planning is mandatory for UI work
+- Builder ≠ reviewer — The agent that implements cannot be the final reviewer
+- Evidence over claims — Screenshots and parity scores required
+- Tests ≠ done — Tests passing is necessary but not sufficient
+- Prototype parity — Must match approved design (>= 4.5/5)
+
+**New Hard Rules:**
+1. No one-line prompts for UI, architecture, or release-critical work
+2. UI work must start with visual plan, not code
+3. The builder cannot be the final reviewer
+4. A fresh reviewer must review before human
+5. Tests passing is never sufficient for UI work
+6. Prototype parity is blocking (>= 4.5/5 required)
+7. Generic SaaS output is rejected (must look like Proben MVP 6)
+8. Parallel agents require isolation (worktrees/branches)
+9. Research agents summarize, don't modify production code
+10. Agent system is audited regularly for effectiveness
+
+**See:** `docs/agentic-delivery/VISUAL_AGENTIC_DELIVERY_SYSTEM.md` for complete system documentation.
+
+## Agent Governance System
+
+Proben.io uses a four-level agent authority system to prevent self-approval and ensure quality.
+
+**Four Responsibility Levels:**
+
+**Level 1 — Builders:** Create implementation artifacts. Cannot approve own work.
+- Examples: frontend-engineer, documentation-engineer, ai-engineer, test-writer
+
+**Level 2 — Principal Reviewers:** Validate quality and can block release.
+- Examples: principal-product-manager, principal-design-reviewer, principal-architect, security-reviewer, qa-release-engineer
+
+**Level 3 — CTO Bar Raiser:** Owns final release quality bar.
+- Can block release, verify all gates passed, require evidence package
+
+**Level 4 — Agent Governance Auditor:** Audits the agent system itself.
+- Can evaluate agent usefulness, flag false approvals, recommend agent removal
+
+**Hard Rule:** A builder must never approve its own work.
+
+**See:** `docs/agent-governance/AGENT_AUTHORITY_MATRIX.md` for complete authority matrix.
+
 ## Common Patterns
 
 ### Creating a New Feature
@@ -197,6 +289,10 @@ Content with **Why:** and **How to apply:** sections
 
 ### Available Skills
 
+- **visual-plan-builder**: Create visual implementation plans before UI work
+- **fresh-agent-review**: Independent review of implementation work
+- **worktree-isolation**: Define when work must be isolated
+- **risk-scored-review**: Assess risk across multiple dimensions
 - **security-review**: Security analysis of pending changes
 - **research-digest**: Summarize research findings
 - **prompt-optimization**: Optimize prompts for better results
@@ -205,15 +301,31 @@ Content with **Why:** and **How to apply:** sections
 
 ### Specialized Agents
 
-- **lead-architect**: Architecture design and review
-- **product-manager**: Product requirements and roadmap
-- **ai-engineer**: AI/ML feature implementation (future phases)
-- **frontend-engineer**: Frontend component development
-- **security-reviewer**: Security-focused code review
-- **qa-release-engineer**: Quality assurance and release management
-- **research-analyst**: Research and competitive analysis
-- **documentation-engineer**: Documentation and technical writing
-- **prompt-optimizer**: Prompt engineering and optimization (future phases)
+**Level 4 — System Governance:**
+- **agent-governance-auditor:** Audits agent system, recommends changes
+
+**Level 3 — Release Quality:**
+- **cto-bar-raiser:** Owns final release quality bar, can veto any release
+
+**Level 2 — Principal Reviewers:**
+- **principal-product-manager:** Product requirements, product quality evaluation
+- **principal-design-reviewer:** Visual quality and design parity review
+- **principal-architect:** Architecture design and review
+- **security-reviewer:** Security-focused code review
+- **qa-release-engineer:** Quality assurance and release management
+
+**Level 1 — Builders:**
+- **visual-plan-architect:** Creates visual implementation plans before UI work
+- **fresh-review-agent:** Independently reviews implementation work
+- **worktree-orchestrator:** Defines worktree/branch strategy
+- **frontend-engineer:** Frontend component development
+- **documentation-engineer:** Documentation and technical writing
+- **ai-engineer:** AI/ML feature implementation (future phases)
+
+**Research:**
+- **research-analyst:** Research and competitive analysis
+
+**Key:** Builders (Level 1) cannot approve their own work. Principal Reviewers (Level 2) validate quality. CTO Bar Raiser (Level 3) owns final release bar. Agent Governance Auditor (Level 4) evaluates the system.
 
 ## Troubleshooting
 
@@ -239,6 +351,9 @@ Content with **Why:** and **How to apply:** sections
 - Behavior Specifications: `docs/BDD/`
 - Security Guidelines: `docs/SECURITY.md`
 - Build Process: `docs/BUILD_PROCESS.md`
+- Visual Agentic Delivery: `docs/agentic-delivery/`
+- Agent Governance: `docs/agent-governance/`
+- Agent Definitions: `.claude/agents/`
 
 ## Getting Started
 
@@ -271,6 +386,6 @@ Content with **Why:** and **How to apply:** sections
 
 ---
 
-**Last Updated**: 2025-06-08
+**Last Updated**: 2026-06-10
 **Current Phase**: 1 (MVP Public Demo)
 **Maintained By**: Solo Founder

@@ -2,114 +2,178 @@
 
 ## Purpose
 
-Convert a product or engineering task into a visual plan before implementation—making requirements, trade-offs, and validation gates visible and reviewable.
+Create visual implementation plans before UI code is written.
 
 ## When to Use
 
-Before implementing any non-trivial change:
-- New feature or page
-- Route changes
-- Architecture decisions
-- Security-sensitive changes
-- Portfolio documentation
+Trigger this skill when:
+- Starting any UI/UX implementation work
+- Planning landing page changes
+- Planning component redesigns
+- Planning feature page implementations
 
-## Behavior
+## What This Skill Does
 
-### Plan Creation
+1. **Analyze the target screenshot** for layout structure
+2. **Create a section map** of all visual areas
+3. **Create a layout map** showing structure and flow
+4. **Create a component map** identifying components
+5. **Extract exact copy** (no placeholders)
+6. **Identify design tokens** (colors, spacing, typography)
+7. **Define acceptance criteria** for the visual work
+8. **Identify risks** and rollback plan
 
-1. **Define the goal**
-   - One-sentence purpose
-   - Specific outcome
+## Input Requirements
 
-2. **Create task map**
-   - Starting state
-   - Required changes
-   - Ending state
-   - Dependencies
+Provide:
+- **Target screenshot path** — Source of truth
+- **Current state** (optional) — Screenshot or description
+- **Task scope** — What area is being changed
+- **Route context** — Which page/route is affected
 
-3. **List requirements**
-   - Bulleted, specific
-   - Testable
+## Process
 
-4. **Identify constraints**
-   - What NOT to do
-   - Boundaries
+1. **Load and analyze screenshot**
+   - Identify layout structure
+   - Map sections and components
+   - Extract copy text
+   - Identify design tokens
 
-5. **Document trade-offs**
-   - Options considered
-   - Why this approach
-   - What was rejected
+2. **Create visual plan**
+   - Section map with dimensions
+   - Layout map (ASCII or description)
+   - Component map with hierarchy
+   - Exact copy specification
+   - Design token values
 
-6. **Identify risks**
-   - What could go wrong
-   - Mitigations
+3. **Define acceptance criteria**
+   - Visual blockers (must-have elements)
+   - Functional blockers (must-work features)
+   - Success criteria (measurable goals)
 
-7. **Define validation gates**
-   - Typecheck, tests, build, E2E, browser
-   - Acceptance criteria
+4. **Identify risks and boundaries**
+   - Visual risks (what could go wrong)
+   - Technical risks (implementation concerns)
+   - Out-of-scope items (what's NOT changing)
+   - Rollback plan (if it fails)
 
-### Visual Format
+5. **Output plan for human review**
+   - Present complete visual plan
+   - Highlight areas needing clarification
+   - Request human approval before implementation
 
-Use appropriate format:
-- Flowchart for sequential changes
-- Table for trade-offs/comparisons
-- Diagram for system structure
+## Output Format
 
-## Inputs
-
-- Task description
-- Requirements from source card or human
-- Context (what's changing, why)
-
-## Outputs
-
-- Visual plan (markdown + diagrams)
-- Task map
-- Requirements list
-- Constraints list
-- Trade-offs table
-- Risk assessment
-- Validation gates
-
-## Example
-
-**Input**: "Update readiness check routes to use /app/readiness-check as canonical"
-
-**Output**:
 ```markdown
-# Visual Plan: Readiness Check Route Update
+# Visual Implementation Plan: [Page/Feature Name]
 
 ## Goal
-Update all readiness check CTAs and navigation to use canonical route /app/readiness-check
+[Clear statement of what this plan achieves]
 
-## Task Map
-[Flowchart showing: CTAs → Navigation → Verification]
+## Source of Truth
+**Target Screenshot:** `reference/screenshots/[path]`
+**Current Screenshot:** `[path if available]`
+**Route:** `/[route-path]`
 
-## Requirements
-- Landing page hero CTA → /app/readiness-check
-- Navigation → /app/readiness-check
-- Compatibility route /readiness-check must work
+## Section Map
+- **[Section 1]**: [dimensions, purpose, content]
+- **[Section 2]**: [dimensions, purpose, content]
+- **[Section 3]**: [dimensions, purpose, content]
 
-## Constraints
-- DO NOT add new features
-- DO NOT change readiness check functionality
-
-## Trade-offs
-| Option | Decision | Reason |
-|--------|----------|--------|
-| Redirect only | ✗ | Loses /readiness-check URLs |
-| Both routes render | ✓ | URLs work, canonical clear |
-
-## Validation
-- [ ] Type check
-- [ ] 21 unit tests pass
-- [ ] Build succeeds
-- [ ] 8 E2E tests pass
-- [ ] Browser verification
+## Layout Map
+```
+[ASCII diagram showing layout structure]
 ```
 
-## Related Skills
+## Component Map
+- **[Component 1]**
+  - Purpose: [what it does]
+  - Props: [key props]
+  - Children: [child components]
 
-- **Source to Visual**: Provides initial visualization ideas
-- **Mermaid Diagram Generator**: Creates diagrams for plans
-- **Portfolio Process Page**: Documents plans in portfolio
+## Exact Copy
+- H1: "[exact heading text]"
+- Subtitle: "[exact subtitle text]"
+- CTA 1: "[exact text]" → [destination]
+- CTA 2: "[exact text]" → [destination]
+- Labels: [exact label text]
+
+## Design Tokens
+- Background: `#color-value`
+- Text: `#color-value`
+- CTA: `#color-value`
+- Border: `#color-value`
+- H1: `[size] [weight] [line-height]`
+- Body: `[size] [weight] [line-height]`
+- Padding: `[value]`
+- Gap: `[value]`
+
+## Acceptance Criteria
+**Visual Blockers:**
+- [ ] [Must-have visual element 1]
+- [ ] [Must-have visual element 2]
+
+**Functional Blockers:**
+- [ ] [Must-work feature 1]
+- [ ] [Must-work feature 2]
+
+**Success Criteria:**
+1. [Measurable criterion 1]
+2. [Measurable criterion 2]
+
+## Out of Scope
+- [Element not changing 1]
+- [Element not changing 2]
+
+## Risk List
+1. **Visual Risk:** [what could go wrong visually]
+2. **Technical Risk:** [implementation concerns]
+3. **Scope Risk:** [could scope expand?]
+
+## Rollback Plan
+If implementation fails:
+1. [Rollback step 1]
+2. [Rollback step 2]
+
+---
+
+**Ready for Implementation:** YES / NEEDS REVISION
+**Human Approval Required:** YES
+```
+
+## Quality Checklist
+
+The visual plan is complete when:
+- [ ] Target screenshot identified and loaded
+- [ ] Section map created with dimensions
+- [ ] Layout map shows structure clearly
+- [ ] Component map identifies all components
+- [ ] Copy is exact (no "Lorem ipsum")
+- [ ] Design tokens have actual values
+- [ ] Acceptance criteria are specific
+- [ ] Out-of-scope items listed
+- [ ] Risks identified
+- [ ] Rollback plan defined
+
+## Success Criteria
+
+A successful visual plan:
+- Is specific enough to implement without clarification
+- Shows the exact layout structure
+- Specifies exact copy (no placeholders)
+- Provides actual design token values
+- Defines clear acceptance criteria
+- Identifies risks and rollback plan
+
+## Notes
+
+- This skill produces plans, not code
+- Human must review and approve the plan before implementation
+- Builder agent should work only from approved plan
+- Plan prevents scope creep and vague design tasks
+
+## Related Documentation
+
+- **Visual Plan Architect Agent:** `.claude/agents/visual-plan-architect.md`
+- **Visual Plan Template:** `docs/agentic-delivery/VISUAL_PLAN_TEMPLATE.md`
+- **Visual Agentic Delivery System:** `docs/agentic-delivery/VISUAL_AGENTIC_DELIVERY_SYSTEM.md`

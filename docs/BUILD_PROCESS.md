@@ -297,6 +297,25 @@ Before deploying, ensure:
 
 The Product Manager evaluates every phase against product strategy, PRD, prototype, user value, and product eval metrics. This prevents the team from treating technical completion as product completion.
 
+### Visual Agentic Delivery System
+
+For UI/UX work, Proben.io uses the Visual Agentic Delivery System to ensure quality through visual planning, isolated work, fresh review, and risk-scored gates.
+
+**See:** `docs/agentic-delivery/VISUAL_AGENTIC_DELIVERY_SYSTEM.md`
+
+**Key Process for UI Work:**
+1. Visual Plan → Human Approval → Isolated Build → Fresh Review → Risk Score → PM/Design/CTO Review → Human Approval → Release
+
+**Evidence-Based Completion:**
+For UI tasks, "done" requires:
+- Reference prototype path
+- Current implementation screenshot
+- Visual parity score (>= 4.5/5 required)
+- Functional QA status
+- Explicit ACCEPTED/REJECTED verdict
+
+**Tests passing is necessary but not sufficient for UI work.**
+
 ### What the PM Gate Evaluates
 
 The PM gate evaluates:

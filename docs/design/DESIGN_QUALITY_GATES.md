@@ -14,6 +14,44 @@ A page can compile, pass tests, and deploy successfully while still being visual
 
 ---
 
+## Evidence-Based Completion Rule (CRITICAL)
+
+**Agents must never mark UI work as complete based only on build, tests, or route availability.**
+
+**Required Evidence for All UI Tasks:**
+
+Before any UI task can be marked as "complete," the following evidence MUST be produced and reviewed:
+
+1. **Reference Evidence**
+   - [ ] Reference prototype path identified
+   - [ ] Source screenshot available
+
+2. **Current Evidence**
+   - [ ] Current implementation screenshot captured
+   - [ ] Route tested in browser
+   - [ ] Responsive behavior verified
+
+3. **Comparison Evidence**
+   - [ ] Side-by-side comparison created
+   - [ ] Visual parity score calculated (1-5 scale)
+   - [ ] Each dimension scored
+
+4. **Verdict Evidence**
+   - [ ] Explicit ACCEPTED or REJECTED status
+   - [ ] List of what matches
+   - [ ] List of what doesn't match
+   - [ ] Required fixes specified (if rejected)
+
+**Acceptance Threshold:**
+
+- Visual parity score: **>= 4.5/5**
+- All critical dimensions: **>= 4/5**
+- No missing prototype elements
+
+**Below Threshold: Automatic REJECTION with specific blockers.**
+
+---
+
 ## The Five Design Gates
 
 ### Gate 1 — Prototype Alignment
@@ -304,10 +342,13 @@ Use 0–5 scoring for each dimension:
 
 ## Approval Thresholds
 
-* **Average >= 4.2**: Approve — Ready to share
-* **3.5–4.1**: Approve with fixes — Minor improvements needed
-* **2.5–3.4**: Block broad sharing — Rework needed
-* **< 2.5**: Block next phase — Major rework required
+* **Visual Parity >= 4.5/5**: APPROVE — Matches prototype
+* **4.0–4.4**: APPROVE WITH FIXES — Minor visual gaps
+* **< 4.0**: REJECT — Does not match prototype, requires rework
+
+**CRITICAL: No UI work can be approved if visual parity < 4.5/5.**
+
+This threshold is non-negotiable. Tests passing, build succeeding, or routes working does NOT override low visual parity.
 
 ---
 
@@ -315,11 +356,21 @@ Use 0–5 scoring for each dimension:
 
 **Any dimension scoring below 4 blocks deployment:**
 
-1. **Prototype Parity** — Must match approved design
+1. **Prototype Parity** — Must match approved design (>= 4.5/5 required)
 2. **CTA Clarity** — Users must know what to do
 3. **Responsive Quality** — Must work on mobile
 4. **Brand Fit** — Must feel like Proben
 5. **Evidence Quality** — Must have screenshots/QA
+
+**Automatic Rejection Triggers:**
+
+A UI task MUST be rejected if ANY of:
+1. No visual evidence provided (no screenshots, no comparison)
+2. Visual parity score < 4.5/5
+3. Critical dimension score < 4/5
+4. Missing prototype elements
+5. Result looks like generic AI-generated SaaS UI
+6. Reference prototype not identified
 
 ---
 
@@ -352,5 +403,27 @@ Use 0–5 scoring for each dimension:
 
 ---
 
-**Last Updated:** 2025-06-09
+**Last Updated:** 2026-06-09
 **Current Phase:** 2.1 (Design Parity)
+
+---
+
+## Phase 2.1 Failure Analysis Update
+
+After the Phase 2.1 implementation was rejected for visual mismatch with prototype, the following governance changes were made:
+
+### New Rules Added
+
+1. **Evidence-Based Completion** — UI tasks require screenshot evidence, not just tests passing
+2. **Visual Parity Threshold** — Minimum 4.5/5 required for approval
+3. **PM Visual Verification** — PM must personally verify visual evidence
+4. **Design QA Blocking Authority** — Design QA must auto-reject if parity < 4.5/5
+5. **CTO Visual Quality Mandate** — CTO Bar Raiser must verify visual evidence
+6. **Functional/Visual Separation** — QA must distinguish functional vs visual success
+7. **Independent Visual QA** — Implementation and verification must be separate
+
+### Related Documentation
+
+- **Failure Analysis:** `docs/reviews/phase-2-1-failure-analysis.md`
+- **Process Learnings:** `docs/PROCESS_LEARNINGS.md`
+- **Updated Agents:** `.claude/agents/product-manager.md`, `.claude/agents/design-quality-reviewer.md`, `.claude/agents/cto-bar-raiser.md`, `.claude/agents/qa-release-engineer.md`
