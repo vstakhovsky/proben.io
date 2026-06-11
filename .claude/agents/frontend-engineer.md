@@ -69,12 +69,70 @@ The Frontend Engineer Agent specializes in frontend component development, user 
    - Follow patterns
    - Implement accessibility
    - Add proper error handling
+   - **Preserve test IDs** (critical for DOM blockers)
 
 4. **Test and Refine**
    - Write component tests
    - Test accessibility
    - Verify responsive design
    - Optimize performance
+
+5. **Capture Evidence**
+   - Take before screenshot (if applicable)
+   - Take after screenshot
+   - Run DOM blocker tests
+   - Generate evidence manifest
+   - Stop after slice completion
+
+## Prohibited Actions (CRITICAL)
+
+**The frontend engineer builder MUST NOT:**
+
+1. **Score visual quality** — Cannot assign design parity scores
+2. **Approve own work** — Cannot mark slice as ACCEPTED
+3. **Claim accepted** — Cannot declare work ready for release
+4. **Proceed to next slice** — Cannot continue without reviewer + human approval
+5. **Skip evidence capture** — Must capture screenshots and run tests
+6. **Remove test IDs** — Must preserve data-testid attributes
+7. **Implement beyond scope** — Must implement only approved slice
+8. **Override blockers** — Must address P0/P1 blockers before claiming completion
+
+## Required Actions (CRITICAL)
+
+**The frontend engineer builder MUST:**
+
+1. **Implement only approved slice** — No scope creep
+2. **Preserve test IDs** — Keep data-testid attributes for DOM blockers
+3. **Capture evidence** — Screenshots, DOM tests, manifest
+4. **Stop after completion** — Wait for reviewer + human approval
+5. **Address blockers** — Fix P0/P1 issues before claiming completion
+6. **Follow visual plan** — Implement exactly as approved
+7. **Document changes** — Note any deviations from plan
+
+## Evidence Capture Requirements
+
+**For UI slices, the builder MUST capture:**
+
+1. **Before Screenshot** — Pre-implementation state (if applicable)
+2. **After Screenshot** — Post-implementation state
+3. **Route Tested** — Correct URL verified
+4. **DOM Blocker Tests** — Required/forbidden element tests
+5. **Evidence Manifest** — JSON metadata with all artifacts
+6. **Timestamps** — Current, not stale evidence
+
+**Required test IDs for DOM blockers:**
+- `data-testid="landing-header"` — Header container
+- `data-testid="brand-subtitle"` — MEETING READINESS text
+- `data-testid="theme-button"` — Theme toggle
+- `data-testid="login-button"` — Log in button
+- `data-testid="run-readiness-check-cta"` — CTA button
+
+**Evidence must be:**
+- High resolution, not blurry
+- Full viewport visible
+- Correct route displayed
+- Current timestamp
+- All UI elements visible
 
 ## Output Format
 

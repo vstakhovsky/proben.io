@@ -66,7 +66,30 @@ The Principal Design Reviewer must:
 
 ### For Visual Quality Evaluation
 
+**CRITICAL: Inspection Order (Mandatory)**
+
+The reviewer MUST inspect in this exact order:
+
+1. **Target screenshot** — Understand what we're building toward
+2. **Before screenshot** — See starting state  
+3. **After screenshot** — See what was actually implemented
+4. **Diff/side-by-side report** — Compare before vs after
+5. **DOM blocker results** — Verify deterministic tests
+6. **Design rubric** — Apply scoring framework
+7. **Code** (only after visual evidence) — Check implementation details
+
+**DO NOT inspect code first.** Code review without visual evidence leads to false confidence.
+
 **Input:** Implementation, screenshots, prototype
+
+**Required Evidence:**
+- Target screenshot (approved prototype)
+- Before screenshot (pre-implementation)
+- After screenshot (post-implementation)
+- Diff comparison (visual or HTML)
+- DOM blocker test results
+- Evidence manifest (JSON)
+- HTML visual report
 
 **Questions:**
 1. Does it match the approved prototype?
@@ -166,6 +189,37 @@ The Principal Design Reviewer must:
 - **>= 4/5:** ACCEPTED — Feels like Proben
 - **< 4/5:** REJECTED — Generic SaaS, not Proben
 
+## P0 Blockers (Slice A)
+
+### Required Elements (Auto-REJECT if missing)
+- Rounded pill header (not full-width navbar)
+- "MEETING READINESS" subtitle
+- "Log in" button
+- "Run readiness check" CTA
+- Required nav items: Sample report, How it works, Checks, Resources, Pricing
+
+### Forbidden Elements (Auto-REJECT if present)
+- "Home" nav item (old generic nav)
+- "Build Process" nav item (portfolio nav in wrong place)
+- Full-width navbar structure
+
+## Score Cap Rules
+
+**CRITICAL: Apply these caps to calculated scores**
+
+1. **P0 Blocker Cap:** If any P0 blocker fails → Maximum score 2.9/5
+2. **Evidence Cap:** If no screenshot evidence → Maximum score 2.0/5
+3. **DOM Blocker Cap:** If no DOM blocker results → Cannot be ACCEPTED
+
+**Hierarchy of Truth:**
+1. Browser state (what actually renders)
+2. Screenshot evidence (captured visual state)
+3. DOM tests (deterministic verification)
+4. Agent verdict (advisory input only)
+5. Text claims (least reliable)
+
+**Rule:** If agent verdict conflicts with browser/screenshot, browser/screenshot wins.
+
 ## Output Format
 
 ```markdown
@@ -177,11 +231,41 @@ The Principal Design Reviewer must:
 **Same Agent:** NO
 **Independence confirmed:** YES
 
+## Evidence Inspection Order (Completed in Order)
+1. ✅ Target screenshot reviewed
+2. ✅ Before screenshot reviewed
+3. ✅ After screenshot reviewed
+4. ✅ Diff/side-by-side report reviewed
+5. ✅ DOM blocker results reviewed
+6. ✅ Design rubric applied
+7. ✅ Code inspected (after visual evidence)
+
 ## Evidence Reviewed
 - [ ] Reference prototype: [path]
-- [ ] Current screenshot: [provided/MISSING]
-- [ ] Side-by-side comparison: [completed/NOT COMPLETED]
-- [ ] Route tested: [URL/NOT TESTED]
+- [ ] Before screenshot: [path]
+- [ ] After screenshot: [path]
+- [ ] Diff comparison: [path]
+- [ ] Evidence manifest: [path]
+- [ ] DOM blocker tests: [PASSED/FAILED/MISSING]
+- [ ] HTML visual report: [path]
+- [ ] Route tested: [URL]
+
+## P0 Blocker Check (Slice A)
+
+### Required Elements
+- [ ] Rounded pill header — [PRESENT/MISSING]
+- [ ] "MEETING READINESS" subtitle — [PRESENT/MISSING]
+- [ ] "Log in" button — [PRESENT/MISSING]
+- [ ] "Run readiness check" CTA — [PRESENT/MISSING]
+- [ ] Required nav items — [ALL PRESENT/MISSING ITEMS]
+- [ ] Proper spacing — [CORRECT/INCORRECT]
+
+### Forbidden Elements
+- [ ] "Home" nav item — [NOT PRESENT/PRESENT - REJECT]
+- [ ] "Build Process" nav item — [NOT PRESENT/PRESENT - REJECT]
+- [ ] Full-width navbar — [NOT PRESENT/PRESENT - REJECT]
+
+**P0 Blocker Status:** PASSED / FAILED (auto-reject if failed)
 
 ## Visual Comparison
 
@@ -201,7 +285,22 @@ The Principal Design Reviewer must:
 - Colors: [X/5]
 - Brand Fit: [X/5]
 
-**Overall Design Score:** [X/5]
+**Calculated Score:** [X/5]
+
+## Score Cap Application
+1. P0 Blocker Cap: [APPLIED/NOT APPLIED] — [reason]
+2. Evidence Cap: [APPLIED/NOT APPLIED] — [reason]
+3. DOM Blocker Cap: [APPLIED/NOT APPLIED] — [reason]
+
+**Final Score after caps:** [X/5]
+
+## Generic SaaS Detection
+- [ ] Full-width navbar: [NOT DETECTED/DETECTED]
+- [ ] Generic cards: [NOT DETECTED/DETECTED]
+- [ ] Generic CTA: [NOT DETECTED/DETECTED]
+- [ ] Generic typography: [NOT DETECTED/DETECTED]
+
+**Generic SaaS Status:** CLEAR / DETECTED (reject or needs rework if detected)
 
 ## AI Smell Check
 [Clear / Minor Smells / Major Smells]
@@ -214,14 +313,16 @@ The Principal Design Reviewer must:
 **Status:** ACCEPTED / REJECTED / NEEDS_REWORK
 
 ### If ACCEPTED:
-- Prototype parity >= 4.5/5
-- Brand fit >= 4/5
+- Final score >= 4.5/5
+- No P0 blockers
 - Evidence complete
-- No AI smells
+- No generic SaaS patterns
+- Human approval received
 
 ### If REJECTED:
-- Prototype parity < 4.0/5 OR
-- Brand fit < 4/5 OR
+- Final score < 3.5/5 OR
+- P0 blockers failed OR
+- Generic SaaS detected OR
 - Evidence missing
 
 **Blockers:**
@@ -229,8 +330,8 @@ The Principal Design Reviewer must:
 2. [Specific visual blocker 2]
 
 ### If NEEDS_REWORK:
-- Prototype parity 4.0-4.4/5 OR
-- Brand fit 4/5 but specific issues
+- Final score 3.5-4.4/5 OR
+- Specific issues identified
 
 **Required Fixes:**
 1. [Specific visual fix 1]
@@ -245,6 +346,7 @@ The Principal Design Reviewer must:
 
 **Reviewer:** Principal Design Reviewer (Level 2)
 **Review Date:** [timestamp]
+**Evidence-Based Review:** YES
 ```
 
 ## AI-Generated UI Smell Detection

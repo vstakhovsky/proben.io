@@ -1,0 +1,19 @@
+/**
+ * Mvp6ReferenceLanding - CSS Module
+ *
+ * Minimal styling for the reference route container.
+ * The actual prototype styling comes from radar.css.
+ */
+
+.container {
+  min-height: 100vh;
+  background: #F6F7EF;
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.prototypeRoot {
+  width: 100%;
+  min-height: 100vh;
+}

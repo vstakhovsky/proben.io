@@ -1,0 +1,118 @@
+# Proben.io Agent Harness Rules
+
+## Background Task Harness
+
+Proben.io uses a Case-inspired agent harness with state machine enforcement, evidence requirements, and blocking rules.
+
+## State Machine
+
+```
+IMPLEMENT → VERIFY → REVIEW → CLOSE → RETRO → DONE
+```
+
+## Role Mapping
+
+### Implementer (Level 1 - Builder)
+- frontend-engineer, visual-plan-architect, test-eval-engineer
+- **Cannot:** Approve own work, score visual quality, claim ACCEPTED
+
+### Verifier (Level 1 - Verification)
+- test-eval-engineer, DOM blocker checker
+- **Required:** Proof manifests with SHA-256 hashes, evidence complete
+
+### Reviewer (Level 2 - Principal Reviewer)
+- fresh-review-agent, principal-design-reviewer, principal-product-manager
+- **Required:** Evidence-first review (NOT code-first), fresh review (builder ≠ reviewer)
+
+### Closer (Level 3 - CTO Bar Raiser)
+- principal-product-manager, cto-bar-raiser, principal-architect (conditional)
+- **Required:** All gates passed, evidence complete, human approval
+
+### Retro (Level 4 - System Governance)
+- agent-governance-auditor
+- **Required:** Learning documented, eval cases updated for failures
+
+## Hard Rules
+
+1. **No state transition without evidence** — Proof manifests required
+2. **No UI acceptance without before/target/after evidence** — Screenshots mandatory
+3. **No Slice B until Slice A passes harness** — Sequential slice progression
+4. **Revision loops max 2** — No blind retries
+5. **Every repeated failure is a harness bug** — System improvement required
+6. **Marker files are not evidence** — SHA-256 hash of real output only
+7. **Agent PASS is advisory only** — Evidence verification required
+8. **Reviewer must inspect evidence before code** — Evidence-first protocol
+9. **Gates matter more than agent names** — State machine enforcement
+10. **Do not trust agent claims** — Trust artifacts: logs, hashes, screenshots, DOM blockers, manifests
+
+## Forbidden Transitions
+
+- ✗ IMPLEMENT → CLOSE (no review)
+- ✗ IMPLEMENT → DONE (no retro)
+- ✗ VERIFY → CLOSE (no review)
+- ✗ REVIEW → DONE (no close evidence)
+- ✗ Any → DONE (without retro)
+
+## Evidence Requirements
+
+### For All Work
+- typecheck (TypeScript compilation)
+- tests (test execution)
+- build (build verification)
+- Proof manifests with SHA-256 hashes
+
+### For UI Work
+- BEFORE screenshot (pre-implementation)
+- TARGET screenshot (approved prototype)
+- AFTER screenshot (post-implementation)
+- DIFF or side-by-side report
+- DOM blocker results
+- Visual review report
+
+## Revision Budget
+
+- Maximum 2 revision loops per slice
+- Specific blockers required for NEEDS_REWORK
+- Escalate to human at budget exhaustion
+- No blind retries ("try again" without blockers)
+
+## KPIs
+
+- False PASS rate target: 0
+- Evidence completeness target: 100%
+- Revision loops target: ≤ 2
+- Skill usefulness measured by evals
+
+## Current Status
+
+**Slice A:** Phase 2.1 header/navigation parity
+- Status: IN_PROGRESS
+- Target: Proben MVP 6 visual direction
+- Blocker: Generic SaaS output rejection
+
+**Slice B:** BLOCKED until Slice A passes harness
+
+## Documentation
+
+- docs/agentic-delivery/CASE_INSPIRED_AGENT_HARNESS.md
+- docs/agentic-delivery/AGENT_STATE_MACHINE.md
+- docs/agentic-delivery/EVIDENCE_PROOF_PROTOCOL.md
+- docs/agentic-delivery/REVISION_LOOP_POLICY.md
+- docs/product-build-history/BUILD_LEARNING_DECISION_LOG.md
+
+## Reports
+
+Generate background task report:
+```bash
+node scripts/harness/generate-background-task-report.js
+```
+
+View report:
+```bash
+open test-results/harness/latest/background-task-report.html
+```
+
+---
+
+**Last Updated:** 2026-06-10
+**Inspired By:** Nick Nisi's "Case" from WorkOS

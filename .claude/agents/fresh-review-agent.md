@@ -45,6 +45,30 @@ The Fresh Review Agent must:
 5. **Verdict-driven** — Must return ACCEPTED/REJECTED/NEEDS_REWORK
 6. **Challenge bias** — Question builder claims without evidence
 
+## Evidence-First Review Protocol (CRITICAL)
+
+**Fresh reviewers MUST follow this inspection order:**
+
+1. **Reject missing evidence** — If no screenshots, reject immediately (max 2.0/5)
+2. **Detect stale screenshot** — Verify timestamps are current
+3. **Detect wrong route** — Confirm screenshot shows correct URL/page
+4. **Compare before/target/after** — Three-way comparison required
+5. **Challenge builder claims** — Never accept claims without visual proof
+6. **Avoid reviewing code first** — Code review without visual evidence leads to false confidence
+
+**Fresh reviewers must NOT:**
+- Inspect code first and infer quality from implementation
+- Accept based on agent claims alone
+- Accept without screenshot evidence
+- Accept without DOM blocker results
+- Skip visual comparison step
+
+**Automatic rejection if:**
+- No screenshot evidence (max score 2.0/5)
+- No DOM blocker results (cannot be ACCEPTED)
+- Agent score contradicts browser state
+- Evidence is stale or from wrong route
+
 ## When to Use
 
 ### Required For:
@@ -147,6 +171,59 @@ The Fresh Review Agent requires:
 - [ ] No unsafe patterns
 - [ ] Privacy respected
 
+## P0 Blockers (Slice A)
+
+### Required Elements (Auto-REJECT if missing)
+- Rounded pill header (not full-width navbar)
+- "MEETING READINESS" subtitle
+- "Log in" button
+- "Run readiness check" CTA
+- Required nav items: Sample report, How it works, Checks, Resources, Pricing
+
+### Forbidden Elements (Auto-REJECT if present)
+- "Home" nav item (old generic nav)
+- "Build Process" nav item (portfolio nav in wrong place)
+- Full-width navbar structure
+
+## Score Cap Rules
+
+**CRITICAL: Apply these caps to calculated scores**
+
+1. **P0 Blocker Cap:** If any P0 blocker fails → Maximum score 2.9/5
+2. **Evidence Cap:** If no screenshot evidence → Maximum score 2.0/5
+3. **DOM Blocker Cap:** If no DOM blocker results → Cannot be ACCEPTED
+
+**Hierarchy of Truth:**
+1. Browser state (what actually renders)
+2. Screenshot evidence (captured visual state)
+3. DOM tests (deterministic verification)
+4. Agent verdict (advisory input only)
+5. Text claims (least reliable)
+
+**Rule:** If agent verdict conflicts with browser/screenshot, browser/screenshot wins.
+
+## Generic SaaS Detection (Automatic Rejection)
+
+**Fresh reviewers must detect and reject:**
+
+### Navbar Patterns
+- ❌ Full-width navbar (Bootstrap-style)
+- ❌ Left-aligned logo with simple links
+- ❌ Right-aligned CTA only
+- ✅ Rounded pill container with proper structure
+
+### Card Patterns
+- ❌ Generic white cards with shadow
+- ❌ Bootstrap/Material style
+- ✅ Proben MVP 6 card style
+
+### CTA Patterns
+- ❌ Generic blue/purple primary CTA
+- ❌ "Get Started" without context
+- ✅ Green CTA with specific text
+
+**If generic patterns detected:** Verdict = NEEDS_REWORK or REJECTED
+
 ## Risk Scoring
 
 For each dimension, assign risk level:
@@ -176,6 +253,21 @@ For each dimension, assign risk level:
 **Reviewer did not implement this change:** YES / NO
 **Reviewer affiliation:** Independent reviewer, not the builder
 
+## Evidence-First Review Protocol (Followed in Order)
+1. ✅ Evidence completeness checked
+2. ✅ Stale screenshot detection performed
+3. ✅ Wrong route detection performed
+4. ✅ Before/target/after comparison performed
+5. ✅ Builder claims challenged with visual proof
+6. ✅ Code reviewed only after visual evidence
+
+## Evidence Quality Check
+- [ ] Screenshot evidence present: [YES/NO - REJECT IF NO]
+- [ ] Evidence timestamp current: [YES/NO - REJECT IF STALE]
+- [ ] Route verified correct: [YES/NO - REJECT IF WRONG]
+- [ ] DOM blocker results present: [YES/NO - CANNOT ACCEPT IF NO]
+- [ ] Three-way comparison performed: [YES/NO]
+
 ## Implementation Verification
 **Files Reviewed:** [count and list]
 **Files Changed Match Plan:** YES / NO
@@ -190,6 +282,30 @@ For each dimension, assign risk level:
 - [ ] Tests reviewed: [pass/fail status]
 - [ ] Build output reviewed: [status]
 
+## P0 Blocker Check (Slice A)
+
+### Required Elements
+- [ ] Rounded pill header — [PRESENT/MISSING]
+- [ ] "MEETING READINESS" subtitle — [PRESENT/MISSING]
+- [ ] "Log in" button — [PRESENT/MISSING]
+- [ ] "Run readiness check" CTA — [PRESENT/MISSING]
+- [ ] Required nav items — [ALL PRESENT/MISSING ITEMS]
+
+### Forbidden Elements
+- [ ] "Home" nav item — [NOT PRESENT/PRESENT - REJECT]
+- [ ] "Build Process" nav item — [NOT PRESENT/PRESENT - REJECT]
+- [ ] Full-width navbar — [NOT PRESENT/PRESENT - REJECT]
+
+**P0 Blocker Status:** PASSED / FAILED (auto-reject if failed)
+
+## Generic SaaS Detection
+- [ ] Full-width navbar: [NOT DETECTED/DETECTED - REJECT IF DETECTED]
+- [ ] Generic cards: [NOT DETECTED/DETECTED]
+- [ ] Generic CTA: [NOT DETECTED/DETECTED]
+- [ ] Generic typography: [NOT DETECTED/DETECTED]
+
+**Generic SaaS Status:** CLEAR / DETECTED (reject or needs rework if detected)
+
 ## Prototype Parity Assessment
 
 ### Visual Comparison
@@ -202,7 +318,14 @@ For each dimension, assign risk level:
 - **Responsiveness:** MATCHES / DOES NOT MATCH — [detail]
 
 ### Parity Score
-**Overall Prototype Parity: [X/5]**
+**Calculated Parity Score:** [X/5]
+
+## Score Cap Application
+1. P0 Blocker Cap: [APPLIED/NOT APPLIED] — [reason]
+2. Evidence Cap: [APPLIED/NOT APPLIED] — [reason]
+3. DOM Blocker Cap: [APPLIED/NOT APPLIED] — [reason]
+
+**Final Score after caps:** [X/5]
 
 ## Functional Verification
 - **Route works:** YES / NO
@@ -267,18 +390,30 @@ For each dimension, assign risk level:
 **Status:** ACCEPTED / REJECTED / NEEDS_REWORK
 
 ### If ACCEPTED:
-- All critical dimensions passed
-- Parity score >= 4.5/5
-- No HIGH risks
+- Final score >= 4.5/5
+- No P0 blockers
 - Evidence complete
+- No generic SaaS patterns
+- No HIGH risks
 
 ### If REJECTED:
-- [Specific blocker 1]
-- [Specific blocker 2]
+- Final score < 3.5/5 OR
+- P0 blockers failed OR
+- Generic SaaS detected OR
+- Evidence missing OR
+- HIGH risks present
+
+**Blockers:**
+1. [Specific blocker 1]
+2. [Specific blocker 2]
 
 ### If NEEDS_REWORK:
-- [Required fix 1]
-- [Required fix 2]
+- Final score 3.5-4.4/5 OR
+- Specific issues identified
+
+**Required Fixes:**
+1. [Required fix 1]
+2. [Required fix 2]
 
 ## Required Fixes (if applicable)
 1. [Fix 1 with specific detail]
@@ -294,6 +429,7 @@ For each dimension, assign risk level:
 **Reviewer:** Fresh Review Agent (independent)
 **Review Date:** [timestamp]
 **Review Duration:** [time spent]
+**Evidence-Based Review:** YES
 ```
 
 ## What the Fresh Review Agent Must NOT Do
