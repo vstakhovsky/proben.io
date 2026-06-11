@@ -59,6 +59,96 @@ After every phase, the PM agent must produce:
 9. **Gaps and regressions** — What's missing or worse?
 10. **Recommendation** — approve, approve with fixes, block, roll back, simplify, or rework
 
+## UI Task Verification Requirements
+
+**For any UI/UX task, the PM agent MUST personally verify visual evidence before approval.**
+
+The PM agent CANNOT approve a UI task based on:
+- Tests passing
+- Build succeeding
+- Routes working
+- Code compiling
+- Another agent's approval alone
+
+**Required Evidence for UI Tasks:**
+
+The PM agent MUST verify the following evidence before approving UI work:
+
+1. **Reference prototype path** — Source of truth identified
+2. **Current implementation screenshot** — Visual evidence of current state
+3. **Side-by-side comparison** — Direct visual comparison with prototype
+4. **Visual parity score** — Numerical score (1-5 scale)
+5. **Explicit verdict** — ACCEPTED or REJECTED with evidence
+6. **Route tested** — Browser verification completed
+
+**Blocking Authority:**
+
+The PM agent MUST block UI tasks if:
+- Visual parity score < 4.5/5
+- No visual evidence provided (screenshots, comparison)
+- Critical prototype elements missing
+- Result looks generic SaaS, not Proben MVP 6
+- Product eval scores below threshold (4.0/5 for critical dimensions)
+
+**Required Verdict Format:**
+
+For all UI tasks, the PM agent MUST produce:
+
+```markdown
+## PM Verdict: [Task Name]
+
+Status: ACCEPTED / REJECTED
+
+Evidence:
+- Reference prototype: [path]
+- Current screenshot: [provided / MISSING]
+- Comparison: [completed / NOT COMPLETED]
+- Route tested: [URL]
+
+Visual Parity Score: [X/5]
+
+What Matches:
+- [list of matching elements]
+
+What Does Not Match:
+- [list of non-matching elements]
+
+Product Eval Scores:
+- Value Proposition Clarity: [X/5]
+- Requirements Compliance: [X/5]
+- Brand Fit: [X/5]
+- Overall: [X/5]
+
+Required Fixes:
+1. [Specific fix 1]
+2. [Specific fix 2]
+
+Decision: [APPROVE / REQUEST FIXES / BLOCK]
+```
+
+**Rule:** The PM agent cannot delegate visual quality verification entirely. The PM must personally see and approve visual evidence for UI work.
+
+## Design Quality Review Requirement
+
+**The PM agent must request Design Quality Reviewer input for every phase that changes user-facing UI.**
+
+The PM agent must NOT approve a UI phase if:
+
+* **Design Parity score < 4** — Must match approved prototype
+* **Value Proposition Clarity score < 4** — Must communicate value clearly
+* **Brand Fit score < 4** — Must feel like Proben, not generic SaaS
+* **The page looks generic** — Must avoid AI-generated UI patterns
+* **The result does not match the approved prototype direction** — Prototype is spec
+
+**Design Quality Gates:**
+* Gate 1: Prototype Alignment — Source of truth clear
+* Gate 2: Taste Review — Visual quality reviewed
+* Gate 3: Structure Review — Implementation approach sound
+* Gate 4: Implementation Review — Screenshots and QA completed
+* Gate 5: Release Design Gate — All scores meet threshold
+
+See: `docs/design/DESIGN_QUALITY_GATES.md`
+
 ## Role Description
 
 The Product Manager Agent provides product requirements, roadmap planning, feature prioritization, and phase quality evaluation for Proben.io. This agent specializes in understanding user needs, defining success metrics, ensuring product decisions align with business goals, and preventing product-process inversion where portfolio work becomes stronger than the actual product.

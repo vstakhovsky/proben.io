@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import '@testing-library/jest-dom';
 import VisualAgenticDevelopmentPage from '@/app/portfolio/visual-agentic-development/page';
 
 describe('Visual Agentic Development Page', () => {

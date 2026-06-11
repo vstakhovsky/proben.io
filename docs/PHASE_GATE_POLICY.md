@@ -248,3 +248,57 @@ Gates prevent:
 * **Phase Template:** `docs/evals/PHASE_EVALUATION_TEMPLATE.md`
 * **PM Agent:** `.claude/agents/product-manager.md`
 * **CTO Bar Raiser:** `.claude/agents/cto-bar-raiser.md`
+* **Visual Agentic Delivery System:** `docs/agentic-delivery/VISUAL_AGENTIC_DELIVERY_SYSTEM.md`
+* **Visual Plan Template:** `docs/agentic-delivery/VISUAL_PLAN_TEMPLATE.md`
+* **Fresh Review Protocol:** `docs/agentic-delivery/FRESH_REVIEW_PROTOCOL.md`
+* **Risk Scored Review:** `docs/agentic-delivery/RISK_SCORED_REVIEW.md`
+* **Worktree Isolation Policy:** `docs/agentic-delivery/WORKTREE_ISOLATION_POLICY.md`
+
+## UI/UX Work Requirements
+
+**For UI/UX work, additional gates apply:**
+
+### Gate 2A — Visual Plan Gate
+
+**Before UI Implementation Starts**
+
+**Purpose:** Ensure visual planning before coding.
+
+**Required Outputs:**
+- Visual plan with section map
+- Layout map (ASCII or diagram)
+- Component map
+- Exact copy (no placeholders)
+- Design tokens (actual values)
+- Acceptance criteria
+- Out-of-scope list
+
+**Approval:** Human + Visual Plan Architect
+
+**Block If:**
+- Visual plan missing
+- Layout not specified
+- Copy has placeholders
+- Design tokens vague
+
+### Gate 4A — Visual QA Gate
+
+**After UI Implementation**
+
+**Purpose:** Ensure visual parity with prototype.
+
+**Required Outputs:**
+- Screenshot comparison (before/after)
+- Visual parity score (1-5)
+- Dimension scores (header, hero, typography, spacing, colors, CTAs)
+- Side-by-side comparison with prototype
+
+**Approval:** Design Quality Reviewer + Fresh Review Agent
+
+**Block If:**
+- No screenshot evidence
+- Visual parity < 4.5/5
+- Critical dimension < 4/5
+- Does not match prototype
+
+**See:** `docs/design/DESIGN_QUALITY_GATES.md` for complete visual quality gate specifications.

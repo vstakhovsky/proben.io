@@ -1,28 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================
+   Proben MVP 6 Design Tokens (from radar.css)
+   ========================================== */
+
 :root {
-  --background: #FAFAFA;
-  --foreground: #1A1A1A;
+  /* Backgrounds */
+  --bg-0: #F6F7EF;
+  --bg-1: #FBFCF6;
+  --bg-2: rgba(228, 234, 224, 0.55);
+
+  /* Panels & Cards */
+  --panel: #FFFFFF;
+  --card: #FFFFFF;
+  --card-2: #FFFFFF;
+
+  /* Lines & Borders */
+  --line: #E1E6E0;
+  --line-soft: #EAEEE8;
+  --line-strong: #CAD3CB;
+
+  /* Typography Colors */
+  --ink: #13241C;
+  --ink-dim: #2E3C34;
+  --muted: #5F6B63;
+  --muted-2: #8A948C;
+
+  /* Interactive States */
+  --inset: #F3F6F1;
+  --inset-2: #E8EDE4;
+  --track: #E4E9DE;
+  --hover: #EEF3E9;
+
+  /* Header */
+  --header-a: rgba(246, 247, 239, 0.86);
+  --header-b: rgba(246, 247, 239, 0.86);
+  --header-ink: #13241C;
+  --header-line: #E1E6E0;
+  --header-blur: rgba(246, 247, 239, 0.82);
+
+  /* Accents */
+  --lime: #A6C94A;
+  --lime-deep: #5B7F34;
+  --lime-glow: rgba(150, 185, 70, 0.18);
+  --cta-ink: #1b2a0c;
+
+  /* Status Colors */
+  --good: #4F8A2F;
+  --c-good: #4F8A2F;
+  --c-mid: #6F9E2C;
+  --amber: #B5792E;
+  --c-warn: #B5792E;
+  --risk: #C0573A;
+  --c-bad: #C0573A;
+  --risk-dim: #F8EDE8;
+  --amber-dim: #F7EFE2;
+
+  /* Mascot (Stacky) - light */
+  --mascot-gray-top: #C2C0B6;
+  --mascot-gray-mid: #A8A69C;
+  --mascot-gray-dark: #A8A69C;
+  --mascot-gray-line: #8E8C84;
+  --mascot-green-top: #7FB83C;
+  --mascot-green-mid: #639922;
+  --mascot-green-dark: #3B6D11;
+  --mascot-coral: #D85A30;
+  --mascot-blue: #378ADD;
+  --mascot-spark: #EF9F27;
+  --mascot-eye-dark: #1A2E05;
+  --mascot-eye-light: #FFFFFF;
+
+  /* AI Accent */
+  --ai: #5563E6;
+  --ai-2: #6C7CFF;
+  --ai-dim: #EEF0FF;
+
+  /* Blueprint/Proben */
+  --bp: #8BB7FF;
+  --bp-soft: #B8D2FF;
+  --bp-line: rgba(92, 142, 255, 0.45);
+  --bp-grid: rgba(92, 142, 255, 0.038);
+  --card-line: rgba(40, 40, 30, 0.10);
+
+  /* Shadows */
+  --shadow-card: 0 20px 50px -32px rgba(40, 60, 90, 0.30);
+  --shadow-pop: 0 18px 50px -16px rgba(40, 60, 90, 0.26);
+  --shadow-hero: 0 2px 4px rgba(40, 60, 90, 0.04), 0 12px 28px -10px rgba(40, 60, 90, 0.16), 0 40px 80px -32px rgba(40, 60, 90, 0.30);
+
+  /* Fonts */
+  --serif: 'Hanken Grotesk', system-ui, sans-serif;
+  --sans: 'Hanken Grotesk', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Spacing */
+  --r-sm: 8px;
+  --r: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --bg-0: #080B0A;
+  --bg-1: #0B100E;
+  --bg-2: rgba(16, 24, 20, 0.45);
+
+  --panel: rgba(16, 26, 30, 0.72);
+  --card: #0E1714;
+  --card-2: #11201B;
+
+  --line: rgba(150, 180, 210, 0.14);
+  --line-soft: rgba(150, 180, 210, 0.08);
+  --line-strong: rgba(150, 180, 210, 0.24);
+
+  --ink: #F3F6EF;
+  --ink-dim: #CFD8CF;
+  --muted: #B6C2B8;
+  --muted-2: #7F8D84;
+
+  --inset: rgba(255, 255, 255, 0.03);
+  --inset-2: rgba(255, 255, 255, 0.07);
+  --track: rgba(255, 255, 255, 0.08);
+  --hover: rgba(255, 255, 255, 0.06);
+
+  --header-a: rgba(8, 11, 10, 0.82);
+  --header-b: rgba(8, 11, 10, 0.82);
+  --header-ink: #F3F6EF;
+  --header-line: rgba(150, 180, 210, 0.14);
+  --header-blur: rgba(8, 11, 10, 0.8);
+
+  --lime: #AED455;
+  --lime-deep: #9BD24A;
+  --lime-glow: rgba(174, 212, 85, 0.15);
+
+  --good: #9bd24a;
+  --c-good: #9bd24a;
+  --c-mid: #b8f13a;
+  --amber: #e0aa4a;
+  --c-warn: #e0aa4a;
+  --risk: #EA7B61;
+  --c-bad: #EA7B61;
+  --risk-dim: rgba(234, 123, 97, 0.15);
+  --amber-dim: rgba(224, 170, 74, 0.14);
+
+  --ai: #8A95FF;
+  --ai-2: #8A95FF;
+  --ai-dim: rgba(138, 149, 255, 0.16);
+
+  --bp: rgba(151, 190, 255, 0.55);
+  --bp-soft: rgba(151, 190, 255, 0.30);
+  --bp-line: rgba(151, 190, 255, 0.38);
+  --bp-grid: rgba(151, 190, 255, 0.032);
+  --card-line: rgba(170, 190, 200, 0.16);
+
+  /* Mascot (Stacky) - dark overrides */
+  --mascot-gray-top: #6f6d64;
+  --mascot-gray-mid: #5f5d55;
+  --mascot-gray-dark: #54524b;
+  --mascot-gray-line: #8E8C84;
+  --mascot-green-top: #9FD45F;
+  --mascot-green-mid: #7FB83C;
+  --mascot-green-dark: #5F9826;
+  --mascot-coral: #E0734A;
+  --mascot-blue: #5db0ff;
+  --mascot-spark: #F0B24A;
+  --mascot-eye-dark: #0c1705;
+  --mascot-eye-light: #FFFFFF;
+}
+
+/* ==========================================
+   Base Styles
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-0);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Blueprint grid background */
+body {
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--bp-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bp-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   Typography Classes
+   ========================================== */
+
+.mono,
+.eyebrow,
+.kicker,
+.micro-label {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.serif {
+  font-family: var(--serif);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+/* Typography safety */
+p,
+span,
+a,
+li,
+button,
+input,
+textarea,
+h1,
+h2,
+h3,
+h4,
+div {
+  letter-spacing: normal;
+}
+
+.mono,
+.eyebrow,
+.kicker,
+.micro-label {
+  letter-spacing: 0.16em;
+}
+
+.serif {
+  letter-spacing: -0.025em;
+}
+
+/* ==========================================
+   Component Classes
+   ========================================== */
+
+/* Blueprint card */
+.bp-card {
+  border: 1px solid var(--card-line, var(--bp-line));
+  background: linear-gradient(180deg, var(--bp-fill-a, rgba(255, 255, 255, 0.94)), var(--bp-fill-b, rgba(180, 205, 255, 0.20)));
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+}
+
+/* Grid pattern for sections */
+.bp-grid {
+  background-image:
+    linear-gradient(var(--bp-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bp-grid) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+
+.pop-in {
+  animation: popIn 0.35s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================
+   Mascot Animations (from MVP6 Mascot.jsx)
+   ========================================== */
+
+@keyframes mascotBreathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes mascotWave {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(2px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mascotShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1.5px);
+  }
+  75% {
+    transform: translateX(1.5px);
+  }
+}
+
+@keyframes mascotSpark {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.mascot-anim.is-idle,
+.mascot-anim.is-practicing {
+  animation: mascotBreathe 4.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.mascot-anim.is-scanning {
+  animation: mascotBreathe 3.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.mascot-scan-wave {
+  animation: mascotWave 1.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.mascot-excl {
+  animation: mascotShake 1.3s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.mascot-spark {
+  animation: mascotSpark 1.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.mascot-spark:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+
+.mascot-spark:nth-of-type(3) {
+  animation-delay: 0.2s;
+}
+
+.mascot-spark:nth-of-type(4) {
+  animation-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot-anim,
+  .mascot-scan-wave,
+  .mascot-excl,
+  .mascot-spark {
+    animation: none !important;
+  }
+}
+
+/* ==========================================
+   Scrollbar
+   ========================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Exact static Proben MVP 6 baseline */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
 }
 
-/* Light grid background pattern */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: linear-gradient(to right, #E5E5E5 1px, transparent 1px),
-                    linear-gradient(to bottom, #E5E5E5 1px, transparent 1px);
-}
-
-/* Custom utilities */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+iframe {
+  display: block;
 }
