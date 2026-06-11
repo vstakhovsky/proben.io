@@ -330,4 +330,4 @@ This prevents artificial inflation of scores when critical elements are missing.
 
 **Last Updated:** 2026-06-10
 **Version:** 1.0
-**Authority:** Principal Design Reviewer + Human Approval
+**Authority:** Design Reviewer + Human Approval

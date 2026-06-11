@@ -172,7 +172,7 @@
 
 ---
 
-## Principal Design Reviewer Notes
+## Design Reviewer Notes
 
 **Reviewer:** [NAME]
 **Review Date:** [TIMESTAMP]

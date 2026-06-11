@@ -431,9 +431,9 @@ Phase 2.1 implementation can be accepted only if ALL of the following are met:
 - [ ] Side-by-side comparison with prototype created
 - [ ] Visual parity score documented
 - [ ] Fresh Review Agent independent verdict documented
-- [ ] Principal Design Reviewer visual parity score documented
-- [ ] Principal Product Manager product-quality verdict documented
-- [ ] CTO Bar Raiser release readiness confirmation documented
+- [ ] Design Reviewer visual parity score documented
+- [ ] Product Manager product-quality verdict documented
+- [ ] Release Manager release readiness confirmation documented
 
 ### Approval Requirements
 - [ ] Human approves this visual plan before implementation
@@ -715,9 +715,9 @@ Implementation will be AUTOMATICALLY REJECTED if ANY of these are present:
 - Create side-by-side comparison with prototype
 - Document visual parity score
 - Fresh Review Agent provides independent verdict
-- Principal Design Reviewer provides visual parity score
-- Principal Product Manager provides product-quality verdict
-- CTO Bar Raiser confirms release readiness
+- Design Reviewer provides visual parity score
+- Product Manager provides product-quality verdict
+- Release Manager confirms release readiness
 - Human approves release
 
 **Files affected:**
@@ -756,9 +756,9 @@ Implementation will be AUTOMATICALLY REJECTED if ANY of these are present:
 3. Run tests and verify after each slice
 4. Capture screenshot evidence
 5. Fresh Review Agent independent review
-6. Principal Design Reviewer visual parity score
-7. Principal Product Manager product-quality verdict
-8. CTO Bar Raiser release readiness confirmation
+6. Design Reviewer visual parity score
+7. Product Manager product-quality verdict
+8. Release Manager release readiness confirmation
 9. Human final approval
 
 ---

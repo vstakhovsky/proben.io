@@ -233,7 +233,7 @@ List specific fixes required:
 
 ## Reviewer Inspection Order
 
-**Principal Design Reviewer must inspect in this order:**
+**Design Reviewer must inspect in this order:**
 
 1. ✅ Target screenshot — Understand what we're building toward
 2. ✅ Before screenshot — See starting state
@@ -370,4 +370,4 @@ _______________________________________________________________
 
 **Last Updated:** 2026-06-10
 **Version:** 1.0
-**Authority:** Principal Design Reviewer + Human Approval
+**Authority:** Design Reviewer + Human Approval

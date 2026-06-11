@@ -321,4 +321,4 @@ What we saw:
 
 **Last Updated:** 2026-06-10
 **Version:** 1.0
-**Authority:** Principal Design Reviewer
+**Authority:** Design Reviewer

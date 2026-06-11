@@ -139,7 +139,7 @@ Before any UI task can be marked as "complete," the following evidence MUST be p
 * Accessibility checklist
 * No new dependencies unless essential
 
-**Approval:** Design Quality Reviewer + Lead Architect
+**Approval:** Design Quality Reviewer + Architect
 
 **Block If:**
 * Layout too complex
@@ -418,7 +418,7 @@ After the Phase 2.1 implementation was rejected for visual mismatch with prototy
 2. **Visual Parity Threshold** — Minimum 4.5/5 required for approval
 3. **PM Visual Verification** — PM must personally verify visual evidence
 4. **Design QA Blocking Authority** — Design QA must auto-reject if parity < 4.5/5
-5. **CTO Visual Quality Mandate** — CTO Bar Raiser must verify visual evidence
+5. **CTO Visual Quality Mandate** — Release Manager must verify visual evidence
 6. **Functional/Visual Separation** — QA must distinguish functional vs visual success
 7. **Independent Visual QA** — Implementation and verification must be separate
 
@@ -426,4 +426,4 @@ After the Phase 2.1 implementation was rejected for visual mismatch with prototy
 
 - **Failure Analysis:** `docs/reviews/phase-2-1-failure-analysis.md`
 - **Process Learnings:** `docs/PROCESS_LEARNINGS.md`
-- **Updated Agents:** `.claude/agents/product-manager.md`, `.claude/agents/design-quality-reviewer.md`, `.claude/agents/cto-bar-raiser.md`, `.claude/agents/qa-release-engineer.md`
+- **Updated Agents:** `.claude/agents/product-manager.md`, `.claude/agents/design-quality-reviewer.md`, `.claude/agents/release-manager.md`, `.claude/agents/qa-release-engineer.md`

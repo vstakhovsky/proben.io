@@ -15,10 +15,10 @@ IMPLEMENT → VERIFY → REVIEW → CLOSE → RETRO → DONE
 | State | Role | Mapped Agents |
 |-------|------|---------------|
 | IMPLEMENT | Implementer | frontend-engineer, builder-agent |
-| VERIFY | Verifier | test-eval-engineer, DOM blocker checker |
-| REVIEW | Reviewer | fresh-review-agent, principal-design-reviewer |
-| CLOSE | Closer | principal-product-manager, cto-bar-raiser, principal-architect (conditional) |
-| RETRO | Retro | agent-governance-auditor |
+| VERIFY | Verifier | test-engineer, DOM blocker checker |
+| REVIEW | Reviewer | fresh-review-agent, design-reviewer |
+| CLOSE | Closer | product-manager, release-manager, principal-architect (conditional) |
+| RETRO | Retro | governance-auditor |
 
 ## State Definitions
 
@@ -396,10 +396,10 @@ REVIEW (budget: 2)
 ### Integration with Agent System
 
 **Agents Operate Within States:**
-- **IMPLEMENT:** frontend-engineer, visual-plan-architect, test-eval-engineer
+- **IMPLEMENT:** frontend-engineer, visual-plan-architect, test-engineer
 - **VERIFY:** All agents (self-verification)
-- **REVIEW:** fresh-review-agent, principal-design-reviewer, principal-product-manager
-- **CLOSE:** cto-bar-raiser, agent-governance-auditor
+- **REVIEW:** fresh-review-agent, design-reviewer, product-manager
+- **CLOSE:** release-manager, governance-auditor
 - **RETRO:** All agents (learning documentation)
 
 ### Integration with Quality System

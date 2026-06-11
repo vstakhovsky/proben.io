@@ -76,7 +76,7 @@ Fewer roles organized around state machine transitions with enforced evidence ga
 
 ### 2. Verifier
 
-**Maps to:** `test-eval-engineer`, DOM blocker checker
+**Maps to:** `test-engineer`, DOM blocker checker
 
 **Purpose:** Verifies the change works
 
@@ -100,7 +100,7 @@ Fewer roles organized around state machine transitions with enforced evidence ga
 
 ### 3. Reviewer
 
-**Maps to:** `fresh-review-agent`, `principal-design-reviewer`
+**Maps to:** `fresh-review-agent`, `design-reviewer`
 
 **Purpose:** Checks quality against source of truth
 
@@ -131,7 +131,7 @@ Fewer roles organized around state machine transitions with enforced evidence ga
 
 ### 4. Closer
 
-**Maps to:** `principal-product-manager`, `cto-bar-raiser`, `principal-architect` (conditional)
+**Maps to:** `product-manager`, `release-manager`, `principal-architect` (conditional)
 
 **Purpose:** Checks release readiness
 
@@ -161,7 +161,7 @@ Fewer roles organized around state machine transitions with enforced evidence ga
 
 ### 5. Retro
 
-**Maps to:** `agent-governance-auditor`
+**Maps to:** `governance-auditor`
 
 **Purpose:** Reviews the whole run for learning
 

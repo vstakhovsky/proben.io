@@ -79,7 +79,7 @@ Implemented builder ≠ reviewer system with:
 
 **Prevention:**
 Updated agent instructions:
-- Principal Design Reviewer: Independence verification required
+- Design Reviewer: Independence verification required
 - Fresh Review Agent: Evidence-first protocol
 - Frontend Engineer: Prohibited self-approval
 

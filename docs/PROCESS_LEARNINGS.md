@@ -31,7 +31,7 @@ But they did not strongly block when:
 ### Root Cause
 
 The agent system had:
-- Many specialized agents (PM, Design QA, CTO Bar Raiser, QA Engineer)
+- Many specialized agents (PM, Design QA, Release Manager, QA Engineer)
 - Design quality gates defined
 - Product evaluation rubrics
 - Security review processes
@@ -186,7 +186,7 @@ Each agent has explicit blocking authority:
 
 - **Product Manager:** Can block if product value unclear or prototype not matched
 - **Design QA:** Can block if visual parity < 4.5/5
-- **CTO Bar Raiser:** Can block if overengineered or visually wrong
+- **Release Manager:** Can block if overengineered or visually wrong
 - **QA Engineer:** Can block if functional tests fail or visual QA fails
 - **Security Reviewer:** Can block if security risks present
 
@@ -209,7 +209,7 @@ If the frontend engineer implements and also verifies, they will be biased towar
 - Implementer builds
 - Separate visual QA agent verifies
 - PM evaluates product quality
-- CTO Bar Raiser challenges overall quality
+- Release Manager challenges overall quality
 
 ### The Application
 
@@ -268,7 +268,7 @@ There's a risk: the process becomes more impressive than the product.
 - Every document must support real user value
 - Portfolio storytelling comes after product quality
 
-**The CTO Bar Raiser watches for:**
+**The Release Manager watches for:**
 - Process theater (process over product)
 - Infrastructure theater (setup over shipping)
 - Documentation theater (writing over building)
@@ -289,7 +289,7 @@ Problem: Visual quality not checked.
 ### After (Quality Gatekeeper Flow)
 
 ```
-Request → Plan → Build → Functional Tests → Visual Evidence → PM Eval → Design QA → CTO Bar Raiser → Release/Reject
+Request → Plan → Build → Functional Tests → Visual Evidence → PM Eval → Design QA → Release Manager → Release/Reject
                     ✅              ✅/❌            ✅/❌        ✅/❌          ✅/❌           ✅/❌
 ```
 
@@ -328,8 +328,8 @@ Design QA must automatically reject if visual parity < 4.5/5.
 
 Cannot be overridden by "tests pass."
 
-### Rule 6: CTO Bar Raiser Visual Quality Mandate
-CTO Bar Raiser must verify visual evidence for UI tasks.
+### Rule 6: Release Manager Visual Quality Mandate
+Release Manager must verify visual evidence for UI tasks.
 
 Add "functional but visually wrong" to anti-patterns.
 
@@ -354,7 +354,7 @@ No self-verification for visual quality.
 **New:** Detailed comparison output
 **New:** Cannot be overridden by functional success
 
-### CTO Bar Raiser Agent
+### Release Manager Agent
 **New:** "Functional but visually wrong" anti-pattern
 **New:** Visual evidence verification requirement
 **New:** Blocking authority for visual mismatch

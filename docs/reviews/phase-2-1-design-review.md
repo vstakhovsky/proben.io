@@ -44,8 +44,8 @@ Bring the landing page closer to Proben MVP 6 through design parity improvements
 
 * **Product Manager** — Product quality and requirements compliance
 * **Design Quality Reviewer** — Visual quality and design parity
-* **Lead Architect** — Technical implementation quality
-* **CTO Bar Raiser** — Scope and overengineering review
+* **Architect** — Technical implementation quality
+* **Release Manager** — Scope and overengineering review
 
 ---
 

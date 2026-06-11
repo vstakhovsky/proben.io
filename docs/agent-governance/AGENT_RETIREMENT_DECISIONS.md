@@ -15,14 +15,14 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 
 ## Merged Agents
 
-### 1. product-manager → principal-product-manager
+### 1. product-manager → product-manager
 
 **Retirement Date:** 2026-06-10
 **Retirement Type:** MERGE
-**Reason:** Redundant with principal-product-manager, lower authority
+**Reason:** Redundant with product-manager, lower authority
 
 **Absorption Process:**
-- Merge PM evaluation patterns into principal-product-manager
+- Merge PM evaluation patterns into product-manager
 - Absorb any unique prompts or instructions
 - Update principal-product-agent authority to Level 2
 - Add product quality gate responsibilities
@@ -33,7 +33,7 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 - Requirement documentation patterns
 
 **Files Updated:**
-- `.claude/agents/principal-product-manager.md` — Enhanced with merged capabilities
+- `.claude/agents/product-manager.md` — Enhanced with merged capabilities
 
 **Learning:**
 - Having multiple PM agents creates confusion and authority conflicts
@@ -41,14 +41,14 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 
 ---
 
-### 2. ai-product-strategist → principal-product-manager
+### 2. ai-product-manager → product-manager
 
 **Retirement Date:** 2026-06-10
 **Retirement Type:** MERGE
-**Reason:** Niche AI strategy role, redundant with principal-product-manager
+**Reason:** Niche AI strategy role, redundant with product-manager
 
 **Absorption Process:**
-- Merge AI strategy guidance into principal-product-manager
+- Merge AI strategy guidance into product-manager
 - Add AI product considerations to PM instructions
 - Preserve AI strategy as conditional invocation pattern
 
@@ -57,7 +57,7 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 - AI feature evaluation criteria
 
 **Files Updated:**
-- `.claude/agents/principal-product-manager.md` — Added AI strategy section
+- `.claude/agents/product-manager.md` — Added AI strategy section
 
 **Learning:**
 - AI strategy is a product concern, not a separate agent role
@@ -65,14 +65,14 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 
 ---
 
-### 3. design-quality-reviewer → principal-design-reviewer
+### 3. design-quality-reviewer → design-reviewer
 
 **Retirement Date:** 2026-06-10
 **Retirement Type:** MERGE
-**Reason:** Redundant with principal-design-reviewer, lower authority
+**Reason:** Redundant with design-reviewer, lower authority
 
 **Absorption Process:**
-- Already absorbed in principal-design-reviewer updates
+- Already absorbed in design-reviewer updates
 - Merge design quality evaluation patterns
 - Unify design scoring rubrics
 
@@ -81,7 +81,7 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 - Design rubric patterns
 
 **Files Updated:**
-- `.claude/agents/principal-design-reviewer.md` — Already enhanced
+- `.claude/agents/design-reviewer.md` — Already enhanced
 
 **Learning:**
 - Single principal design reviewer prevents conflicting design guidance
@@ -89,7 +89,7 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 
 ---
 
-### 4. lead-architect → principal-architect
+### 4. architect → principal-architect
 
 **Retirement Date:** 2026-06-10
 **Retirement Type:** MERGE
@@ -137,15 +137,15 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 
 ---
 
-### 6. qa-release-engineer → test-eval-engineer + cto-bar-raiser
+### 6. qa-release-engineer → test-engineer + release-manager
 
 **Retirement Date:** 2026-06-10
 **Retirement Type:** MERGE
-**Reason:** Partially duplicate with test-eval-engineer and cto-bar-raiser
+**Reason:** Partially duplicate with test-engineer and release-manager
 
 **Absorption Process:**
-- Merge QA methodology into test-eval-engineer (NEW)
-- Merge release checks into cto-bar-raiser
+- Merge QA methodology into test-engineer (NEW)
+- Merge release checks into release-manager
 - Preserve release verification patterns
 
 **Value Preserved:**
@@ -154,12 +154,12 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 - Smoke test patterns
 
 **Files Updated:**
-- `.claude/agents/test-eval-engineer.md` (NEW) — Created with QA capabilities
-- `.claude/agents/cto-bar-raiser.md` — Enhanced with release checks
+- `.claude/agents/test-engineer.md` (NEW) — Created with QA capabilities
+- `.claude/agents/release-manager.md` — Enhanced with release checks
 
 **Learning:**
 - QA and eval functions are closely related
-- Release authority should be centralized in cto-bar-raiser
+- Release authority should be centralized in release-manager
 
 ---
 
@@ -446,7 +446,7 @@ Document detailed decisions for agents that are merged, downgraded to skills, di
 
 ### Risk Impact
 - **Positive:** Reduced false approval risk through fewer agents
-- **Positive:** Stronger governance through agent-governance-auditor
+- **Positive:** Stronger governance through governance-auditor
 - **Positive:** Clearer escalation paths
 - **Neutral:** Conditional agents need clear invocation rules
 

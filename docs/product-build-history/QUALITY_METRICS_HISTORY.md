@@ -166,9 +166,9 @@ Track quality metrics over time for the Proben.io quality system. Shows how qual
 **Frequency:** Review metrics after each slice completion
 
 **Participants:**
-- agent-governance-auditor
-- cto-bar-raiser
-- principal-product-manager
+- governance-auditor
+- release-manager
+- product-manager
 
 **Actions:**
 - Review current metrics

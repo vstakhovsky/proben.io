@@ -157,7 +157,7 @@ Central registry of all evaluation cases for Proben.io. Tracks failures, false a
 - Required layout: Rounded pill header (not full-width navbar)
 
 ### Agent Instructions Updated
-- Principal Design Reviewer: Evidence-first inspection order
+- Design Reviewer: Evidence-first inspection order
 - Fresh Review Agent: Evidence-first review protocol
 - Frontend Engineer: Prohibited actions, evidence capture requirements
 

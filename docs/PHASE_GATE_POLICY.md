@@ -68,7 +68,7 @@ Gates prevent:
 * Route expectations defined
 * Acceptance criteria finalized
 
-**Approval:** Product Manager + Lead Architect
+**Approval:** Product Manager + Architect
 
 **Block If:**
 * Design references missing
@@ -99,7 +99,7 @@ Gates prevent:
 * No refactor without approval
 * Scope boundaries maintained
 
-**Approval:** Lead Architect + CTO Bar Raiser
+**Approval:** Architect + Release Manager
 
 **Block If:**
 * Slice too large
@@ -216,7 +216,7 @@ Gates prevent:
 **Emergency bypass (rare):**
 
 1. Document why bypass is necessary
-2. Get explicit approval from Product Manager + Lead Architect
+2. Get explicit approval from Product Manager + Architect
 3. Define temporary workaround
 4. Schedule proper gate completion
 5. Monitor for risks
@@ -237,8 +237,8 @@ Gates prevent:
 ## Gate Ownership
 
 **Gate 1 (Product Goal):** Product Manager
-**Gate 2 (Design/Requirements):** Product Manager + Lead Architect
-**Gate 3 (Implementation):** Lead Architect + CTO Bar Raiser
+**Gate 2 (Design/Requirements):** Product Manager + Architect
+**Gate 3 (Implementation):** Architect + Release Manager
 **Gate 4 (Product QA):** Product Manager + QA Release Engineer
 **Gate 5 (Release):** QA Release Engineer + Product Manager
 
@@ -247,7 +247,7 @@ Gates prevent:
 * **Product Eval Rubric:** `docs/evals/PRODUCT_EVALS.md`
 * **Phase Template:** `docs/evals/PHASE_EVALUATION_TEMPLATE.md`
 * **PM Agent:** `.claude/agents/product-manager.md`
-* **CTO Bar Raiser:** `.claude/agents/cto-bar-raiser.md`
+* **Release Manager:** `.claude/agents/release-manager.md`
 * **Visual Agentic Delivery System:** `docs/agentic-delivery/VISUAL_AGENTIC_DELIVERY_SYSTEM.md`
 * **Visual Plan Template:** `docs/agentic-delivery/VISUAL_PLAN_TEMPLATE.md`
 * **Fresh Review Protocol:** `docs/agentic-delivery/FRESH_REVIEW_PROTOCOL.md`
@@ -594,7 +594,7 @@ An eval case is REQUIRED when:
 - No human approval
 - No retro entry (for failures)
 
-**Approval:** CTO Bar Raiser + Human
+**Approval:** Release Manager + Human
 
 **Harness State Verification:**
 ```bash

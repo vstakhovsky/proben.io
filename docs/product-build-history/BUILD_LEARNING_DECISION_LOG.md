@@ -37,15 +37,15 @@ Separate builders from reviewers. Create distinct authority levels. Add visual q
 - **Created:** Visual Agentic Delivery System
 - **Created:** Agent Authority Matrix (4 levels)
 - **Created:** Principal reviewer roles
-- **Created:** CTO Bar Raiser role
+- **Created:** Release Manager role
 - **Created:** Design quality gates
 
 ### Agents / Skills Affected
-- **Added:** principal-product-manager
-- **Added:** principal-design-reviewer
+- **Added:** product-manager
+- **Added:** design-reviewer
 - **Added:** principal-architect
-- **Added:** cto-bar-raiser
-- **Added:** agent-governance-auditor
+- **Added:** release-manager
+- **Added:** governance-auditor
 
 ### New Gate / Eval / Rule
 - **Gate:** Visual QA Gate (4A)
@@ -110,7 +110,7 @@ Add strict role separation. No agent may approve its own work. Create independen
 - **Created:** Risk Scored Review
 - **Rule:** Builder (Level 1) cannot approve own work
 - **Rule:** Principal Reviewer (Level 2) must validate quality
-- **Rule:** CTO Bar Raiser (Level 3) owns final release bar
+- **Rule:** Release Manager (Level 3) owns final release bar
 
 ### Agents / Skills Affected
 - **Updated:** All agent instructions to include authority level
@@ -378,7 +378,7 @@ Audit agents. Keep only roles with clear value, evidence output, or blocking aut
 - **Rule:** Agent must have clear purpose + evidence output or blocking authority
 
 ### Agents / Skills Affected
-- **Kept:** principal-product-manager, visual-plan-architect, frontend-engineer, fresh-review-agent, principal-design-reviewer, agent-governance-auditor, cto-bar-raiser
+- **Kept:** product-manager, visual-plan-architect, frontend-engineer, fresh-review-agent, design-reviewer, governance-auditor, release-manager
 - **Downgraded:** documentation-engineer, prompt-optimizer, worktree-orchestrator
 - **Merged:** implementation-critic → fresh-review-agent
 
@@ -556,17 +556,17 @@ Do not trust agent claims. Trust artifacts:
 ### Agents / Skills Affected
 **5 State-Machine Roles:**
 - Implementer (frontend-engineer)
-- Verifier (test-eval-engineer)
-- Reviewer (fresh-review-agent, principal-design-reviewer)
-- Closer (principal-product-manager, cto-bar-raiser, principal-architect, security-reviewer)
-- Retro (agent-governance-auditor)
+- Verifier (test-engineer)
+- Reviewer (fresh-review-agent, design-reviewer)
+- Closer (product-manager, release-manager, principal-architect, security-reviewer)
+- Retro (governance-auditor)
 
 **Downgraded to Skills:**
 - documentation-engineer → update-docs-and-build-history
 - prompt-optimizer → failure-to-prompt-update
 - worktree-orchestrator → worktree-management
 - implementation-critic → Merged into fresh-review-agent
-- qa-release-engineer → Merged into test-eval-engineer
+- qa-release-engineer → Merged into test-engineer
 
 **Conditional Agents:**
 - principal-architect (conditional)
@@ -679,9 +679,9 @@ Accept Phase 2.1 for preview deployment. Do not proceed to backend/auth/database
 
 ### Agents / Skills Affected
 - **Implementer:** frontend-engineer — Successfully implemented Slice A
-- **Verifier:** test-eval-engineer — Generated proof manifests
-- **Reviewer:** fresh-review-agent, principal-design-reviewer — Evidence-based review
-- **Closer:** principal-product-manager, cto-bar-raiser — Final approval
+- **Verifier:** test-engineer — Generated proof manifests
+- **Reviewer:** fresh-review-agent, design-reviewer — Evidence-based review
+- **Closer:** product-manager, release-manager — Final approval
 
 ### New Gate / Eval / Rule
 - **DOM Blockers:** Landing visual parity tests (7/7 passed)

@@ -312,7 +312,7 @@ Agent Usefulness = (5 × (1 - False PASS Rate)) +
 - Agent PASS is advisory only
 
 **Agent Instruction Updates:**
-- Principal Design Reviewer: Independence verification required
+- Design Reviewer: Independence verification required
 - Fresh Review Agent: Evidence-first protocol
 - Frontend Engineer: Prohibited self-approval
 
@@ -350,7 +350,7 @@ Use agent independence verification and evidence quality checks.
 
 ## Agent Reliability by Agent Type
 
-### Principal Design Reviewer
+### Design Reviewer
 **Measured Metrics:**
 - False PASS rate (visual quality)
 - Evidence completeness

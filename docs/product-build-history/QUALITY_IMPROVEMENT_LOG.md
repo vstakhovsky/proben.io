@@ -322,14 +322,14 @@ Comprehensive agent system audit and simplification:
    - Disabled 1 agent (not Phase 1 applicable)
 
 3. **Core Agent Roster (8)**
-   - principal-product-manager (Level 2)
-   - principal-design-reviewer (Level 2)
+   - product-manager (Level 2)
+   - design-reviewer (Level 2)
    - frontend-engineer (Level 1)
-   - test-eval-engineer (Level 1) — NEW
+   - test-engineer (Level 1) — NEW
    - fresh-review-agent (Level 2)
    - visual-plan-architect (Level 1)
-   - agent-governance-auditor (Level 4)
-   - cto-bar-raiser (Level 3)
+   - governance-auditor (Level 4)
+   - release-manager (Level 3)
 
 4. **Conditional Agents (3)**
    - security-reviewer (conditional: auth/payments/secrets/AI)
@@ -348,7 +348,7 @@ Comprehensive agent system audit and simplification:
    - AGENT_ROSTER.md — Simplified agent roster
 
 7. **New Core Agent**
-   - Created test-eval-engineer.md
+   - Created test-engineer.md
    - Merged qa-release-engineer QA capabilities
    - Focus on tests, evals, quality infrastructure
 
@@ -377,7 +377,7 @@ Comprehensive agent system audit and simplification:
 - `docs/agent-governance/AGENT_SYSTEM_AUDIT.md` (new)
 - `docs/agent-governance/AGENT_RETIREMENT_DECISIONS.md` (new)
 - `docs/agent-governance/AGENT_ROSTER.md` (new)
-- `.claude/agents/test-eval-engineer.md` (new)
+- `.claude/agents/test-engineer.md` (new)
 - `CLAUDE.md` (updated - added Agent Operating Model section)
 - `docs/product-build-history/PROCESS_DIFF_LOG.md` (updated - added agent consolidation details)
 

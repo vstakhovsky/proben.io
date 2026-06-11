@@ -787,6 +787,35 @@ Create an eval-driven loop so failures become reusable regression cases.
 
 ## Agent Operating Model
 
+### Agent Naming Policy
+
+**Prohibited title grades:**
+- principal ❌
+- senior ❌
+- staff ❌
+- lead ❌
+- chief ❌
+- head ❌
+
+**Use clean role names:**
+- product-manager ✅
+- design-reviewer ✅
+- architect ✅
+- release-manager ✅
+- engineer ✅
+
+**Rationale:** Authority comes from workflow gates and evidence, not inflated titles.
+
+### Agent System Policy
+
+**Core Principles:**
+- Keep fewer agents with clearer responsibilities
+- Builders cannot approve their own work
+- Reviewer verdicts require evidence
+- Green tests are necessary but not sufficient
+- UI acceptance requires screenshot evidence and visual parity review
+- Release acceptance requires product, technical, visual, and human approval
+
 Proben.io uses a simplified agent system with clear authority, evidence requirements, and blocking rules. Reduced from 23 agents to 11 agents (8 core + 3 conditional) to prevent agent sprawl and false green approvals.
 
 ### Approved Agent Roster

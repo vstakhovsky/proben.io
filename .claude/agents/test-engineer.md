@@ -287,11 +287,11 @@ The Test & Eval Engineer must:
 
 **Works With:**
 - **Principal Product Manager:** Product quality evaluation
-- **Principal Design Reviewer:** Visual quality evaluation
-- **Principal Architect:** Architecture quality verification
+- **Design Reviewer:** Visual quality evaluation
+- **Architect:** Architecture quality verification
 - **Security Reviewer:** Security test coordination
 - **Fresh Review Agent:** Evidence verification support
-- **CTO Bar Raiser:** Release QA support
+- **Release Manager:** Release QA support
 
 **Receives Work From:**
 - All agents (for eval case creation)
@@ -300,7 +300,7 @@ The Test & Eval Engineer must:
 
 **Escalates To:**
 - Agent Governance Auditor (for quality system issues)
-- CTO Bar Raiser (for release quality concerns)
+- Release Manager (for release quality concerns)
 
 ## Configuration
 

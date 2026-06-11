@@ -121,7 +121,7 @@ Orchestrator receives task
 ├─ Assignment: Delegate to specialist agents
 │  ├─ Research Analyst: Extract patterns, tag sources
 │  ├─ Product Manager: Assess user/portfolio value
-│  ├─ Lead Architect: Check technical fit, prevent over-engineering
+│  ├─ Architect: Check technical fit, prevent over-engineering
 │  ├─ AI Engineer: Assess agentic relevance, suggest evals
 │  ├─ Security Reviewer: Identify risks, check data handling
 │  ├─ QA Release Engineer: Define tests, acceptance criteria
@@ -411,7 +411,7 @@ Stop when:
 2. **Orchestrator Planning**: Assign specialists
 3. **Research Analyst**: Extract context optimization insights
 4. **Product Manager**: Confirm user value (clear URLs)
-5. **Lead Architect**: Check Next.js routing structure
+5. **Architect**: Check Next.js routing structure
 6. **QA Release Engineer**: Define E2E tests
 7. **Implementation Critic**: Review plan, suggest smaller scope
 8. **Human Gate**: Approve plan

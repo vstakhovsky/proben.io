@@ -77,7 +77,7 @@ Comprehensive taxonomy of failure modes in AI-assisted product development. Each
 
 **Related Documentation:**
 - `.claude/agents/fresh-review-agent.md`
-- `.claude/agents/principal-design-reviewer.md`
+- `.claude/agents/design-reviewer.md`
 - `docs/qa/VISUAL_QUALITY_VERIFICATION_PIPELINE.md`
 
 ---
@@ -439,7 +439,7 @@ Comprehensive taxonomy of failure modes in AI-assisted product development. Each
 **Eval Category:** Agent Reliability Evals
 
 **Related Documentation:**
-- `.claude/agents/cto-bar-raiser.md`
+- `.claude/agents/release-manager.md`
 - `docs/agent-governance/AGENT_AUTHORITY_MATRIX.md`
 
 ---

@@ -144,7 +144,7 @@ The agent phase dashboard provides real-time visibility into the agent harness w
 
 ### Phase 4: CLOSE
 
-**Role:** Closer (Level 3 - CTO Bar Raiser)
+**Role:** Closer (Level 3 - Release Manager)
 
 **Status:** PENDING
 
@@ -226,11 +226,11 @@ The agent phase dashboard provides real-time visibility into the agent harness w
 
 | Role | Level | Mapped Agents | Current Phase |
 |------|-------|---------------|---------------|
-| Implementer | Level 1 | frontend-engineer, visual-plan-architect, test-eval-engineer | IMPLEMENT |
-| Verifier | Level 1 | test-eval-engineer, DOM blocker checker | VERIFY |
-| Reviewer | Level 2 | fresh-review-agent, principal-design-reviewer, principal-product-manager | REVIEW |
-| Closer | Level 3 | principal-product-manager, cto-bar-raiser, principal-architect (conditional) | CLOSE |
-| Retro | Level 4 | agent-governance-auditor | RETRO |
+| Implementer | Level 1 | frontend-engineer, visual-plan-architect, test-engineer | IMPLEMENT |
+| Verifier | Level 1 | test-engineer, DOM blocker checker | VERIFY |
+| Reviewer | Level 2 | fresh-review-agent, design-reviewer, product-manager | REVIEW |
+| Closer | Level 3 | product-manager, release-manager, principal-architect (conditional) | CLOSE |
+| Retro | Level 4 | governance-auditor | RETRO |
 
 ## Gates
 

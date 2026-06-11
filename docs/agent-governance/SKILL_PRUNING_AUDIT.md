@@ -1,13 +1,15 @@
 # Skill Pruning Audit
 
-## Purpose
+**Audit Date:** 2026-06-11
+**Purpose:** Audit all skills and classify as KEEP, MERGE, ARCHIVE, or DELETE
+**Total Skills Before:** 17
+**Total Skills After:** 9 (target)
 
-Audit all current skills and agent instructions to identify what to KEEP, REWRITE AS GOTCHA, MERGE, DISABLE, or DELETE. Reduce skill bloat and keep only high-signal content.
+---
 
 ## Audit Criteria
 
-Each skill/instruction is evaluated against:
-
+Each skill is evaluated against:
 1. **Failure Prevention** — Does it prevent a known failure?
 2. **Evidence Creation** — Does it create verifiable evidence?
 3. **False PASS Reduction** — Does it reduce false PASS risk?
@@ -17,28 +19,21 @@ Each skill/instruction is evaluated against:
 
 **Decision Matrix:**
 
-| Criteria | Keep | Rewrite | Merge | Disable | Delete |
-|---------|------|--------|-------|---------|--------|
-| Prevents failures | ✓ | ✗ | ✗ | ✗ | ✗ |
-| Creates evidence | ✓ | ✗ | ✓ | ✗ | ✗ |
-| Reduces false PASS | ✓ | Maybe | ✓ | ✗ | ✗ |
-| Shortens review | ✓ | Maybe | ✓ | ✗ | ✗ |
-| Improves evals | ✓ | Maybe | ✓ | ✗ | ✗ |
-| Adds noise | ✗ | ✗ | ✗ | ✓ | ✓ |
-| Long without value | ✗ | ✓ | ✗ | ✗ | ✓ |
+| Criteria | Keep | Merge | Archive | Delete |
+|---------|------|-------|---------|--------|
+| Prevents failures | ✓ | ✗ | ✗ | ✗ |
+| Creates evidence | ✓ | ✓ | ✗ | ✗ |
+| Reduces false PASS | ✓ | ✓ | ✗ | ✗ |
+| Shortens review | ✓ | ✓ | ✗ | ✗ |
+| Improves evals | ✓ | ✓ | ✗ | ✗ |
+| Adds noise | ✗ | ✗ | ✓ | ✓ |
+| Long without value | ✗ | ✗ | ✗ | ✓ |
 
-**Decision Rules:**
-- **KEEP** — Meets 3+ criteria, high value
-- **REWRITE AS GOTCHA** — Useful but too long, condense to gotcha
-- **MERGE** — Overlaps with other skill/instruction, combine
-- **DISABLE** — Not currently useful, keep for potential future use
-- **DELETE** — Creates noise without value, remove
+---
 
-## Current Skills Audit
+## Skills Inventory
 
-### Existing Skills
-
-#### 1. context-pack-builder
+### 1. context-pack-builder
 
 **Location:** `.claude/skills/context-pack-builder/`
 
@@ -52,15 +47,15 @@ Each skill/instruction is evaluated against:
 - Eval Improvement: LOW — Indirect impact
 - Noise Reduction: HIGH — Adds complexity
 
-**Decision:** DISABLE
+**Decision:** ARCHIVE
 
 **Reason:** Not critical for Phase 1, adds complexity without clear quality benefit
 
-**Action:** Disable until context pack system is needed
+**Action:** Archive until context pack system is needed for Phase 2+
 
 ---
 
-#### 2. design-taste-review
+### 2. design-taste-review
 
 **Location:** `.claude/skills/design-taste-review/`
 
@@ -74,15 +69,15 @@ Each skill/instruction is evaluated against:
 - Eval Improvement: LOW — Subjective
 - Noise Reduction: LOW — Adds more review
 
-**Decision:** REWRITE AS GOTCHA
+**Decision:** ARCHIVE
 
-**Reason:** Too subjective, long, doesn't create verifiable evidence. Condense key points to gotchas.
+**Reason:** Too subjective, long, doesn't create verifiable evidence
 
-**Action:** Extract key design principles to gotchas, remove skill
+**Action:** Archive and extract key design principles to gotchas
 
 ---
 
-#### 3. fresh-agent-review
+### 3. fresh-agent-review
 
 **Location:** `.claude/skills/fresh-agent-review/`
 
@@ -104,7 +99,7 @@ Each skill/instruction is evaluated against:
 
 ---
 
-#### 4. mermaid-diagram-generator
+### 4. mermaid-diagram-generator
 
 **Location:** `.claude/skills/mermaid-diagram-generator/`
 
@@ -126,7 +121,7 @@ Each skill/instruction is evaluated against:
 
 ---
 
-#### 5. portfolio-process-page
+### 5. portfolio-process-page
 
 **Location:** `.claude/skills/portfolio-process-page/`
 
@@ -148,7 +143,7 @@ Each skill/instruction is evaluated against:
 
 ---
 
-#### 6. prompt-optimization
+### 6. prompt-optimization
 
 **Location:** `.claude/skills/prompt-optimization/`
 
@@ -162,15 +157,15 @@ Each skill/instruction is evaluated against:
 - Eval Improvement: LOW — Indirect impact
 - Noise Reduction: MEDIUM — May create prompt complexity
 
-**Decision:** REWRITE AS GOTCHA/SKILL
+**Decision:** ARCHIVE
 
 **Reason:** Too generic, should be triggered by eval cases only
 
-**Action:** Downgrade to failure-to-prompt-update skill, trigger on eval cases only
+**Action:** Replace with failure-to-prompt-update (trigger on eval cases only)
 
 ---
 
-#### 7. release-check
+### 7. release-check
 
 **Location:** `.claude/skills/release-check/`
 
@@ -188,11 +183,11 @@ Each skill/instruction is evaluated against:
 
 **Reason:** Critical for preventing release failures, systematic verification
 
-**Action:** Keep as-is, integrate with CTO bar raiser workflow
+**Action:** Keep as-is, integrate with release-manager workflow
 
 ---
 
-#### 8. request-intake
+### 8. request-intake
 
 **Location:** `.claude/skills/request-intake/`
 
@@ -214,7 +209,7 @@ Each skill/instruction is evaluated against:
 
 ---
 
-#### 9. research-digest
+### 9. research-digest
 
 **Location:** `.claude/skills/research-digest/`
 
@@ -236,7 +231,7 @@ Each skill/instruction is evaluated against:
 
 ---
 
-#### 10. risk-scored-review
+### 10. risk-scored-review
 
 **Location:** `.claude/skills/risk-scored-review/`
 
@@ -254,11 +249,11 @@ Each skill/instruction is evaluated against:
 
 **Reason:** Critical for release decisions, systematic risk assessment
 
-**Action:** Keep as-is, integrate with principal reviewers
+**Action:** Keep as-is, integrate with reviewers
 
 ---
 
-#### 11. security-review
+### 11. security-review
 
 **Location:** `.claude/skills/security-review/`
 
@@ -280,7 +275,7 @@ Each skill/instruction is evaluated against:
 
 ---
 
-#### 12. source-to-product-application
+### 12. source-to-product-application
 
 **Location:** `.claude/skills/source-to-product-application/`
 
@@ -294,15 +289,15 @@ Each skill/instruction is evaluated against:
 - Eval Improvement: LOW — Application generation
 - Noise Reduction: LOW — Niche skill
 
-**Decision:** DISABLE
+**Decision:** ARCHIVE
 
 **Reason:** Not applicable to Phase 1, niche use
 
-**Action:** Disable until product application phase
+**Action:** Archive until product application phase
 
 ---
 
-#### 13. source-to-visual
+### 13. source-to-visual
 
 **Location:** `.claude/skills/source-to-visual/`
 
@@ -316,15 +311,15 @@ Each skill/instruction is evaluated against:
 - Eval Improvement: LOW — Visual generation
 - Noise Reduction: LOW — Niche skill
 
-**Decision:** MERGE
+**Decision:** ARCHIVE
 
 **Reason:** Overlaps with visual-plan-architect, niche use
 
-**Action:** Merge into visual-plan-architect skill if needed
+**Action:** Archive - functionality covered by visual-plan-builder skill
 
 ---
 
-#### 14. ui-structure-review
+### 14. ui-structure-review
 
 **Location:** `.claude/skills/ui-structure-review/`
 
@@ -338,15 +333,15 @@ Each skill/instruction is evaluated against:
 - Eval Improvement: LOW — Structure assessment
 - Noise Reduction: LOW — Adds review complexity
 
-**Decision:** REWRITE AS GOTCHA
+**Decision:** ARCHIVE
 
-**Reason:** Too vague, long, doesn't create verifiable evidence. Condense to specific structure gotchas.
+**Reason:** Too vague, long, doesn't create verifiable evidence
 
-**Action:** Extract UI structure gotchas, remove skill
+**Action:** Archive and extract UI structure gotchas
 
 ---
 
-#### 15. visual-plan-builder
+### 15. visual-plan-builder
 
 **Location:** `.claude/skills/visual-plan-builder/`
 
@@ -368,7 +363,7 @@ Each skill/instruction is evaluated against:
 
 ---
 
-#### 16. worktree-isolation
+### 16. worktree-isolation
 
 **Location:** `.claude/skills/worktree-isolation/`
 
@@ -382,7 +377,7 @@ Each skill/instruction is evaluated against:
 - Eval Improvement: LOW — Process documentation
 - Noise Reduction: MEDIUM — Process clarity
 
-**Decision:** DOWNGRADE TO POLICY/SCRIPT
+**Decision:** ARCHIVE
 
 **Reason:** Process automation, not a skill. Better as script/hook.
 
@@ -390,7 +385,29 @@ Each skill/instruction is evaluated against:
 
 ---
 
-## Skill Decisions Summary
+### 17. prototype-to-nextjs-porting
+
+**Location:** `.claude/skills/prototype-to-nextjs-porting/`
+
+**Purpose:** Port prototypes from source to Next.js
+
+**Evaluation:**
+- Failure Prevention: HIGH — Prevents approximation errors
+- Evidence Creation: YES — Creates ported code
+- False PASS Reduction: HIGH — Exact porting prevents drift
+- Review Efficiency: HIGH — Systematic porting
+- Eval Improvement: HIGH — Evidence-based porting
+- Noise Reduction: HIGH — Focused porting
+
+**Decision:** KEEP
+
+**Reason:** Critical for Phase 2.2 landing implementation
+
+**Action:** Keep as-is, integrate with prototype-port-engineer
+
+---
+
+## Skills Decisions Summary
 
 ### KEEP (9)
 
@@ -403,83 +420,95 @@ Each skill/instruction is evaluated against:
 7. **risk-scored-review** — Risk assessment
 8. **security-review** — Security verification
 9. **visual-plan-builder** — Planning prevents false starts
+10. **prototype-to-nextjs-porting** — Exact prototype porting
 
-### REWRITE AS GOTCHA (3)
-
-1. **design-taste-review** → Extract design principles to gotchas
-2. **prompt-optimization** → Convert to failure-to-prompt-update
-3. **ui-structure-review** → Extract UI structure gotchas
-
-### MERGE (1)
-
-1. **source-to-visual** → Merge into visual-plan-architect
-
-### DISABLE (2)
+### ARCHIVE (7)
 
 1. **context-pack-builder** — Not Phase 1 applicable
-2. **source-to-product-application** — Not Phase 1 applicable
+2. **design-taste-review** — Too subjective, extract gotchas
+3. **prompt-optimization** — Too generic, replace with failure-to-prompt-update
+4. **source-to-product-application** — Not Phase 1 applicable
+5. **source-to-visual** — Covered by visual-plan-builder
+6. **ui-structure-review** — Too vague, extract gotchas
+7. **worktree-isolation** — Convert to script
 
-### DOWNGRADE TO POLICY/SCRIPT (1)
+### NEW SKILLS TO CREATE
 
-1. **worktree-isolation** → Convert to script/hook
+1. **failure-to-prompt-update** — Update prompts based on eval cases
+2. **visual-parity-review** — Evidence-based visual quality review
+3. **evidence-proof-protocol** — SHA-256 verified evidence
+4. **agent-governance-audit** — Audit agent system
+5. **product-quality-eval** — Product quality evaluation
+6. **repository-cleanup** — Repository cleanup operations
+
+---
 
 ## Action Items
 
 ### Immediate Actions
 
-1. **Create failure-to-prompt-update skill**
-   - Trigger on eval cases only
-   - Focus on failure prevention
-   - Remove generic prompt optimization
+1. **Archive obsolete skills**
+   - Move 7 skills to `.claude/skills/_archive/`
 
-2. **Update PROBEN_AGENT_GOTCHAS.md**
-   - Add design taste gotchas
-   - Add UI structure gotchas
-   - Add prompt optimization gotchas
+2. **Create new skills**
+   - failure-to-prompt-update
+   - visual-parity-review
+   - evidence-proof-protocol
+   - agent-governance-audit
+   - product-quality-eval
+   - repository-cleanup
 
-3. **Create worktree-management script**
+3. **Extract gotchas**
+   - Add design taste gotchas to PROBEN_AGENT_GOTCHAS.md
+   - Add UI structure gotchas to PROBEN_AGENT_GOTCHAS.md
+
+4. **Create worktree-management script**
    - Automate worktree creation
    - Add hook for automatic setup
-   - Document in BUILD_PROCESS.md
-
-4. **Delete/disabled skills**
-   - Disable context-pack-builder
-   - Disable source-to-product-application
-   - Delete merged skills
 
 ### Documentation Updates
 
-1. **Update .claude/skills/** — Remove pruned/merged skills
+1. **Update .claude/skills/** — Remove archived skills
 2. **Update docs/gotchas/** — Add new gotchas
-3. **Update CLAUDE.md** — Add gotchas reference
+3. **Update CLAUDE.md** — Add skills reference
 4. **Update BUILD_PROCESS.md** — Add worktree script usage
+
+---
 
 ## Skill Pruning Impact
 
 ### Before Pruning
-- 16 skills
+- 17 skills
 - Mixed quality and value
 - Some long skills without clear value
 - Generic skills without specific purpose
 
 ### After Pruning
-- 9 skills kept
-- 3 rewritten as gotchas
-- 2 disabled (Phase 2+)
+- 10 skills kept
+- 6 new skills to create
+- 7 archived (Phase 2+ or replaced)
 - Simpler, more focused
 - Higher signal-to-noise ratio
+
+### Reduction
+- 41% reduction (17 → 10 kept)
+- 6 new skills for specific needs
+- Net change: +6% (10 kept + 6 new = 16 vs 17 before)
+
+---
 
 ## Related Documentation
 
 - **[../gotchas/PROBEN_AGENT_GOTCHAS.md](../gotchas/PROBEN_AGENT_GOTCHAS.md)** — Gotchas
-- **[../agent-governance/AGENT_SYSTEM_AUDIT.md](../agent-governance/AGENT_SYSTEM_AUDIT.md)** — Agent audit
-- **[../agent-governance/AGENT_RETIREMENT_DECISIONS.md](../agent-governance/AGENT_RETIREMENT_DECISIONS.md)** — Agent retirement
+- **[AGENT_SYSTEM_AUDIT.md](AGENT_SYSTEM_AUDIT.md)** — Agent audit
+- **[AGENT_RETIREMENT_DECISIONS.md](AGENT_RETIREMENT_DECISIONS.md)** — Agent retirement
 - **[../product-build-history/BUILD_LEARNING_DECISION_LOG.md](../product-build-history/BUILD_LEARNING_DECISION_LOG.md)** — Learning log
 
 ---
 
-**Last Updated:** 2026-06-10
-**Version:** 1.0
-**Total Skills Before:** 16
-**Total Skills After:** 9 (kept) + 3 (gotchas) + 2 (disabled)
-**Reduction:** 31%
+**Last Updated:** 2026-06-11
+**Version:** 2.0
+**Total Skills Before:** 17
+**Total Skills After:** 16 (10 kept + 6 new)
+**Archived:** 7
+**Reduction:** 41% (kept), +6 new skills for specific needs

@@ -31,11 +31,11 @@ IMPLEMENT → VERIFY → REVIEW → CLOSE → RETRO → DONE
 
 | State | Role | Authority Level | Mapped Agents |
 |-------|------|-----------------|---------------|
-| IMPLEMENT | Implementer | Level 1 | frontend-engineer, visual-plan-architect, test-eval-engineer |
-| VERIFY | Verifier | Level 1 | test-eval-engineer, DOM blocker checker |
-| REVIEW | Reviewer | Level 2 | fresh-review-agent, principal-design-reviewer, principal-product-manager |
-| CLOSE | Closer | Level 3 | principal-product-manager, cto-bar-raiser, principal-architect (conditional) |
-| RETRO | Retro | Level 4 | agent-governance-auditor |
+| IMPLEMENT | Implementer | Level 1 | frontend-engineer, visual-plan-architect, test-engineer |
+| VERIFY | Verifier | Level 1 | test-engineer, DOM blocker checker |
+| REVIEW | Reviewer | Level 2 | fresh-review-agent, design-reviewer, product-manager |
+| CLOSE | Closer | Level 3 | product-manager, release-manager, principal-architect (conditional) |
+| RETRO | Retro | Level 4 | governance-auditor |
 
 ## Workflow States
 
@@ -173,7 +173,7 @@ IMPLEMENT → VERIFY → REVIEW → CLOSE → RETRO → DONE
 
 ### CLOSE
 
-**Role:** Closer (Level 3 - CTO Bar Raiser)
+**Role:** Closer (Level 3 - Release Manager)
 
 **Purpose:** Final quality gate before completion.
 

@@ -2,63 +2,346 @@
 
 ## Purpose
 
-Simplified roster of Proben.io agents organized around 5 state-machine roles. Moved from agent sprawl to harness model.
+Simplified roster of Proben.io agents using clean role names without title grades. Authority comes from workflow gates and evidence, not inflated titles.
+
+## Agent Naming Policy
+
+**Prohibited title grades:**
+- principal ❌
+- senior ❌
+- staff ❌
+- lead ❌
+- chief ❌
+- head ❌
+
+**Use clean role names:**
+- product-manager ✅
+- design-reviewer ✅
+- architect ✅
+- release-manager ✅
+- engineer ✅
+
+**Rationale:** Authority comes from gates, evidence, and workflow — not from titles.
+
+---
 
 ## Agent Roster Summary
 
-**Total Roles:** 5 state-machine roles
-**Total Mapped Agents:** 11 (8 core + 3 conditional)
-**Reduction from 23 agents:** 52%
+**Total Active Agents:** 14 (9 core + 3 specialist + 2 conditional)
+**Total Harness Roles:** 5 (state-machine roles)
+**Reduction from 33 agents:** 42%
 **Model:** Harness with state machine + gates + evidence + retro
 
-## The 5 State-Machine Roles
+---
 
-### 1. Implementer (State: IMPLEMENT)
+## Core Product & Release Agents (9)
 
-**Purpose:** Creates the change (code, UI, docs, tests)
+### 1. product-manager
 
-**Mapped Agents:**
-- **frontend-engineer** — Frontend component development, UI implementation
+**File:** `.claude/agents/product-manager.md`
+**Former Name:** product-manager (renamed)
+
+**Purpose:** Product requirements, product quality evaluation, product clarity
 
 **Responsibilities:**
-- Write code
-- Create UI
-- Write tests
-- Add test IDs for DOM blockers
-- Capture evidence helpers
+- Evaluate product clarity and value proposition
+- Verify PRD alignment
+- Assess user problem definition
+- Score product quality dimensions
+- Can block release for product quality reasons
+- Includes AI product strategy (merged from ai-product-manager)
 
-**Authority:** Level 1 — Cannot approve own work
+**Authority:** Level 2 — Can block on product grounds
 
-**Evidence Produced:** Code implementation, test IDs, evidence capture helpers
+**Evidence Produced:** PM eval scores, requirement coverage analysis
+
+**When to Invoke:**
+- Gate 1 (Product Goal Gate)
+- Gate 4 (Product QA Gate)
+- Product quality concerns
+- PRD alignment issues
+
+**Can Block Release:** YES — Product quality
+
+**Failure Mode Prevented:** Weak product, unclear value proposition, PRD misalignment
 
 **Hard Rules:**
-- Must NOT score visual quality
-- Must NOT approve own work
-- Must NOT claim accepted
-- Must NOT proceed to next slice without review
-- Must preserve test IDs
+- Do not claim ACCEPTED without evidence
+- Do not use green tests as proof of product quality
+- If visual quality < 4.5/5, cannot approve product
+- Human approval is required before release
 
 **Status:** ✅ Active
 
 ---
 
-### 2. Verifier (State: VERIFY)
+### 2. ai-product-manager
 
-**Purpose:** Verifies the change works (proof, tests, screenshots)
+**File:** `.claude/agents/ai-product-manager.md`
+**Former Name:** ai-product-manager (renamed)
 
-**Mapped Agents:**
-- **test-eval-engineer** — Tests, evals, quality infrastructure, includes QA capabilities
+**Purpose:** AI-specific features, eval strategy, AI quality metrics, guardrails, and integration sequencing
 
 **Responsibilities:**
-- Run proof commands (typecheck, tests, build)
-- Generate proof manifests with SHA-256 hashes
-- Verify DOM blockers (for UI work)
-- Capture visual evidence (for UI work)
-- Validate state transition requirements
+- AI product strategy and features
+- AI quality metrics and guardrails
+- Prompt engineering strategy
+- AI integration sequencing
+- AI cost optimization
 
-**Authority:** Level 1 — Cannot approve product quality alone
+**Authority:** Level 2 — Can block on AI product grounds
 
-**Evidence Produced:** Test files, eval results, proof manifests, quality metrics
+**Evidence Produced:** AI eval scores, quality metrics
+
+**When to Invoke:**
+- AI feature planning
+- AI quality concerns
+- Prompt strategy decisions
+- AI integration decisions
+
+**Can Block Release:** YES — AI product quality
+
+**Failure Mode Prevented:** Poor AI features, weak AI quality, bad AI integration
+
+**Status:** ✅ Active (conditional - Phase 2+)
+
+---
+
+### 3. release-manager
+
+**File:** `.claude/agents/release-manager.md`
+**Former Name:** release-manager (renamed)
+
+**Purpose:** Owns final release quality bar, can veto any release
+
+**Responsibilities:**
+- Verify all gates passed before release
+- Review evidence package for completeness
+- Verify human approval obtained
+- Check eval cases for previous failures addressed
+- Can block any release for quality reasons
+
+**Authority:** Level 3 — Final release authority
+
+**Evidence Produced:** Release verification, evidence package validation
+
+**When to Invoke:**
+- Before any deployment
+- Before public sharing
+- After phase completion
+- For release decisions
+
+**Can Block Release:** YES — Final authority
+
+**Failure Mode Prevented:** Premature or low-quality releases
+
+**Status:** ✅ Active
+
+---
+
+### 4. architect
+
+**File:** `.claude/agents/architect.md`
+**Former Name:** architect (renamed)
+
+**Purpose:** Architecture design and review for technical decisions
+
+**Responsibilities:**
+- Review architecture decisions
+- Assess routing, data flows, dependencies
+- Prevent overengineering
+- Can block release for architecture reasons
+
+**Authority:** Level 2 — Can block on architecture grounds
+
+**Evidence Produced:** Architecture reviews, ADR validation, technical quality assessment
+
+**When to Invoke:**
+- **CONDITIONAL:** For architecture, routing, data flows, dependencies
+- Architecture decisions
+- Technical design changes
+- Dependency additions
+
+**Can Block Release:** YES — Architecture
+
+**Failure Mode Prevented:** Overengineering, wrong abstractions, architecture violations
+
+**Hard Rules:**
+- Only invoke for architecture, routing, data flows, dependencies
+- Consider visual impact of architecture decisions
+- Document architecture decisions as ADRs
+
+**Status:** ✅ Active (conditional)
+
+---
+
+### 5. design-reviewer
+
+**File:** `.claude/agents/design-reviewer.md`
+**Former Name:** design-reviewer (renamed)
+
+**Purpose:** Visual quality and design parity review, generic SaaS detection
+
+**Responsibilities:**
+- Evaluate visual quality against prototype
+- Detect generic SaaS patterns
+- Score design dimensions (header, logo, nav, CTA, similarity, evidence)
+- Verify evidence completeness
+- Can block release for visual quality reasons
+
+**Authority:** Level 2 — Can block on visual grounds
+
+**Evidence Produced:** Visual parity scores, design rubric evaluation, blocker detection
+
+**When to Invoke:**
+- Gate 2A (Visual Plan Gate)
+- Gate 4A (Visual QA Gate)
+- Visual quality concerns
+- Design parity issues
+
+**Can Block Release:** YES — Visual quality
+
+**Failure Mode Prevented:** Generic SaaS output, poor visual quality, design mismatch
+
+**Hard Rules:**
+- Do not claim ACCEPTED without screenshot evidence
+- If screenshots contradict text verdict, screenshots win
+- If browser state contradicts agent verdict, browser wins
+- If any P0 blocker fails, final verdict cannot be ACCEPTED
+- Must inspect in order: Target → Before → After → Diff → DOM → Rubric → Code
+
+**Status:** ✅ Active
+
+---
+
+### 6. governance-auditor
+
+**File:** `.claude/agents/governance-auditor.md`
+**Former Name:** governance-auditor (renamed)
+
+**Purpose:** Audit agent system, evaluate agent usefulness, recommend changes
+
+**Responsibilities:**
+- Audit agent system quarterly and after failures
+- Track false approval rate
+- Identify duplicate or overlapping agents
+- Recommend agent additions, removals, or changes
+- Identify weak agents that create false confidence
+
+**Authority:** Level 4 — Can recommend agent removal/merge/downgrade
+
+**Evidence Produced:** Audit reports, false approval tracking, agent recommendations
+
+**When to Invoke:**
+- Quarterly agent system audit
+- After false PASS event
+- After major failure
+- When agent quality concerns arise
+
+**Can Block Release:** YES — Can recommend agent blocking
+
+**Failure Mode Prevented:** Agent sprawl, zombie agents, false confidence
+
+**Status:** ✅ Active
+
+---
+
+### 7. security-reviewer
+
+**File:** `.claude/agents/security-reviewer.md`
+
+**Purpose:** Security-focused code review for protected operations
+
+**Responsibilities:**
+- Review auth, payment, secrets, user data changes
+- Assess security risks
+- Identify vulnerabilities
+- Can block release for security reasons
+
+**Authority:** Level 2 — Can block on security grounds
+
+**Evidence Produced:** Security analysis, vulnerability assessment
+
+**When to Invoke:**
+- **CONDITIONAL:** For auth, payments, secrets, user data, AI/prompt risks only
+- Security-sensitive changes
+- Protected file modifications
+
+**Can Block Release:** YES — Security
+
+**Failure Mode Prevented:** Security vulnerabilities, unprotected sensitive operations
+
+**Hard Rules:**
+- Only invoke for auth, payments, secrets, user data, AI/prompt risks
+- Do not review general frontend changes
+- Escalate critical security issues immediately
+
+**Status:** ✅ Active (conditional)
+
+---
+
+### 8. research-analyst
+
+**File:** `.claude/agents/research-analyst.md`
+
+**Purpose:** Research and competitive analysis
+
+**Responsibilities:**
+- Research and competitive analysis
+- Market research
+- Technology research
+- Validation research
+
+**Authority:** None (research role)
+
+**Evidence Produced:** Research reports, competitive analysis
+
+**When to Invoke:**
+- **CONDITIONAL:** During research or validation phases
+- Research needed
+- Competitive analysis needed
+
+**Can Block Release:** NO — Research role
+
+**Failure Mode Prevented:** Poor research decisions, lack of validation
+
+**Hard Rules:**
+- Only invoke during research or validation phases
+- Must NOT create more text than value
+- Must provide actionable research findings
+
+**Status:** ✅ Active (conditional)
+
+---
+
+### 9. test-engineer
+
+**File:** `.claude/agents/test-engineer.md`
+**Former Name:** test-engineer (renamed)
+
+**Purpose:** Tests, evals, quality infrastructure, includes QA capabilities
+
+**Responsibilities:**
+- Write and maintain tests
+- Create eval cases from failures
+- Track quality metrics
+- Generate quality evidence
+- Support eval infrastructure
+- Includes QA planning and verification (merged from qa-release-engineer)
+
+**Authority:** Level 1 — Cannot approve own work
+
+**Evidence Produced:** Test files, eval results, quality metrics
+
+**When to Invoke:**
+- Test writing needed
+- Eval case creation needed
+- Quality metrics tracking
+- QA planning needed
+
+**Can Block Release:** NO — Advisor only
+
+**Failure Mode Prevented:** Test gaps, eval gaps, quality blindness
 
 **Hard Rules:**
 - Must NOT claim tests passing proves product quality
@@ -70,13 +353,263 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 
 ---
 
-### 3. Reviewer (State: REVIEW)
+## Specialist Agents (3)
+
+### 10. frontend-engineer
+
+**File:** `.claude/agents/frontend-engineer.md`
+
+**Purpose:** Frontend component development, UI implementation
+
+**Responsibilities:**
+- Create React components
+- Implement UI features
+- Add test IDs for DOM blockers
+- Preserve test IDs
+- Capture evidence (screenshots, tests)
+- Stop after completion, wait for approval
+
+**Authority:** Level 1 — Cannot approve own work
+
+**Evidence Produced:** Code implementation, test IDs, evidence capture
+
+**When to Invoke:**
+- UI component development
+- Feature implementation
+- Styling changes
+- Responsive design
+
+**Can Block Release:** NO — Builder only
+
+**Failure Mode Prevented:** None (builder role)
+
+**Hard Rules:**
+- Must NOT score visual quality
+- Must NOT approve own work
+- Must NOT claim accepted
+- Must NOT proceed to next slice without reviewer + human approval
+- Must NOT implement beyond approved slice
+- Must preserve test IDs
+- Must capture evidence before claiming completion
+
+**Status:** ✅ Active
+
+---
+
+### 11. prototype-port-engineer
+
+**File:** `.claude/agents/prototype-port-engineer.md`
+
+**Purpose:** Port prototypes to Next.js, exact implementation from source
+
+**Responsibilities:**
+- Port prototype source files to Next.js
+- Preserve exact structure, spacing, typography, colors
+- Map CSS tokens explicitly
+- Explain blockers when exact port is difficult
+
+**Authority:** Level 1 — Cannot approve own work
+
+**Evidence Produced:** Next.js implementation, screenshot evidence
+
+**When to Invoke:**
+- Porting prototype to production
+- Translating design to code
+- Layout implementation from source
+
+**Can Block Release:** NO — Builder only
+
+**Failure Mode Prevented:** Visual drift, approximation errors
+
+**Hard Rules:**
+- Must NOT create "similar" designs
+- Must NOT approximate spacing, colors, typography
+- Must NOT invent new designs
+- Must read prototype source files first
+- Must port exact structure
+
+**Status:** ✅ Active
+
+---
+
+### 12. visual-plan-architect
+
+**File:** `.claude/agents/visual-plan-architect.md`
+
+**Purpose:** Creates visual implementation plans before UI work
+
+**Responsibilities:**
+- Create visual plans before UI implementation
+- Define layout, components, copy, design tokens
+- Specify acceptance criteria
+- Include visual system design (merged from visual-systems-designer)
+- Capture evidence requirements
+
+**Authority:** Level 1 — Cannot approve own work
+
+**Evidence Produced:** Visual plans, layout maps, component maps
+
+**When to Invoke:**
+- Before UI implementation
+- Visual planning needed
+- Design specification needed
+
+**Can Block Release:** NO — Advisor only
+
+**Failure Mode Prevented:** Building without clear specs, plan-execution mismatch
+
+**Hard Rules:**
+- Must NOT implement without plan
+- Must NOT proceed to code without human approval on plan
+- Must specify evidence capture requirements
+- Must include system-level visual thinking
+
+**Status:** ✅ Active
+
+---
+
+### 13. fresh-review-agent
+
+**File:** `.claude/agents/fresh-review-agent.md`
+
+**Purpose:** Independent review of implementation work, evidence verification
+
+**Responsibilities:**
+- Review work they did not implement
+- Verify evidence completeness
+- Compare against source of truth independently
+- Assign risk scores
+- Return explicit verdicts
+- Includes critical review capabilities (merged from implementation-critic)
+
+**Authority:** Level 2 — Can block release
+
+**Evidence Produced:** Review reports, evidence verification, verdicts
+
+**When to Invoke:**
+- After any UI implementation
+- After any architecture change
+- After any dependency addition
+- For independent review
+
+**Can Block Release:** YES — Can block
+
+**Failure Mode Prevented:** Self-approval bias, false confidence, evidence gaps
+
+**Hard Rules:**
+- Must NOT review work they implemented
+- Must NOT assume builder claims are true
+- Must NOT approve without evidence
+- Must NOT accept without screenshot evidence (for UI)
+- Must NOT be diplomatic — call out problems directly
+- Must inspect evidence before code
+- Independence verification REQUIRED
+
+**Status:** ✅ Active
+
+---
+
+### 14. ai-engineer
+
+**File:** `.claude/agents/ai-engineer.md`
+
+**Purpose:** AI/ML feature implementation
+
+**Responsibilities:**
+- AI feature implementation
+- Prompt engineering
+- Model integration
+- AI workflow design
+
+**Authority:** Level 1 — Cannot approve own work
+
+**Evidence Produced:** AI implementation, prompt tests
+
+**When to Invoke:**
+- Phase 2: Real AI provider integration
+- Phase 2: AI feature implementation
+- Phase 2: AI/prompt engineering
+
+**Can Block Release:** NO — Builder only
+
+**Failure Mode Prevented:** Poor AI implementation
+
+**Status:** ⏸️ DISABLED (Phase 1) — Enable when needed for Phase 2
+
+---
+
+## Harness State-Machine Roles (5)
+
+These roles map to the harness workflow states. They are invoked by the harness system, not directly.
+
+### 15. implementer
+
+**File:** `.claude/agents/implementer.md`
+
+**Harness State:** IMPLEMENT
+
+**Purpose:** Creates the change (code, UI, docs, tests)
+
+**Mapped Agent:** frontend-engineer
+
+**Responsibilities:**
+- Write code
+- Create UI
+- Write tests
+- Add test IDs for DOM blockers
+- Capture evidence helpers
+
+**Authority:** Level 1 — Cannot approve own work
+
+**Hard Rules:**
+- Must NOT score visual quality
+- Must NOT approve own work
+- Must NOT claim accepted
+- Must NOT proceed to next slice without review
+- Must preserve test IDs
+
+**Status:** ✅ Active (harness role)
+
+---
+
+### 16. verifier
+
+**File:** `.claude/agents/verifier.md`
+
+**Harness State:** VERIFY
+
+**Purpose:** Verifies the change works (proof, tests, screenshots)
+
+**Mapped Agent:** test-engineer
+
+**Responsibilities:**
+- Run proof commands (typecheck, tests, build)
+- Generate proof manifests with SHA-256 hashes
+- Verify DOM blockers (for UI work)
+- Capture visual evidence (for UI work)
+- Validate state transition requirements
+
+**Authority:** Level 1 — Cannot approve product quality alone
+
+**Hard Rules:**
+- Must NOT claim tests passing proves product quality
+- Must create eval case for every failure
+- Must track quality metrics
+- Must support evidence generation
+
+**Status:** ✅ Active (harness role)
+
+---
+
+### 17. reviewer
+
+**File:** `.claude/agents/reviewer.md`
+
+**Harness State:** REVIEW
 
 **Purpose:** Independent review of evidence and quality
 
-**Mapped Agents:**
-- **fresh-review-agent** — Independent review, evidence verification
-- **principal-design-reviewer** — Visual quality, design parity, generic SaaS detection
+**Mapped Agents:** fresh-review-agent, design-reviewer
 
 **Responsibilities:**
 - Fresh review of work (builder ≠ reviewer)
@@ -88,8 +621,6 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 
 **Authority:** Level 2 — Can block release
 
-**Evidence Produced:** Review reports, evidence verification, verdicts, design scores
-
 **Hard Rules:**
 - Must NOT review work they implemented
 - Must NOT assume builder claims are true
@@ -97,19 +628,19 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 - Must NOT accept without screenshot evidence (for UI)
 - Must inspect evidence before code (evidence-first protocol)
 
-**Status:** ✅ Active
+**Status:** ✅ Active (harness role)
 
 ---
 
-### 4. Closer (State: CLOSE)
+### 18. closer
+
+**File:** `.claude/agents/closer.md`
+
+**Harness State:** CLOSE
 
 **Purpose:** Final release readiness check
 
-**Mapped Agents:**
-- **principal-product-manager** — Product requirements, product quality evaluation
-- **cto-bar-raiser** — Final release quality bar
-- **principal-architect** (conditional) — Architecture design and review
-- **security-reviewer** (conditional) — Security-focused code review
+**Mapped Agents:** product-manager, release-manager, architect, security-reviewer
 
 **Responsibilities:**
 - Verify all gates passed
@@ -118,29 +649,26 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 - Check eval cases for previous failures addressed
 - Can block any release for quality reasons
 
-**Authority:** Level 2/3 — Principal (Level 2) or CTO Bar Raiser (Level 3)
-
-**Evidence Produced:** Release verification, evidence package validation, risk assessment
+**Authority:** Level 2/3 — Principal (Level 2) or Release Manager (Level 3)
 
 **Hard Rules:**
 - Do NOT approve without complete evidence package
 - Do NOT approve without human review
 - Do NOT override reviewer blockers without evidence
 
-**Status:**
-- principal-product-manager: ✅ Active
-- cto-bar-raiser: ✅ Active
-- principal-architect: ✅ Active (conditional)
-- security-reviewer: ✅ Active (conditional)
+**Status:** ✅ Active (harness role)
 
 ---
 
-### 5. Retro (State: RETRO)
+### 19. retro
+
+**File:** `.claude/agents/retro.md`
+
+**Harness State:** RETRO
 
 **Purpose:** System learning and governance
 
-**Mapped Agents:**
-- **agent-governance-auditor** — Audits agent system, recommends changes
+**Mapped Agent:** governance-auditor
 
 **Responsibilities:**
 - Review entire run for learning
@@ -152,83 +680,13 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 
 **Authority:** Level 4 — Can recommend agent removal/merge/downgrade
 
-**Evidence Produced:** Audit reports, retro entries, learning documentation
-
 **Hard Rules:**
 - Must identify false approvals
 - Must recommend agent/skill changes if ineffective
 - Must track failure-to-gate mappings
 - Must update learning logs
 
-**Status:** ✅ Active
-
----
-
-## Conditional Agents (Invoke When Needed)
-
-### principal-architect
-
-**File:** `.claude/agents/principal-architect.md`
-
-**Purpose:** Architecture design and review for technical decisions
-
-**When to Invoke:**
-- **CONDITIONAL:** For architecture, routing, data flows, dependencies
-
-**Hard Rules:**
-- Only invoke for architecture, routing, data flows, dependencies
-- Consider visual impact of architecture decisions
-- Document architecture decisions as ADRs
-
-**Status:** ✅ Active (conditional)
-
----
-
-### security-reviewer
-
-**File:** `.claude/agents/security-reviewer.md`
-
-**Purpose:** Security-focused code review for protected operations
-
-**When to Invoke:**
-- **CONDITIONAL:** For auth, payments, secrets, user data, AI/prompt risks only
-
-**Hard Rules:**
-- Only invoke for auth, payments, secrets, user data, AI/prompt risks
-- Do not review general frontend changes
-- Escalate critical security issues immediately
-
-**Status:** ✅ Active (conditional)
-
----
-
-### research-analyst
-
-**File:** `.claude/agents/research-analyst.md` (symbolic link)
-
-**Purpose:** Research and competitive analysis
-
-**When to Invoke:**
-- **CONDITIONAL:** During research or validation phases
-
-**Hard Rules:**
-- Only invoke during research or validation phases
-- Must NOT create more text than value
-- Must provide actionable research findings
-
-**Status:** ✅ Active (conditional)
-
----
-
-## Downgraded to Skills
-
-**These were agents, now skills:**
-
-- **documentation-engineer** → update-docs-and-build-history skill
-- **prompt-optimizer** → failure-to-prompt-update skill
-- **worktree-orchestrator** → worktree-management skill
-- **implementation-critic** → Merged into fresh-review-agent
-- **qa-release-engineer** → Merged into test-eval-engineer
+**Status:** ✅ Active (harness role)
 
 ---
 
@@ -236,23 +694,25 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 
 ### Level 4 — System Governance (Retro)
 - **Authority:** Can audit and recommend changes to entire agent system
-- **Role:** Retro (agent-governance-auditor)
+- **Role:** Retro (governance-auditor)
 - **Blocking:** Can recommend agent removal/merge/downgrade
 
 ### Level 3 — Release Quality (Closer)
 - **Authority:** Owns final release quality bar
-- **Role:** Closer (cto-bar-raiser)
+- **Role:** Closer (release-manager)
 - **Blocking:** Can veto any release
 
 ### Level 2 — Principal Reviewers (Reviewer, Closer)
 - **Authority:** Can validate quality and block release
-- **Roles:** Reviewer (fresh-review-agent, principal-design-reviewer, principal-product-manager), Closer (conditional: principal-architect, security-reviewer)
+- **Roles:** Reviewer (fresh-review-agent, design-reviewer, product-manager), Closer (conditional: architect, security-reviewer)
 - **Blocking:** Can block for specific domain (product, design, security, architecture)
 
 ### Level 1 — Builders (Implementer, Verifier)
 - **Authority:** Create implementation artifacts and verification
-- **Roles:** Implementer (frontend-engineer), Verifier (test-eval-engineer)
+- **Roles:** Implementer (frontend-engineer), Verifier (test-engineer)
 - **Blocking:** Cannot approve own work
+
+---
 
 ## Agent Operating Principles
 
@@ -292,6 +752,8 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 9. **Human approval is required before release**
 10. **Do not trust agent claims; trust artifacts**
 
+---
+
 ## Role Separation
 
 **Implementer ≠ Reviewer**
@@ -309,597 +771,19 @@ Simplified roster of Proben.io agents organized around 5 state-machine roles. Mo
 - Human makes final decision
 - Human always wins
 
+---
+
 ## Related Documentation
 
+- **[AGENT_ROSTER_AUDIT.md](AGENT_ROSTER_AUDIT.md)** — Detailed audit with renaming decisions
+- **[AGENT_RETIREMENT_DECISIONS.md](AGENT_RETIREMENT_DECISIONS.md)** — Historical retirement decisions
+- **[AGENT_AUTHORITY_MATRIX.md](AGENT_AUTHORITY_MATRIX.md)** — Authority matrix
 - **[CASE_INSPIRED_AGENT_HARNESS.md](../agentic-delivery/CASE_INSPIRED_AGENT_HARNESS.md)** — Harness overview
 - **[AGENT_STATE_MACHINE.md](../agentic-delivery/AGENT_STATE_MACHINE.md)** — State machine details
-- **[AGENT_AUTHORITY_MATRIX.md](AGENT_AUTHORITY_MATRIX.md)** — Authority matrix
-- **[AGENT_SYSTEM_AUDIT.md](AGENT_SYSTEM_AUDIT.md)** — Audit report
-- **[SKILL_PRUNING_AUDIT.md](SKILL_PRUNING_AUDIT.md)** — Skill audit
 
 ---
 
-**Last Updated:** 2026-06-10
-**Version:** 3.0 (5-role harness model)
-**Total Roles:** 5 state-machine roles
-**Total Mapped Agents:** 11 (8 core + 3 conditional)
-**Reduction from 23 agents:** 52%
-
-## Core Agents (8) — Always Active
-
-### Level 4 — System Governance
-
-#### agent-governance-auditor
-
-**File:** `.claude/agents/agent-governance-auditor.md`
-
-**Purpose:** Audit agent system, evaluate agent usefulness, recommend changes
-
-**Responsibilities:**
-- Audit agent system quarterly and after failures
-- Track false approval rate
-- Identify duplicate or overlapping agents
-- Recommend agent additions, removals, or changes
-- Identify weak agents that create false confidence
-
-**Authority:** Level 4 — Can recommend agent removal/merge/downgrade
-
-**Evidence Produced:** Audit reports, false approval tracking, agent recommendations
-
-**When to Invoke:**
-- Quarterly agent system audit
-- After false PASS event
-- After major failure
-- When agent quality concerns arise
-
-**Can Block Release:** YES — Can recommend agent blocking
-
-**Failure Mode Prevented:** Agent sprawl, zombie agents, false confidence
-
-**Status:** ✅ Active
-
----
-
-### Level 3 — Release Quality
-
-#### cto-bar-raiser
-
-**File:** `.claude/agents/cto-bar-raiser.md`
-
-**Purpose:** Owns final release quality bar, can veto any release
-
-**Responsibilities:**
-- Verify all gates passed before release
-- Review evidence package for completeness
-- Verify human approval obtained
-- Check eval cases for previous failures addressed
-- Can block any release for quality reasons
-
-**Authority:** Level 3 — Final release authority
-
-**Evidence Produced:** Release verification, evidence package validation
-
-**When to Invoke:**
-- Before any deployment
-- Before public sharing
-- After phase completion
-- For release decisions
-
-**Can Block Release:** YES — Final authority
-
-**Failure Mode Prevented:** Premature or low-quality releases
-
-**Status:** ✅ Active
-
----
-
-### Level 2 — Principal Reviewers
-
-#### principal-product-manager
-
-**File:** `.claude/agents/principal-product-manager.md`
-
-**Purpose:** Product requirements, product quality evaluation, product clarity
-
-**Responsibilities:**
-- Evaluate product clarity and value proposition
-- Verify PRD alignment
-- Assess user problem definition
-- Score product quality dimensions
-- Can block release for product quality reasons
-- Includes AI product strategy (merged from ai-product-strategist)
-
-**Authority:** Level 2 — Can block on product grounds
-
-**Evidence Produced:** PM eval scores, requirement coverage analysis
-
-**When to Invoke:**
-- Gate 1 (Product Goal Gate)
-- Gate 4 (Product QA Gate)
-- Product quality concerns
-- PRD alignment issues
-
-**Can Block Release:** YES — Product quality
-
-**Failure Mode Prevented:** Weak product, unclear value proposition, PRD misalignment
-
-**Hard Rules:**
-- Do not claim ACCEPTED without evidence
-- Do not use green tests as proof of product quality
-- If visual quality < 4.5/5, cannot approve product
-- Human approval is required before release
-
-**Status:** ✅ Active
-
----
-
-#### principal-design-reviewer
-
-**File:** `.claude/agents/principal-design-reviewer.md`
-
-**Purpose:** Visual quality and design parity review, generic SaaS detection
-
-**Responsibilities:**
-- Evaluate visual quality against prototype
-- Detect generic SaaS patterns
-- Score design dimensions (header, logo, nav, CTA, similarity, evidence)
-- Verify evidence completeness
-- Can block release for visual quality reasons
-
-**Authority:** Level 2 — Can block on visual grounds
-
-**Evidence Produced:** Visual parity scores, design rubric evaluation, blocker detection
-
-**When to Invoke:**
-- Gate 2A (Visual Plan Gate)
-- Gate 4A (Visual QA Gate)
-- Visual quality concerns
-- Design parity issues
-
-**Can Block Release:** YES — Visual quality
-
-**Failure Mode Prevented:** Generic SaaS output, poor visual quality, design mismatch
-
-**Hard Rules:**
-- Do not claim ACCEPTED without screenshot evidence
-- If screenshots contradict text verdict, screenshots win
-- If browser state contradicts agent verdict, browser wins
-- If any P0 blocker fails, final verdict cannot be ACCEPTED
-- Must inspect in order: Target → Before → After → Diff → DOM → Rubric → Code
-
-**Status:** ✅ Active (updated with strict rules)
-
----
-
-#### security-reviewer
-
-**File:** `.claude/agents/security-reviewer.md`
-
-**Purpose:** Security-focused code review for protected operations
-
-**Responsibilities:**
-- Review auth, payment, secrets, user data changes
-- Assess security risks
-- Identify vulnerabilities
-- Can block release for security reasons
-
-**Authority:** Level 2 — Can block on security grounds
-
-**Evidence Produced:** Security analysis, vulnerability assessment
-
-**When to Invoke:**
-- **CONDITIONAL:** For auth, payments, secrets, user data, AI/prompt risks only
-- Security-sensitive changes
-- Protected file modifications
-
-**Can Block Release:** YES — Security
-
-**Failure Mode Prevented:** Security vulnerabilities, unprotected sensitive operations
-
-**Hard Rules:**
-- Only invoke for auth, payments, secrets, user data, AI/prompt risks
-- Do not review general frontend changes
-- Escalate critical security issues immediately
-
-**Status:** ✅ Active (conditional)
-
----
-
-#### principal-architect
-
-**File:** `.claude/agents/principal-architect.md`
-
-**Purpose:** Architecture design and review for technical decisions
-
-**Responsibilities:**
-- Review architecture decisions
-- Assess routing, data flows, dependencies
-- Prevent overengineering
-- Can block release for architecture reasons
-
-**Authority:** Level 2 — Can block on architecture grounds
-
-**Evidence Produced:** Architecture reviews, ADR validation, technical quality assessment
-
-**When to Invoke:**
-- **CONDITIONAL:** For architecture, routing, data flows, dependencies
-- Architecture decisions
-- Technical design changes
-- Dependency additions
-
-**Can Block Release:** YES — Architecture
-
-**Failure Mode Prevented:** Overengineering, wrong abstractions, architecture violations
-
-**Hard Rules:**
-- Only invoke for architecture, routing, data flows, dependencies
-- Consider visual impact of architecture decisions
-- Document architecture decisions as ADRs
-
-**Status:** ✅ Active (conditional)
-
----
-
-#### fresh-review-agent
-
-**File:** `.claude/agents/fresh-review-agent.md`
-
-**Purpose:** Independent review of implementation work, evidence verification
-
-**Responsibilities:**
-- Review work they did not implement
-- Verify evidence completeness
-- Compare against source of truth independently
-- Assign risk scores
-- Return explicit verdicts
-- Includes critical review capabilities (merged from implementation-critic)
-
-**Authority:** Level 2 — Can block release
-
-**Evidence Produced:** Review reports, evidence verification, verdicts
-
-**When to Invoke:**
-- After any UI implementation
-- After any architecture change
-- After any dependency addition
-- For independent review
-
-**Can Block Release:** YES — Can block
-
-**Failure Mode Prevented:** Self-approval bias, false confidence, evidence gaps
-
-**Hard Rules:**
-- Must NOT review work they implemented
-- Must NOT assume builder claims are true
-- Must NOT approve without evidence
-- Must NOT accept without screenshot evidence (for UI)
-- Must NOT be diplomatic — call out problems directly
-- Must inspect evidence before code
-- Independence verification REQUIRED
-
-**Status:** ✅ Active (updated with evidence-first protocol)
-
----
-
-### Level 1 — Builders
-
-#### frontend-engineer
-
-**File:** `.claude/agents/frontend-engineer.md`
-
-**Purpose:** Frontend component development, UI implementation
-
-**Responsibilities:**
-- Create React components
-- Implement UI features
-- Add test IDs for DOM blockers
-- Preserve test IDs
-- Capture evidence (screenshots, tests)
-- Stop after completion, wait for approval
-
-**Authority:** Level 1 — Cannot approve own work
-
-**Evidence Produced:** Code implementation, test IDs, evidence capture
-
-**When to Invoke:**
-- UI component development
-- Feature implementation
-- Styling changes
-- Responsive design
-
-**Can Block Release:** NO — Builder only
-
-**Failure Mode Prevented:** None (builder role)
-
-**Hard Rules:**
-- Must NOT score visual quality
-- Must NOT approve own work
-- Must NOT claim accepted
-- Must NOT proceed to next slice without reviewer + human approval
-- Must NOT implement beyond approved slice
-- Must preserve test IDs
-- Must capture evidence before claiming completion
-
-**Status:** ✅ Active (updated with prohibitions)
-
----
-
-#### test-eval-engineer
-
-**File:** `.claude/agents/test-eval-engineer.md` (NEW)
-
-**Purpose:** Tests, evals, quality infrastructure, includes QA capabilities (merged from qa-release-engineer)
-
-**Responsibilities:**
-- Write and maintain tests
-- Create eval cases from failures
-- Track quality metrics
-- Generate quality evidence
-- Support eval infrastructure
-- Includes QA planning and verification (merged from qa-release-engineer)
-
-**Authority:** Level 1 — Cannot approve own work
-
-**Evidence Produced:** Test files, eval results, quality metrics
-
-**When to Invoke:**
-- Test writing needed
-- Eval case creation needed
-- Quality metrics tracking
-- QA planning needed
-
-**Can Block Release:** NO — Advisor only
-
-**Failure Mode Prevented:** Test gaps, eval gaps, quality blindness
-
-**Hard Rules:**
-- Must NOT claim tests passing proves product quality
-- Must create eval case for every failure
-- Must track quality metrics
-- Must support evidence generation
-
-**Status:** ✅ Active (new, to be created)
-
----
-
-#### visual-plan-architect
-
-**File:** `.claude/agents/visual-plan-architect.md`
-
-**Purpose:** Creates visual implementation plans before UI work
-
-**Responsibilities:**
-- Create visual plans before UI implementation
-- Define layout, components, copy, design tokens
-- Specify acceptance criteria
-- Include visual system design (merged from visual-systems-designer)
-- Capture evidence requirements
-
-**Authority:** Level 1 — Cannot approve own work
-
-**Evidence Produced:** Visual plans, layout maps, component maps
-
-**When to Invoke:**
-- Before UI implementation
-- Visual planning needed
-- Design specification needed
-
-**Can Block Release:** NO — Advisor only
-
-**Failure Mode Prevented:** Building without clear specs, plan-execution mismatch
-
-**Hard Rules:**
-- Must NOT implement without plan
-- Must NOT proceed to code without human approval on plan
-- Must specify evidence capture requirements
-- Must include system-level visual thinking
-
-**Status:** ✅ Active
-
----
-
-## Conditional Agents (3) — Invoke When Needed
-
-### research-analyst
-
-**File:** `.claude/agents/research-analyst.md` (symbolic link)
-
-**Purpose:** Research and competitive analysis
-
-**Responsibilities:**
-- Research and competitive analysis
-- Market research
-- Technology research
-- Validation research
-
-**Authority:** None (research role)
-
-**Evidence Produced:** Research reports, competitive analysis
-
-**When to Invoke:**
-- **CONDITIONAL:** During research or validation phases
-- Research needed
-- Competitive analysis needed
-
-**Can Block Release:** NO — Research role
-
-**Failure Mode Prevented:** Poor research decisions, lack of validation
-
-**Hard Rules:**
-- Only invoke during research or validation phases
-- Must NOT create more text than value
-- Must provide actionable research findings
-
-**Status:** ✅ Active (conditional)
-
----
-
-## Skills
-
-### update-docs-and-build-history (NEW)
-
-**Location:** `.claude/skills/update-docs-and-build-history/`
-
-**Purpose:** Update documentation when recording decisions, failures, evals, or gates
-
-**When to Use:**
-- BLD entry created
-- Eval case created
-- Gate added/updated
-- Decision documented
-
-**Downgraded From:** documentation-engineer
-
----
-
-### failure-to-prompt-update (NEW)
-
-**Location:** `.claude/skills/failure-to-prompt-update/`
-
-**Purpose:** Update agent prompts based on eval cases to prevent failure recurrence
-
-**When to Use:**
-- Eval case created
-- Failure recurrence detected
-- Agent instruction update needed
-
-**Downgraded From:** prompt-optimizer
-
----
-
-### portfolio-process-page
-
-**Location:** `.claude/skills/portfolio-process-page/`
-
-**Purpose:** Generate portfolio process pages
-
-**When to Use:**
-- Portfolio page needed
-- Build history documentation needed
-
-**Downgraded From:** portfolio-documentation-engineer
-
----
-
-### worktree-management
-
-**Location:** `scripts/worktree-management.js` + `.claude/hooks/worktree-setup`
-
-**Purpose:** Manage worktree creation and cleanup
-
-**When to Use:**
-- Worktree needed for isolated work
-- Branch isolation required
-
-**Downgraded From:** worktree-orchestrator
-
----
-
-## Agent Authority Levels
-
-### Level 4 — System Governance
-- **Authority:** Can audit and recommend changes to entire agent system
-- **Blocking:** Can recommend agent removal/merge/downgrade
-- **Example:** agent-governance-auditor
-
-### Level 3 — Release Quality
-- **Authority:** Owns final release quality bar
-- **Blocking:** Can veto any release
-- **Example:** cto-bar-raiser
-
-### Level 2 — Principal Reviewers
-- **Authority:** Can validate quality and block release
-- **Blocking:** Can block for specific domain (product, design, security, architecture)
-- **Examples:** principal-product-manager, principal-design-reviewer, security-reviewer, principal-architect, fresh-review-agent
-
-### Level 1 — Builders
-- **Authority:** Create implementation artifacts
-- **Blocking:** Cannot approve own work
-- **Examples:** frontend-engineer, test-eval-engineer, visual-plan-architect
-
-## Agent Operating Principles
-
-### Core Principles
-
-1. **Builders build, reviewers validate, governance audits, humans approve**
-2. **No agent may approve its own work**
-3. **Every agent must have clear responsibility, evidence output, and blocking authority (if relevant)**
-4. **Agent-generated PASS is advisory only, not release authority**
-5. **Human approval is required before release**
-
-### Evidence Requirements
-
-**For UI Work:**
-- Screenshot evidence required (target, before, after, diff)
-- DOM blocker tests required
-- Evidence manifest required
-- HTML report required
-
-**For All Work:**
-- Evidence must be produced
-- Claims must be verified
-- Browser/screenshot state is source of truth
-
-### Hard Rules (All Agents)
-
-1. **Do not claim ACCEPTED without evidence**
-2. **Do not use green tests as proof of product quality**
-3. **If screenshots contradict text verdict, screenshots win**
-4. **If browser state contradicts agent verdict, browser wins**
-5. **If any P0 blocker fails, final verdict cannot be ACCEPTED**
-6. **Builder agents cannot score or approve their own work**
-7. **Reviewer agents must inspect evidence before code**
-8. **Governance auditor must identify false approvals**
-9. **Human approval is required before release**
-
-## Conditional Invocation Rules
-
-### security-reviewer
-**Invoke when:**
-- Auth logic changes
-- Payment logic changes
-- Secret/config changes
-- User data changes
-- AI/prompt risks
-
-**Do NOT invoke for:**
-- General frontend changes
-- UI-only changes
-- Component updates
-
-### principal-architect
-**Invoke when:**
-- Architecture decisions
-- Routing changes
-- Data flow changes
-- Dependency additions
-
-**Do NOT invoke for:**
-- Component implementation
-- UI-only changes
-- Styling changes
-
-### research-analyst
-**Invoke when:**
-- Research phase
-- Validation phase
-- Competitive analysis needed
-
-**Do NOT invoke for:**
-- Implementation work
-- Feature development
-- Regular development
-
-## Related Documentation
-
-- **[AGENT_SYSTEM_AUDIT.md](AGENT_SYSTEM_AUDIT.md)** — Comprehensive audit
-- **[AGENT_RETIREMENT_DECISIONS.md](AGENT_RETIREMENT_DECISIONS.md)** — Retirement decisions
-- **[AGENT_AUTHORITY_MATRIX.md](AGENT_AUTHORITY_MATRIX.md)** — Authority matrix
-- **[RACI_MATRIX.md](RACI_MATRIX.md)** — Responsibility assignments
-
----
-
-**Last Updated:** 2026-06-10
-**Version:** 2.0
-**Total Agents:** 11 (8 core + 3 conditional)
-**Reduction from 23 agents:** 52%
+**Last Updated:** 2026-06-11
+**Version:** 4.0 (Clean role names)
+**Total Agents:** 19 (14 active + 5 harness)
+**Reduction from 33 agents:** 42%
