@@ -78,6 +78,61 @@ BLD-008 — Replace Agent Sprawl with Case-Inspired State Machine and Evidence G
 
 ---
 
-**Last Updated:** 2026-06-10
-**Total Entries:** 1
+## PDL-002 — Domain Launch
+
+### Date / Phase
+2026-06-11 — Phase 1 production launch
+
+### What Changed
+
+**Connected:**
+- proben.io and www.proben.io to Vercel Production
+- Replaced Porkbun parking DNS with Vercel DNS records
+- Verified valid domain configuration in Vercel Domains
+- Launched Proben MVP 6 landing page publicly
+
+**Files Updated:**
+- docs/product-build-history/PROCESS_DIFF_LOG.md
+- docs/product-build-history/LESSONS_LEARNED.md
+- app/portfolio/build-process/page.tsx
+
+### Why It Changed
+
+Product was only accessible via Vercel preview URL and localhost. Custom domain connection required to launch publicly.
+
+**Before:**
+- Custom domain parked at Porkbun
+- No production domain routing
+- Product not publicly accessible at proben.io
+
+**After:**
+- proben.io and www.proben.io point to Vercel Production
+- Valid DNS configuration verified
+- MVP 6 landing page loads publicly at production domain
+
+### Impact on Workflow
+
+**Process Learning:**
+A release is not complete when the build passes. A release is complete only when:
+- Production deployment is ready
+- Domain configuration is valid
+- The public URL loads the expected product
+- The user verifies the experience
+- Evidence is recorded in the build history
+
+**Evidence:**
+- Vercel Domains: proben.io and www.proben.io show Valid Configuration
+- Production site loads Proben MVP 6 landing page
+- Build and type-check pass with documentation changes
+
+### Related BLD Entry
+None (milestone documentation, not a process change)
+
+### Status
+✅ Public Launch
+
+---
+
+**Last Updated:** 2026-06-11
+**Total Entries:** 2
 **Related Documentation:** docs/product-build-history/BUILD_LEARNING_DECISION_LOG.md

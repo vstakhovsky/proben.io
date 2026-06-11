@@ -178,6 +178,15 @@ Concise lessons grouped by theme. These are reusable insights from Build Learnin
 
 ---
 
+### Release Completeness Requires Domain Verification
+**From:** PDL-002 — Domain Launch
+
+**Lesson:** A release is not complete when the build passes. A release is complete only when production deployment is ready, domain configuration is valid, the public URL loads the expected product, the user verifies the experience, and evidence is recorded in the build history.
+
+**Application:** Always verify production domain configuration, run smoke tests on public URL, and record evidence of successful launch. A working preview deployment is not the same as a launched product.
+
+---
+
 ## Portfolio Storytelling Lessons
 
 ### Quality System Is Part of the Story
