@@ -310,4 +310,4 @@ The Agent Governance Auditor is the only agent authorized to:
 4. **Identify weak gates** — Find where quality checks are failing
 5. **Recommend system changes** — Propose merging, splitting, or reorganizing agents
 
-**The Agent Governance Auditor does NOT approve product releases.** That authority belongs to Principal Reviewers (Level 2), CTO Bar Raiser (Level 3), and Human Owner.
+**The Agent Governance Auditor does NOT approve product releases.** That authority belongs to Reviewers (Level 2), Release Manager (Level 3), and Human Owner.

@@ -191,12 +191,12 @@ The human reviews the visual plan and provides feedback:
 
 ### Step 6: Gate Decision
 
-**Agents:** PM + Design QA + CTO Bar Raiser
+**Agents:** PM + Design QA + Release Manager
 
 **Process:**
 - PM evaluates product quality
 - Design QA evaluates visual quality
-- CTO Bar Raiser evaluates overall quality
+- Release Manager evaluates overall quality
 - Each agent provides verdict
 
 **Output:**
@@ -213,7 +213,7 @@ The human reviews the visual plan and provides feedback:
 - Risk level: LOW or MEDIUM
 - PM eval: ACCEPTED
 - Design QA: ACCEPTED
-- CTO Bar Raiser: ACCEPTED
+- Release Manager: ACCEPTED
 - Human approval: YES
 
 **REWORK IF:**
@@ -359,7 +359,7 @@ Visual Plan → Human → Build → Fresh Review → Risk → PM/Design/CTO → 
 ✅ Good: Research agent reports findings and recommendations
 
 ### Rule 10: Agent System Audits
-**If agents don't improve quality, Agent Governance Auditor recommends deletion/merge.**
+**If agents don't improve quality, Governance Auditor recommends deletion/merge.**
 
 ❌ Bad: Keep adding agents without measuring value
 ✅ Good: Regular audits, remove or merge low-value agents
@@ -396,7 +396,7 @@ Visual Plan → Human → Build → Fresh Review → Risk → PM/Design/CTO → 
 - Can block for visual reasons
 - Auto-rejects if parity < 4.5/5
 
-### CTO Bar Raiser
+### Release Manager
 - Evaluates overall quality
 - Challenges overengineering
 - Can block for technical reasons
@@ -408,7 +408,7 @@ Visual Plan → Human → Build → Fresh Review → Risk → PM/Design/CTO → 
 - Maintains main stability
 - Plans worktree lifecycle
 
-### Agent Governance Auditor
+### Governance Auditor
 - Audits agent system
 - Scores agent effectiveness
 - Detects false approvals
@@ -452,8 +452,8 @@ Visual Plan → Human → Build → Fresh Review → Risk → PM/Design/CTO → 
 **Criteria:** Visual parity >= 4.5/5, brand fit
 **Output:** ACCEPTED / REJECTED with scores
 
-### Gate 7: CTO Bar Raiser Evaluation
-**Owner:** CTO Bar Raiser
+### Gate 7: Release Manager Evaluation
+**Owner:** Release Manager
 **Input:** Implementation + reviews
 **Criteria:** Technical quality, no overengineering
 **Output:** ACCEPTED / REJECTED with reasoning

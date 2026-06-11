@@ -88,7 +88,7 @@ Create a public portfolio page that demonstrates how Proben.io uses agent loopin
 - **Orchestrator**: Owns goal, assigns specialists, enforces stops
 - **Research Analyst**: Extracts insights, avoids hype
 - **Product Manager**: Maps to user/portfolio value
-- **Lead Architect**: Prevents over-engineering
+- **Architect**: Prevents over-engineering
 - **Security Reviewer**: Identifies risks
 - **QA Release Engineer**: Defines verification
 - **Documentation Engineer**: Creates public explanation

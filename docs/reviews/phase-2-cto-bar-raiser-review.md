@@ -1,4 +1,4 @@
-# Phase 2 CTO Bar Raiser Review
+# Phase 2 Release Manager Review
 
 ## Executive Verdict
 
@@ -242,6 +242,6 @@
 
 ---
 
-**Reviewed by:** CTO Bar Raiser Reviewer
+**Reviewed by:** Release Manager Reviewer
 **Date:** 2025-06-09
 **Status:** CONDITIONAL APPROVE — Phase 2.1 only, strict scope controls

@@ -333,7 +333,7 @@ Ensure mobile responsiveness and polish all visual elements.
 
 ---
 
-### Slice 2.1G — PM Product Eval and CTO Bar Raiser Review
+### Slice 2.1G — PM Product Eval and Release Manager Review
 
 **Goal:**
 Evaluate Phase 2.1 against product quality rubric and get independent technical review.
@@ -346,13 +346,13 @@ Evaluate Phase 2.1 against product quality rubric and get independent technical 
 * PM eval average >= 4.2
 * Design Parity score >= 4
 * Requirements Compliance score >= 4
-* CTO Bar Raiser review completed
+* Release Manager review completed
 * No overengineering detected
 * No scope creep identified
 
 **Test/Update Required:**
 * PM eval document created
-* CTO Bar Raiser review document created
+* Release Manager review document created
 * Screenshots captured as evidence
 
 **Risk:**
@@ -455,7 +455,7 @@ Phase 2.1 is complete **ONLY IF** all of the following are true:
 * [ ] Manual browser QA completed
 * [ ] Mobile responsive verified
 * [ ] PM eval document created
-* [ ] CTO Bar Raiser review completed
+* [ ] Release Manager review completed
 
 ---
 
@@ -499,7 +499,7 @@ Phase 2.1 is complete **ONLY IF** all of the following are true:
 
 ---
 
-### 2. Lead Architect Agent Review
+### 2. Architect Agent Review
 
 **What is the smallest technical implementation?**
 
@@ -546,7 +546,7 @@ Phase 2.1 is complete **ONLY IF** all of the following are true:
 
 ---
 
-### 3. CTO Bar Raiser Reviewer Review
+### 3. Release Manager Reviewer Review
 
 **What could become overengineered?**
 
@@ -590,7 +590,7 @@ Phase 2.1 is complete **ONLY IF** all of the following are true:
 2. **Mobile screenshots:** Landing page on mobile widths
 3. **Browser QA:** Manual check of all navigation links
 4. **PM eval document:** Scores against rubric
-5. **CTO Bar Raiser review:** Independent technical approval
+5. **Release Manager review:** Independent technical approval
 6. **Build verification:** Build still works
 7. **Test verification:** All 27 tests still pass
 

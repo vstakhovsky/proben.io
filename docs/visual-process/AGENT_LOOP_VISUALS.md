@@ -62,7 +62,7 @@ flowchart TD
     
     F --> G[Research Analyst]
     F --> H[Product Manager]
-    F --> I[Lead Architect]
+    F --> I[Architect]
     F --> J[Security Reviewer]
     F --> K[QA Release Engineer]
     

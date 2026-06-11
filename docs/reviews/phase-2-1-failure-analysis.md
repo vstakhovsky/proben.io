@@ -55,12 +55,12 @@ The PM agent has authority to "block or challenge implementation if the product 
 - No explicit requirement that PM must personally verify visual parity
 - No requirement for PM to produce visual evidence before approval
 
-**Tertiary Responsibility: CTO Bar Raiser**
+**Tertiary Responsibility: Release Manager**
 
-The CTO Bar Raiser is supposed to challenge "green checkmarks without evidence" and "claims without verification."
+The Release Manager is supposed to challenge "green checkmarks without evidence" and "claims without verification."
 
 **Why It Failed to Block:**
-- The CTO Bar Raiser focuses on overengineering and scope creep
+- The Release Manager focuses on overengineering and scope creep
 - Visual quality is listed as a concern but not as a primary blocking criterion
 - No explicit mandate to verify visual evidence for UI tasks
 
@@ -178,12 +178,12 @@ The CTO Bar Raiser is supposed to challenge "green checkmarks without evidence" 
 
 ---
 
-### 7. Why Did the CTO Bar Raiser Not Detect This?
+### 7. Why Did the Release Manager Not Detect This?
 
-**CTO Bar Raiser Weaknesses:**
+**Release Manager Weaknesses:**
 
 1. **Focus on different problems**
-   - CTO Bar Raiser optimized for: overengineering, scope creep, dependencies
+   - Release Manager optimized for: overengineering, scope creep, dependencies
    - Visual quality is listed but not as primary blocker
    - "Green checkmarks without evidence" is an anti-pattern but not explicitly for UI
 
@@ -235,9 +235,9 @@ The Design Quality Reviewer agent MUST block UI work that doesn't match prototyp
 - Must list specific fixes required for approval
 - Cannot be overridden by "tests pass" or "build succeeds"
 
-**Rule 5: CTO Bar Raiser Visual Quality Mandate**
+**Rule 5: Release Manager Visual Quality Mandate**
 
-The CTO Bar Raiser MUST verify visual evidence for UI tasks before approval.
+The Release Manager MUST verify visual evidence for UI tasks before approval.
 
 - Add "functional but visually wrong" to anti-patterns list
 - Explicit authority to block based on visual mismatch
@@ -297,7 +297,7 @@ Required Fixes:
 **Actual:** PM likely approved based on functional completeness
 
 ### Control Point 5: Final Gate
-**Expected:** CTO Bar Raiser challenge of weak results
+**Expected:** Release Manager challenge of weak results
 **Actual:** No visual evidence verified before "done"
 
 ---
@@ -334,7 +334,7 @@ For any UI task, Design QA MUST produce:
 3. Blocker list: specific visual elements requiring fixes
 4. Verdict: ACCEPTED or REJECTED with evidence
 
-### CTO Bar Raiser Agent (Updated)
+### Release Manager Agent (Updated)
 
 **New Blocking Authority:**
 - MUST block "functional but visually wrong" implementations
@@ -490,7 +490,7 @@ Parity Score: [X/5] (Below 4.5 threshold)
 - Add mandatory scoring requirement
 - Add detailed comparison output format
 
-**`.claude/agents/cto-bar-raiser.md`**
+**`.claude/agents/release-manager.md`**
 - Add "functional but visually wrong" to anti-patterns
 - Add visual evidence verification requirement
 - Add blocking authority for visual mismatch

@@ -43,8 +43,8 @@ This document defines four responsibility levels for agents in the Proben.io dev
 **Role:** Validate quality and can block release
 
 **Examples:**
-- `principal-product-manager`
-- `principal-design-reviewer`
+- `product-manager`
+- `design-reviewer`
 - `principal-architect`
 - `security-reviewer`
 - `qa-release-engineer`
@@ -69,7 +69,7 @@ This document defines four responsibility levels for agents in the Proben.io dev
 
 ---
 
-### Level 3 — CTO Bar Raiser
+### Level 3 — Release Manager
 
 **Role:** Owns final release quality bar
 
@@ -87,11 +87,11 @@ This document defines four responsibility levels for agents in the Proben.io dev
 - ❌ Override all principal reviewer concerns without evidence
 - ❌ Approve work that failed any quality gate
 
-**Scope:** Final quality bar. CTO Bar Raiser ensures all quality gates are passed before release.
+**Scope:** Final quality bar. Release Manager ensures all quality gates are passed before release.
 
 ---
 
-### Level 4 — Agent Governance Auditor
+### Level 4 — Governance Auditor
 
 **Role:** Audits the agent system itself
 
@@ -111,7 +111,7 @@ This document defines four responsibility levels for agents in the Proben.io dev
 - ❌ Approve release as a replacement for human approval
 - ❌ Add roles without proving value
 
-**Scope:** System governance. Agent Governance Auditor evaluates the agent system itself, not product work.
+**Scope:** System governance. Governance Auditor evaluates the agent system itself, not product work.
 
 ---
 
@@ -122,14 +122,14 @@ Builder (Level 1)
     ↓ produces work
 Principal Reviewer (Level 2)
     ↓ validates quality
-CTO Bar Raiser (Level 3)
+Release Manager (Level 3)
     ↓ confirms all gates passed
 Human Owner
     ↓ final approval
 Release
 ```
 
-**Agent Governance Auditor (Level 4)**
+**Governance Auditor (Level 4)**
     ↓ evaluates entire system
 Can audit any level, recommend changes
 
@@ -137,7 +137,7 @@ Can audit any level, recommend changes
 
 ## Decision Authority Matrix
 
-| Decision Type | Builder | Principal Reviewer | CTO Bar Raiser | Human Owner |
+| Decision Type | Builder | Principal Reviewer | Release Manager | Human Owner |
 |---------------|---------|-------------------|----------------|-------------|
 | Implement feature | ✅ | ❌ | ❌ | ✅ |
 | Approve implementation | ❌ | ✅ | ✅ | ✅ |
@@ -167,14 +167,14 @@ Can audit any level, recommend changes
 - Approve based on builder claims only
 - Skip source-of-truth comparison
 
-### CTO Bar Raiser Cannot
+### Release Manager Cannot
 
 - Approve without all principal reviewer evidence
 - Override all quality gates
 - Approve failed work
 - Skip verification
 
-### Agent Governance Auditor Cannot
+### Governance Auditor Cannot
 
 - Approve product releases
 - Implement product features
@@ -189,9 +189,9 @@ Can audit any level, recommend changes
 
 1. **Builder** (Level 1) — May implement only from approved visual plan
 2. **Fresh Reviewer** (Level 2) — Must review (did not implement)
-3. **Principal Design Reviewer** (Level 2) — Must score visual parity
+3. **Design Reviewer** (Level 2) — Must score visual parity
 4. **Principal PM** (Level 2) — Must score product value
-5. **CTO Bar Raiser** (Level 3) — Must confirm release readiness
+5. **Release Manager** (Level 3) — Must confirm release readiness
 6. **Human Owner** — Must give final approval
 
 **If any blocking gate fails, status is REJECTED — DO NOT RELEASE.**
@@ -226,7 +226,7 @@ All decisions must include:
 ### 4. Override Protection
 
 Principal reviewer decisions can only be overridden by:
-- CTO Bar Raiser (with evidence)
+- Release Manager (with evidence)
 - Human Owner (final authority)
 
 Builder cannot override any decision.
@@ -241,7 +241,7 @@ Builder cannot override any decision.
 
 **Prevention:** Builder explicitly prohibited from reviewing own work
 
-**Detection:** Agent Governance Auditor monitors approval patterns
+**Detection:** Governance Auditor monitors approval patterns
 
 ### Pattern 2: Evidence-Free Approval
 
@@ -249,7 +249,7 @@ Builder cannot override any decision.
 
 **Prevention:** All approvals require evidence (screenshots, comparisons, scores)
 
-**Detection:** CTO Bar Raiser requires evidence package before approval
+**Detection:** Release Manager requires evidence package before approval
 
 ### Pattern 3: Gate Bypassing
 
@@ -257,7 +257,7 @@ Builder cannot override any decision.
 
 **Prevention:** Each gate must pass before next step
 
-**Detection:** Agent Governance Auditor identifies skipped gates
+**Detection:** Governance Auditor identifies skipped gates
 
 ### Pattern 4: Popularity-Based Override
 
@@ -265,7 +265,7 @@ Builder cannot override any decision.
 
 **Prevention:** Decisions based on evidence, not agent authority
 
-**Detection:** Agent Governance Auditor identifies override patterns
+**Detection:** Governance Auditor identifies override patterns
 
 ---
 

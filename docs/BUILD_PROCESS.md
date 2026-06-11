@@ -390,12 +390,64 @@ The PM gate runs:
 * **When scope changes** — Re-evaluate if direction changes
 * **When risks identified** — Check if product quality at risk
 
-### Related Documentation
+### Proben.io as a Build Learning System
+
+Proben.io is not only a product—it is an experiment in AI-assisted product development quality. The build process itself is designed to learn from failures and improve over time.
+
+### Recursive Quality Improvement
+
+Every weak result becomes a process improvement:
+
+1. **Failure occurs** — Quality gate fails or human override happens
+2. **Document decision** — Create BLD entry explaining what failed and why
+3. **Add/update gate** — Introduce new eval, test, or rule to prevent recurrence
+4. **Document learning** — Extract reusable lesson for future situations
+5. **Track metrics** — Monitor if improvement actually worked
+
+### Decision Documentation
+
+Every meaningful product, design, agent, eval, or release process change is documented:
+
+- **BUILD_LEARNING_DECISION_LOG.md** — Chronological log of all BLD entries
+- **BUILD_LEARNING_DECISION_INDEX.md** — Quick reference index
+- **LESSONS_LEARNED.md** — Reusable lessons grouped by theme
+- **QUALITY_METRICS_HISTORY.md** — Metrics tracking over time
+
+### Mandatory Triggers
+
+A BLD entry is REQUIRED for:
+- Failed or rejected slice
+- False PASS (agent claimed PASS but human/browser disagreed)
+- Human override occurred
+- New gate/eval/agent added
+- Visual QA process change
+- Architecture/security decision
+
+**See:** `docs/product-build-history/` for complete learning documentation.
+
+### Public Portfolio
+
+The quality journey is documented publicly at:
+
+**[/portfolio/how-proben-was-built](../app/portfolio/how-proben-was-built/page.tsx)** — Explains how Proben.io's quality system evolved through failures and improvements.
+
+### Learning Focus
+
+The bottleneck in AI-assisted development moves from **building** to **validating** and **learning**. Proben.io's build process is designed to:
+
+- Capture every failure as learning
+- Convert failures into gates and evals
+- Document decisions for future reference
+- Make learning durable and reusable
+- Show quality evolution publicly
+
+## Related Documentation
 
 * **Product Eval Rubric:** `docs/evals/PRODUCT_EVALS.md`
 * **Phase Template:** `docs/evals/PHASE_EVALUATION_TEMPLATE.md`
 * **PM Agent:** `.claude/agents/product-manager.md`
 * **Phase Gate Policy:** `docs/PHASE_GATE_POLICY.md`
+* **Build Learning:** `docs/product-build-history/BUILD_LEARNING_DECISION_LOG.md`
 
 ## Quality Gates
 

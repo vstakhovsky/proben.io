@@ -100,7 +100,7 @@ All decisions must document:
 
 ### Detection Patterns
 
-**Agent Governance Auditor monitors for:**
+**Governance Auditor monitors for:**
 
 1. **Self-approval pattern**
    - Same agent always approves certain type of work
@@ -189,7 +189,7 @@ All decisions logged with:
 **Scenario:** Frontend Engineer implements landing page hero
 
 **Builder:** Frontend Engineer (Level 1)
-**Reviewer:** Principal Design Reviewer (Level 2) - independent
+**Reviewer:** Design Reviewer (Level 2) - independent
 
 **Evidence:**
 - Builder claims: "Matches prototype well"
@@ -238,9 +238,9 @@ All decisions logged with:
 
 1. **Builder** (Level 1) may implement
 2. **Fresh reviewer** (Level 2, did not implement) must review
-3. **Principal Design Reviewer** (Level 2) must score visual parity
+3. **Design Reviewer** (Level 2) must score visual parity
 4. **Principal PM** (Level 2) must score product value
-5. **CTO Bar Raiser** (Level 3) must confirm release readiness
+5. **Release Manager** (Level 3) must confirm release readiness
 6. **Human Owner** gives final approval
 
 **If any blocking gate fails, status is REJECTED — DO NOT RELEASE.**

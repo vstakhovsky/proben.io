@@ -212,9 +212,9 @@ The system was upgraded with:
 - Must reject if looks generic SaaS
 - Must accept only if matches Proben MVP 6
 
-### Step 8: CTO Bar Raiser Evaluation
+### Step 8: Release Manager Evaluation
 
-**Agent:** CTO Bar Raiser
+**Agent:** Release Manager
 
 **Task:** Evaluate overall quality and release readiness
 
@@ -243,7 +243,7 @@ The system was upgraded with:
 - Fresh review verdict and evidence
 - PM evaluation
 - Design QA evaluation
-- CTO Bar Raiser evaluation
+- Release Manager evaluation
 - Screenshot comparison
 
 **Decision:**
@@ -350,7 +350,7 @@ Phase 2.1 retry is successful when:
    - Fresh review: ACCEPTED
    - PM eval: ACCEPTED
    - Design QA: ACCEPTED
-   - CTO Bar Raiser: ACCEPTED
+   - Release Manager: ACCEPTED
    - Human approval: YES
 
 4. **Evidence**
@@ -412,7 +412,7 @@ Phase 2.1 retry is successful when:
 - Fresh review: 30 minutes
 - PM evaluation: 15 minutes
 - Design QA evaluation: 15 minutes
-- CTO Bar Raiser evaluation: 15 minutes
+- Release Manager evaluation: 15 minutes
 - Human approval: 15 minutes
 - Merge and cleanup: 15 minutes
 
@@ -429,7 +429,7 @@ Before claiming Phase 2.1 complete:
 - [ ] Parity score >= 4.5/5
 - [ ] PM evaluation: ACCEPTED
 - [ ] Design QA evaluation: ACCEPTED
-- [ ] CTO Bar Raiser evaluation: ACCEPTED
+- [ ] Release Manager evaluation: ACCEPTED
 - [ ] Human approval received
 - [ ] Worktree merged and cleaned up
 

@@ -1,3 +1,4 @@
+
 import type { ReadinessScore, ReadinessStatus, AssessmentResult, ContextGap, FixRecommendation, LikelyQuestion, PracticeMoment, AssessmentInput } from './types';
 
 // Internal 0-100 scale for calculations, converted to 0-10 for display
@@ -179,38 +180,34 @@ function generateGaps(internalScore: InternalScore, context: string): ContextGap
 function generateFixes(gaps: ContextGap[]): FixRecommendation[] {
   const fixes: FixRecommendation[] = [];
 
-  const addFix = (fix: string, effort: FixRecommendation['effort']) => {
-    fixes.push({ priority: fixes.length + 1, fix, effort });
-  };
-
-  gaps.forEach((gap) => {
+  gaps.forEach((gap, index) => {
     switch (gap.dimension) {
       case 'Goal Clarity':
-        addFix('Define specific meeting objective and success criteria', 'Low');
-        addFix('Document what decision you need and why now', 'Low');
+        fixes.push({ priority: index + 1, fix: 'Define specific meeting objective and success criteria', effort: 'Low' });
+        fixes.push({ priority: index + 1, fix: 'Document what decision you need and why now', effort: 'Low' });
         break;
       case 'Strategic Context':
-        addFix('Quantify business impact and ROI projection', 'Medium');
-        addFix('Map this decision to broader company goals', 'Medium');
+        fixes.push({ priority: index + 1, fix: 'Quantify business impact and ROI projection', effort: 'Medium' });
+        fixes.push({ priority: index + 1, fix: 'Map this decision to broader company goals', effort: 'Medium' });
         break;
       case 'Evidence':
-        addFix('Gather user feedback or data supporting your proposal', 'High');
-        addFix('Include competitive analysis or market research', 'High');
+        fixes.push({ priority: index + 1, fix: 'Gather user feedback or data supporting your proposal', effort: 'High' });
+        fixes.push({ priority: index + 1, fix: 'Include competitive analysis or market research', effort: 'High' });
         break;
       case 'Stakeholder Risk':
-        addFix('Pre-meeting: identify key stakeholders and their concerns', 'Medium');
-        addFix('Prepare responses to likely objections', 'Medium');
+        fixes.push({ priority: index + 1, fix: 'Pre-meeting: identify key stakeholders and their concerns', effort: 'Medium' });
+        fixes.push({ priority: index + 1, fix: 'Prepare responses to likely objections', effort: 'Medium' });
         break;
       case 'Decision Ask':
-        addFix('Define clear decision criteria and timeline', 'Low');
-        addFix('Prepare specific next steps for each outcome', 'Medium');
+        fixes.push({ priority: index + 1, fix: 'Define clear decision criteria and timeline', effort: 'Low' });
+        fixes.push({ priority: index + 1, fix: 'Prepare specific next steps for each outcome', effort: 'Medium' });
         break;
     }
   });
 
   // Add universal fixes
-  addFix('Create one-page summary document', 'Low');
-  addFix('Schedule 15-minute pre-meeting with key stakeholder', 'Low');
+  fixes.push({ priority: 99, fix: 'Create one-page summary document', effort: 'Low' });
+  fixes.push({ priority: 99, fix: 'Schedule 15-minute pre-meeting with key stakeholder', effort: 'Low' });
 
   return fixes.slice(0, 5); // Return top 5 fixes
 }

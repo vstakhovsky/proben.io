@@ -11,7 +11,7 @@
 ## Files Created/Updated
 
 ### New Agents
-1. `.claude/agents/cto-bar-raiser.md` — Independent technical strategy reviewer
+1. `.claude/agents/release-manager.md` — Independent technical strategy reviewer
 
 ### Updated Agents
 1. `.claude/agents/product-manager.md` — Expanded responsibilities with phase quality evaluation
@@ -21,7 +21,7 @@
 2. `docs/evals/PHASE_EVALUATION_TEMPLATE.md` — Template for phase evaluations
 3. `docs/reviews/phase-2-product-manager-review.md` — PM assessment and recommendations
 4. `docs/reviews/phase-2-architect-review.md` — Technical assessment and recommendations
-5. `docs/reviews/phase-2-cto-bar-raiser-review.md` — Independent technical review
+5. `docs/reviews/phase-2-release-manager-review.md` — Independent technical review
 6. `docs/PHASE_2_PLAN.md` — Consolidated Phase 2 plan with roadmap
 7. `docs/PHASE_GATE_POLICY.md` — 5-gate quality system
 8. `docs/BUILD_PROCESS.md` — Updated with PM Quality Gate section
@@ -80,7 +80,7 @@
 * Add infrastructure before proving user value
 * Create more agent definitions or skills
 
-## Lead Architect Recommendation
+## Architect Recommendation
 
 **Primary Recommendation: Continue with Static/Frontend-Only**
 
@@ -97,7 +97,7 @@
 * Real AI APIs only when: Mock scoring insufficient, cost-benefit supports investment
 * Admin console only when: Clear operational need, security model defined
 
-## CTO Bar Raiser Verdict
+## Release Manager Verdict
 
 **CONDITIONAL APPROVE — Phase 2.1 (Design Parity) with strict scope controls**
 

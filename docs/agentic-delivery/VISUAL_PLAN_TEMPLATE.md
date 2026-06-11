@@ -171,7 +171,7 @@ If implementation fails or is rejected:
 ## Approval Required
 - [ ] Product Manager approval
 - [ ] Design QA approval (if visual work)
-- [ ] CTO Bar Raiser approval (if high risk)
+- [ ] Release Manager approval (if high risk)
 
 ---
 
@@ -382,7 +382,7 @@ If implementation fails or is rejected:
 ## Approval Required
 - [ ] Product Manager approval
 - [ ] Design QA approval
-- [ ] CTO Bar Raiser approval (high visibility change)
+- [ ] Release Manager approval (high visibility change)
 
 ---
 

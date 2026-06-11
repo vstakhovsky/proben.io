@@ -13,7 +13,7 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 
 ## Matrix
 
-| Activity | Builder | Principal PM | Principal Design Reviewer | Principal Architect | QA Release Engineer | Security Reviewer | CTO Bar Raiser | Agent Governance Auditor | Human Owner |
+| Activity | Builder | Principal PM | Design Reviewer | Principal Architect | QA Release Engineer | Security Reviewer | Release Manager | Governance Auditor | Human Owner |
 |----------|---------|--------------|--------------------------|--------------------|---------------------|------------------|----------------|-------------------------|-------------|
 | **Create visual plan** | C | A | C | C | I | I | C | I | I |
 | **Approve visual plan** | I | C | C | C | I | I | I | I | A |
@@ -38,9 +38,9 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 **Who does what:**
 - **Builder (C):** Consulted on implementation feasibility
 - **Principal PM (A):** Accountable for product goal alignment
-- **Principal Design Reviewer (C):** Consulted on visual feasibility
+- **Design Reviewer (C):** Consulted on visual feasibility
 - **Principal Architect (C):** Consulted on technical feasibility
-- **CTO Bar Raiser (C):** Consulted on scope and complexity
+- **Release Manager (C):** Consulted on scope and complexity
 - **Human Owner (A):** Final approval of plan before implementation
 
 **No work starts until Human Owner approves visual plan.**
@@ -51,7 +51,7 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 
 **Who does what:**
 - **Principal PM (C):** Consulted on product value
-- **Principal Design Reviewer (C):** Consulted on visual feasibility
+- **Design Reviewer (C):** Consulted on visual feasibility
 - **Principal Architect (C):** Consulted on technical feasibility
 - **Human Owner (A):** Final approval authority
 
@@ -94,9 +94,9 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 ### Review Visual Parity
 
 **Who does what:**
-- **Principal Design Reviewer (A):** Accountable for visual quality assessment
+- **Design Reviewer (A):** Accountable for visual quality assessment
 - **QA Release Engineer (C):** Consulted on evidence quality
-- **CTO Bar Raiser (C):** Consulted on design decisions
+- **Release Manager (C):** Consulted on design decisions
 
 **Visual parity >= 4.5/5 required for approval.**
 
@@ -107,7 +107,7 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 **Who does what:**
 - **Principal PM (A):** Accountable for product quality assessment
 - **QA Release Engineer (C):** Consulted on evidence quality
-- **CTO Bar Raiser (C):** Consulted on product decisions
+- **Release Manager (C):** Consulted on product decisions
 
 **Product value score >= 4.0/5 required for approval.**
 
@@ -118,7 +118,7 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 **Who does what:**
 - **Principal Architect (A):** Accountable for technical quality assessment
 - **QA Release Engineer (C):** Consulted on evidence quality
-- **CTO Bar Raiser (C):** Consulted on architectural decisions
+- **Release Manager (C):** Consulted on architectural decisions
 
 **Architecture must be sound and maintainable.**
 
@@ -128,7 +128,7 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 
 **Who does what:**
 - **Security Reviewer (A):** Accountable for security assessment
-- **CTO Bar Raiser (C):** Consulted on security decisions
+- **Release Manager (C):** Consulted on security decisions
 
 **No HIGH security risks allowed for release.**
 
@@ -138,11 +138,11 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 
 **Who does what:**
 - **Principal PM (C):** Consulted on product risk
-- **Principal Design Reviewer (C):** Consulted on design risk
+- **Design Reviewer (C):** Consulted on design risk
 - **Principal Architect (C):** Consulted on technical risk
 - **Security Reviewer (C):** Consulted on security risk
 - **QA Release Engineer (A):** Accountable for overall risk assessment
-- **CTO Bar Raiser (C):** Consulted on risk decisions
+- **Release Manager (C):** Consulted on risk decisions
 
 **Overall risk must be LOW or MEDIUM for release.**
 
@@ -152,11 +152,11 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 
 **Who does what:**
 - **Principal PM (A):** Accountable for product quality approval
-- **Principal Design Reviewer (A):** Accountable for design quality approval
+- **Design Reviewer (A):** Accountable for design quality approval
 - **Principal Architect (A):** Accountable for technical quality approval
 - **QA Release Engineer (A):** Accountable for QA validation
 - **Security Reviewer (C):** Consulted on security status
-- **CTO Bar Raiser (A):** Accountable for overall release quality
+- **Release Manager (A):** Accountable for overall release quality
 - **Human Owner (A):** Final approval authority
 
 **All A's must approve for release. Any A can veto.**
@@ -166,7 +166,7 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 ### Audit Agent Performance
 
 **Who does what:**
-- **Agent Governance Auditor (R):** Responsible for conducting audits
+- **Governance Auditor (R):** Responsible for conducting audits
 - **Human Owner (I):** Informed of audit results
 
 **Audits happen regularly to ensure agent effectiveness.**
@@ -176,9 +176,9 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 ### Retire Weak Agent/Skill
 
 **Who does what:**
-- **Agent Governance Auditor (A):** Accountable for identifying weak agents
+- **Governance Auditor (A):** Accountable for identifying weak agents
 - **Principal PM (C):** Consulted on product impact
-- **Principal Design Reviewer (C):** Consulted on design impact
+- **Design Reviewer (C):** Consulted on design impact
 - **Principal Architect (C):** Consulted on technical impact
 - **QA Release Engineer (C):** Consulted on QA impact
 - **Security Reviewer (C):** Consulted on security impact
@@ -192,7 +192,7 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
 
 **Who does what:**
 - **Principal PM (C):** Consulted on product considerations
-- **Principal Design Reviewer (C):** Consulted on design considerations
+- **Design Reviewer (C):** Consulted on design considerations
 - **Principal Architect (C):** Consulted on technical considerations
 - **QA Release Engineer (C):** Consulted on QA considerations
 - **Security Reviewer (C):** Consulted on security considerations
@@ -217,13 +217,13 @@ This RACI (Responsible, Accountable, Consulted, Informed) matrix defines who doe
    ↓
 5. Fresh reviewer reviews (did not implement)
    ↓
-6. Principal Design Reviewer scores visual parity (A)
+6. Design Reviewer scores visual parity (A)
    ↓
 7. Principal PM scores product value (A)
    ↓
 8. QA Release Engineer assigns risk score (A)
    ↓
-9. CTO Bar Raiser confirms release readiness (A)
+9. Release Manager confirms release readiness (A)
    ↓
 10. Human Owner gives final approval (A)
    ↓

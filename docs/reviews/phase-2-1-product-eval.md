@@ -261,7 +261,7 @@ Using the rubric from `docs/evals/PRODUCT_EVALS.md`:
 
 ---
 
-## CTO Bar Raiser Verdict
+## Release Manager Verdict
 
 **Status:** ✅ **APPROVE WITH CONTINUATION**
 
@@ -335,6 +335,6 @@ Using the rubric from `docs/evals/PRODUCT_EVALS.md`:
 
 ---
 
-**Evaluated by:** Product Manager + CTO Bar Raiser
+**Evaluated by:** Product Manager + Release Manager
 **Date:** 2025-06-09
 **Status:** APPROVED for continuation to Slice 2.1F

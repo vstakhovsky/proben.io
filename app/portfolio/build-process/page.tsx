@@ -239,6 +239,30 @@ export default function BuildProcessPage() {
           </div>
         </section>
 
+        {/* Milestones */}
+        <section className="mb-12">
+          <h2 className="font-serif text-2xl font-semibold text-gray-900 mb-4">
+            Key Milestones
+          </h2>
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div className="space-y-6">
+              <div className="border-l-4 border-brand-green pl-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="text-sm font-medium text-gray-500">2026-06-11</div>
+                  <div className="text-xs bg-brand-green/10 text-brand-green px-2 py-1 rounded">Domain Launch</div>
+                </div>
+                <div className="font-medium text-gray-900 mb-1">Connected proben.io to Vercel Production</div>
+                <div className="text-sm text-gray-600 mb-2">
+                  Replaced Porkbun parking DNS with Vercel DNS records and launched the Proben MVP 6 landing page publicly.
+                </div>
+                <div className="text-xs text-gray-500 italic">
+                  <span className="font-medium">Learning:</span> A working preview deployment is not the same as a launched product.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Repository */}
         <section className="mb-12">
           <h2 className="font-serif text-2xl font-semibold text-gray-900 mb-4">

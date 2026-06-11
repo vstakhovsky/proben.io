@@ -1,4 +1,4 @@
-# Phase 2 Lead Architect Review
+# Phase 2 Architect Review
 
 ## Current Technical Status
 

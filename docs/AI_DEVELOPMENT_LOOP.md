@@ -39,7 +39,7 @@ Specialist agents analyze the source from their perspective:
 
 - **Research Analyst**: What is the core pattern? What's new?
 - **Product Manager**: How does this apply to Proben.io users? Portfolio value?
-- **Lead Architect**: What are the technical implications? Trade-offs?
+- **Architect**: What are the technical implications? Trade-offs?
 - **Security Reviewer**: What are the risks? Data leakage? Prompt injection?
 - **QA Release Engineer**: How do we verify this works? What tests?
 
@@ -200,7 +200,7 @@ Orchestrator receives task
 ├─ Assignment: Delegate to specialists
 │  ├─ Research Analyst: Pattern extraction
 │  ├─ Product Manager: User/portfolio value
-│  ├─ Lead Architect: Technical fit
+│  ├─ Architect: Technical fit
 │  ├─ Security Reviewer: Risk assessment
 │  ├─ QA Release Engineer: Verification
 │  └─ Documentation Engineer: Public explanation
@@ -257,7 +257,7 @@ Every agent in the loop runs:
 - Defines prioritization (P0/P1/P2)
 - Decides whether idea supports target AI PM roles
 
-### Lead Architect
+### Architect
 
 - Checks architectural fit
 - Prevents over-engineering
