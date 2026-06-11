@@ -51,3 +51,8 @@ node_modules/
 
 # OS
 .DS_Store
+
+# Background task harness (generated reports are in test-results/)
+# .claude/agents/ is tracked (agent definitions)
+# .cursor/rules/ is tracked (cursor rules)
+# .claude/settings.local.json is ignored (already above)

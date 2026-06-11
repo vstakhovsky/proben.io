@@ -56,12 +56,19 @@ Check that all required evidence is present:
 
 - [ ] Visual plan exists and is approved
 - [ ] Files changed are listed
-- [ ] Screenshots provided (for UI work)
+- [ ] **Screenshots provided (REQUIRED for UI work)**
+- [ ] **HTML report generated (REQUIRED for UI work)**
 - [ ] Route tested and working
 - [ ] Tests pass
 - [ ] Build succeeds
 
 **If evidence missing:** Request from builder. Do not review without evidence.
+
+**For UI work:** Text-only review is INSUFFICIENT. Must have:
+1. Target screenshot (reference)
+2. Current screenshot (actual browser state)
+3. Side-by-side comparison (HTML report)
+4. Requirement checklist with visual evidence
 
 ### Step 3: Review Implementation
 
@@ -318,6 +325,50 @@ The fresh review is complete when:
 - [ ] Risk assessed
 - [ ] Verdict returned
 - [ ] Blockers or fixes listed (if applicable)
+
+## Source of Truth Policy
+
+> **For UI work: If browser state or screenshot evidence contradicts agent score, the screenshot/browser state is the source of truth.**
+
+### Rules
+
+1. **No text-only acceptance** — Cannot accept UI slice without screenshot evidence
+2. **Screenshot source of truth** — Visual evidence trumps agent claims
+3. **Side-by-side required** — Must compare target vs current visually
+4. **Human can override** — Agent verdict is preliminary, human makes final call
+
+### Evidence Requirements for UI Work
+
+**REQUIRED:**
+- Target screenshot (approved prototype)
+- Current screenshot (actual browser state)
+- HTML report with side-by-side comparison
+- Requirement checklist with PASS/FAIL based on visual evidence
+- Visual parity scoring based on comparison
+
+**NOT SUFFICIENT:**
+- Agent text description
+- Agent "looks good" claim
+- Code review alone
+- Route availability alone
+
+### Visual Evidence Workbench
+
+Use the Visual Evidence Workbench for all UI slice reviews:
+
+```bash
+# Generate visual evidence report
+node scripts/generate-visual-review-report.js \
+  --phase "2.1" \
+  --slice "A" \
+  --slice-name "Header/Navigation" \
+  --target "reference/screenshots/proben-mvp-6/hero-target-light-1.png" \
+  --current "test-results/phase-2-1-slice-a-current.png" \
+  --route "http://localhost:3000" \
+  --output "test-results/visual-review/phase-2-1-slice-a.html"
+```
+
+See `docs/qa/VISUAL_EVIDENCE_WORKBENCH.md` for complete documentation.
 
 ## Related Documentation
 
