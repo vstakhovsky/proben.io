@@ -136,3 +136,88 @@ None (milestone documentation, not a process change)
 **Last Updated:** 2026-06-11
 **Total Entries:** 2
 **Related Documentation:** docs/product-build-history/BUILD_LEARNING_DECISION_LOG.md
+
+## 2026-06-11 — Repository Presentation Upgrade
+
+### Problem
+
+The repository had strong implementation and process artifacts, but the public GitHub presentation did not clearly explain:
+- What the product is
+- How it was built
+- How to navigate the project
+- Where to find documentation
+
+The README was minimal and did not showcase the AI-native development process, agent system, quality gates, or build history.
+
+### Decision
+
+Use a curated repository style inspired by modern awesome-list and agent-skill repositories:
+- Clear positioning statement with badges
+- Structured sections with tables and roadmaps
+- Comprehensive documentation links
+- Repository navigation guide
+- Contribution guidelines
+- Professional open-source presentation
+
+### Alternatives Considered
+
+1. **Keep minimal README** — Rejected because project portfolio value requires clear presentation
+2. **Focus only on product code** — Rejected because build process is part of the portfolio value
+3. **Separate process docs** — Rejected because unified presentation is stronger
+4. **Only update README** — Rejected without adding supporting docs (navigation, style guide, contributing)
+
+### Change Applied
+
+**Created:**
+- [`README.md`](../../README.md) — Complete rewrite with badges, positioning, roadmap, agents, quality gates
+- [`CONTRIBUTING.md`](../../CONTRIBUTING.md) — Contribution guidelines with principles and workflow
+- [`docs/repository/README.md`](README.md) — Repository navigation guide
+- [`docs/repository/REPOSITORY_MAP.md`](REPOSITORY_MAP.md) — Detailed repository structure explanation
+- [`docs/repository/REPOSITORY_STYLE_GUIDE.md`](REPOSITORY_STYLE_GUIDE.md) — Repository style guidelines
+- [`docs/repository/REPOSITORY_AUDIT.md`](REPOSITORY_AUDIT.md) — Repository audit and cleanup
+
+**Updated:**
+- [`CLAUDE.md`](../../CLAUDE.md) — Added agent naming policy and agent system policy
+
+**Archived:**
+- Evidence files from `test-results/visual-review/` → `docs/archive/visual-evidence/phase-2-1/`
+- Harness reports from `test-results/harness/` → `docs/archive/harness-reports/`
+
+### Evidence
+
+* New README provides clear product positioning and live demo links
+* Comprehensive agent system table shows clean role names
+* Quality gate table explains IMPLEMENT → VERIFY → REVIEW → CLOSE → RETRO workflow
+* Repository map explains where to find product code, references, docs, and agent files
+* Style guide defines consistent naming and formatting rules
+* All README links validated (no broken links)
+
+### Why
+
+A clean, professional repository presentation:
+- Improves portfolio credibility
+- Helps new contributors navigate the project
+- Showcases the AI-native development process
+- Documents the quality system and governance
+- Makes the build history accessible
+- Separates product code from process artifacts
+
+### Learning
+
+**Repository presentation is part of the portfolio.** 
+The way documentation is organized affects how people perceive the project's quality and maturity.
+
+**Consistent structure reduces aiability friction.**
+Clear folder naming, document formats, and style guides help AI assistants understand where to work and what to preserve.
+
+**Evidence files should be archived, not deleted.**
+Visual evidence and harness reports are historical artifacts that should be preserved in `docs/archive/` rather than left in generated folders or deleted.
+
+### Next Action
+
+Continue with Phase 2.2 (Landing Polish) using the new repository structure as the foundation for clean, documented development.
+
+### Status
+
+✅ Accepted
+
